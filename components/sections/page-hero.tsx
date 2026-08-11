@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Container } from "@/components/layout/container";
 import { HeroRise } from "@/components/ui/hero-rise";
 import { useHeroParallax } from "@/hooks/use-hero-parallax";
 
@@ -36,7 +37,7 @@ export function PageHero({
           alt={alt}
           fill
           priority
-          className={cn("object-cover object-center", imageClassName)}
+          className={cn("object-cover object-top", imageClassName)}
           sizes="100vw"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20 md:hidden" />
@@ -45,7 +46,7 @@ export function PageHero({
           className="pointer-events-none absolute inset-0 hidden bg-hi-navy-deep md:block"
           style={{ opacity: dim }}
         />
-        <div className="relative z-10 px-[var(--spacing-gutter)] pb-10 pt-8 md:absolute md:inset-0 md:flex md:items-center md:pb-0 md:pt-0">
+        <Container className="relative z-10 pb-10 pt-8 md:absolute md:inset-0 md:flex md:items-center md:pb-0 md:pt-0">
           <motion.div style={{ y: textY, opacity: textOpacity }}>
             <HeroRise delay={0.12}>
               <h1 className="max-w-[12ch] text-left text-[clamp(2.15rem,9vw,5.375rem)] font-light leading-[1.05] tracking-[-0.03em] text-white">
@@ -53,7 +54,7 @@ export function PageHero({
               </h1>
             </HeroRise>
           </motion.div>
-        </div>
+        </Container>
       </div>
     </section>
   );

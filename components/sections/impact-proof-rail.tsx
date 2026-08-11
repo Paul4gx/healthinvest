@@ -12,7 +12,7 @@ export function ImpactProofRail() {
   const reduce = usePrefersReducedMotion();
 
   return (
-    <div className="grid sm:grid-cols-3">
+    <div className="grid items-stretch sm:grid-cols-3">
       {IMPACT.ledger.map((item, index) => {
         const inner = (
           <>
@@ -20,17 +20,23 @@ export function ImpactProofRail() {
               {item.value}
             </p>
             <p className="mt-1 text-sm leading-snug text-hi-black/70">{item.label}</p>
-            {item.note ? (
-              <p className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-hi-navy-deep">
-                {item.note}
-                <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover/rail:translate-x-0.5 group-hover/rail:-translate-y-0.5 group-active/rail:translate-x-0.5 group-active/rail:-translate-y-0.5" />
-              </p>
-            ) : null}
+            <p className="mt-3 inline-flex min-h-[1.25rem] items-center gap-1 text-xs font-medium text-hi-navy-deep">
+              {item.note ? (
+                <>
+                  {item.note}
+                  <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover/rail:translate-x-0.5 group-hover/rail:-translate-y-0.5 group-active/rail:translate-x-0.5 group-active/rail:-translate-y-0.5" />
+                </>
+              ) : (
+                <span className="invisible" aria-hidden>
+                  —
+                </span>
+              )}
+            </p>
           </>
         );
 
         const classes = cn(
-          "group/rail relative flex min-h-[128px] flex-col items-center justify-center bg-[#67d2f1] px-5 py-6 text-center md:min-h-[148px] md:px-7",
+          "group/rail relative flex h-full min-h-[160px] flex-col items-center justify-center bg-[#67d2f1] px-5 py-6 text-center md:min-h-[168px] md:px-7",
           index > 0 && "border-t border-white/50 sm:border-l sm:border-t-0",
           item.href && "transition-colors duration-200 hover:bg-[#4fc4e8] active:bg-[#4fc4e8]"
         );
@@ -38,6 +44,7 @@ export function ImpactProofRail() {
         return (
           <motion.div
             key={item.label}
+            className="h-full"
             initial={reduce ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}

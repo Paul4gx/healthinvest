@@ -71,7 +71,7 @@ export default function GalleryPageClient() {
                 className={cn(
                   "rounded-pill px-6 py-2.5 text-sm font-medium transition-all duration-250 md:px-8",
                   brand === value
-                    ? "bg-hi-navy-mid text-white shadow-sm"
+                    ? "bg-hi-primary text-white shadow-sm"
                     : "text-hi-ink hover:bg-white/60"
                 )}
               >

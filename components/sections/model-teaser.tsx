@@ -27,16 +27,18 @@ export function ModelTeaser() {
   return (
     <section className="bg-white py-10 md:py-16">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
+        <div className="grid gap-x-10 gap-y-4 lg:grid-cols-2">
           <Reveal>
             <p className="text-sm font-medium uppercase tracking-[0.08em] text-hi-accent">
               Our model
             </p>
-            <h2 className="mt-4 text-[clamp(1.85rem,4vw,3rem)] font-normal tracking-[-0.02em] text-hi-ink">
+          </Reveal>
+          <Reveal className="lg:col-start-1">
+            <h2 className="text-[clamp(1.85rem,4vw,3rem)] font-normal tracking-[-0.02em] text-hi-ink">
               From infrastructure to lasting care
             </h2>
           </Reveal>
-          <Reveal delay={0.08}>
+          <Reveal delay={0.08} className="lg:col-start-2 lg:row-start-2">
             <p className="text-lg leading-relaxed text-hi-black/85">
               We work with host institutions to unlock existing assets, deploy the
               right capital and technology, build capable teams and manage services

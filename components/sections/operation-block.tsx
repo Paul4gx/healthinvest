@@ -61,7 +61,7 @@ export function OperationBlock({
             align === "right" ? "md:ml-auto" : "md:mr-auto"
           )}
         >
-          <div className="relative isolate overflow-hidden rounded-[20px] bg-hi-navy-deep text-white shadow-[0_16px_40px_rgba(2,5,30,0.22)] ring-1 ring-inset ring-white/25 md:rounded-[24px] md:shadow-[0_16px_40px_rgba(2,5,30,0.18)]">
+          <div className="relative isolate overflow-hidden rounded-[20px] bg-[#4C5393] text-white shadow-[0_16px_40px_rgba(76,83,147,0.35)] ring-1 ring-inset ring-white/25 md:rounded-[24px] md:shadow-[0_16px_40px_rgba(76,83,147,0.28)]">
             <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
               <Image
                 src={image}
@@ -72,7 +72,7 @@ export function OperationBlock({
                 sizes="(max-width:768px) 100vw, 32rem"
               />
               <div
-                className="absolute inset-0 rounded-[inherit] bg-hi-navy-deep/80 backdrop-blur-2xl backdrop-saturate-150"
+                className="absolute inset-0 rounded-[inherit] bg-[#4C5393]/72 backdrop-blur-2xl backdrop-saturate-150"
                 aria-hidden
               />
             </div>

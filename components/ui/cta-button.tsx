@@ -24,12 +24,12 @@ type CtaButtonProps = {
 
 const variants: Record<CtaVariant, string> = {
   primary:
-    "bg-hi-navy-deep text-white hover:bg-[#010314] shadow-sm hover:shadow-md",
+    "bg-hi-primary text-white hover:bg-hi-primary-hover shadow-sm hover:shadow-md",
   secondary:
-    "bg-white text-hi-navy-deep hover:bg-white/95 shadow-sm hover:shadow-md",
+    "bg-white text-hi-primary hover:bg-white/95 shadow-sm hover:shadow-md",
   ghost: "bg-transparent text-white border-2 border-white hover:bg-white/10",
   outline:
-    "bg-transparent text-hi-navy-deep border-2 border-hi-navy-deep hover:bg-hi-navy-deep/[0.04]",
+    "bg-transparent text-hi-primary border-2 border-hi-primary hover:bg-hi-primary/[0.04]",
 };
 
 export function CtaButton({

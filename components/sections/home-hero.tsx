@@ -207,7 +207,7 @@ function SplitSlide({
   textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
 }) {
   return (
-    <div className="relative h-full">
+    <div className="relative h-full bg-[#4C5393]">
       <div className="absolute inset-0 md:hidden">
         <Image
           src="/images/hero/home-family-consultation.webp"
@@ -222,62 +222,74 @@ function SplitSlide({
         <div className="absolute inset-0 bg-gradient-to-t from-[#4C5393] via-[#4C5393]/80 to-[#4C5393]/35" />
       </div>
 
-      <div className="relative z-10 grid h-full md:grid-cols-2">
-        <div className="flex flex-col justify-end px-[var(--spacing-gutter)] pb-[4.5rem] pt-6 md:justify-center md:bg-[#4C5393] md:py-0 md:pb-0">
+      <div className="absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block">
+        <Image
+          src="/images/hero/home-family-consultation.webp"
+          alt=""
+          fill
+          priority
+          unoptimized
+          draggable={false}
+          className="pointer-events-none scale-x-[-1] object-cover object-center"
+          sizes="50vw"
+        />
+      </div>
+
+      <Container className="relative z-10 flex h-full flex-col justify-end pb-[4.5rem] pt-6 md:absolute md:inset-0 md:justify-center md:pb-24 md:pt-0">
           <motion.div
-            className="max-w-[34rem]"
+            className="flex w-full max-w-[34rem] flex-col gap-3 md:gap-6"
             style={{ y: textY, opacity: textOpacity }}
           >
-            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/70 md:text-[11px] md:tracking-[0.22em]">
-              {HOME_HERO.eyebrow}
-            </p>
-            <h1 className="mt-3 font-sans text-[clamp(1.55rem,6.4vw,2.65rem)] font-medium leading-[1.14] tracking-[-0.02em] text-white md:mt-6">
-              We bring{" "}
-              <span className="whitespace-nowrap">specialty care</span>{" "}
-              <span className="block">to the underserved</span>
-            </h1>
-            <p className="mt-3 line-clamp-3 max-w-[32rem] text-sm font-light leading-relaxed text-white/85 md:mt-7 md:line-clamp-none md:text-[1.05rem] md:leading-[1.75]">
-              {HOME_HERO.body}
-            </p>
-            <div
-              className="mt-5 flex flex-col items-start gap-3 md:mt-10 md:flex-row md:items-center md:gap-8"
-              onPointerDown={(event) => event.stopPropagation()}
-            >
-              <Link
-                href="/our-operations"
-                tabIndex={active ? 0 : -1}
-                className="inline-flex w-full items-center justify-center rounded-[3px] bg-white px-7 py-3 text-[13px] font-medium tracking-[0.04em] text-[#4C5393] transition-colors duration-300 hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4C5393] md:w-auto"
+            <HeroRise delay={0.08}>
+              <SectionLabel
+                tone="light"
+                className="items-start [&>span:last-child]:max-w-none [&>span:last-child]:leading-snug"
               >
-                Explore our operations
-              </Link>
-              <Link
-                href="/our-model"
-                tabIndex={active ? 0 : -1}
-                className="group inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.06em] text-white"
+                Specialist healthcare
+                <br />
+                investment and operations in Africa
+              </SectionLabel>
+            </HeroRise>
+            <HeroRise delay={0.18}>
+              <h1 className="text-[clamp(1.55rem,6.4vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+                We bring{" "}
+                <span className="whitespace-nowrap">specialty care</span>{" "}
+                <span className="block">to the underserved</span>
+              </h1>
+            </HeroRise>
+            <HeroRise delay={0.28}>
+              <p className="line-clamp-3 max-w-[640px] text-sm leading-relaxed text-white/90 md:line-clamp-none md:text-lg md:leading-7">
+                {HOME_HERO.body}
+              </p>
+            </HeroRise>
+            <HeroRise delay={0.38}>
+              <div
+                className="flex w-full flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+                onPointerDown={(event) => event.stopPropagation()}
               >
-                <span className="border-b border-white/40 pb-0.5 transition-colors duration-300 group-hover:border-white">
-                  Our model
-                </span>
-                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
-                  →
-                </span>
-              </Link>
-            </div>
+                <CtaButton
+                  href="/our-operations"
+                  variant="primary"
+                  className="w-full max-w-full ring-1 ring-white/35 sm:w-auto"
+                >
+                  Explore Our Operations
+                </CtaButton>
+                <Link
+                  href="/our-model"
+                  tabIndex={active ? 0 : -1}
+                  className="group inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.06em] text-white sm:text-[14px]"
+                >
+                  <span className="border-b border-white/40 pb-0.5 transition-colors duration-300 group-hover:border-white">
+                    Our model
+                  </span>
+                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </Link>
+              </div>
+            </HeroRise>
           </motion.div>
-        </div>
-        <div className="relative hidden overflow-hidden md:block">
-          <Image
-            src="/images/hero/home-family-consultation.webp"
-            alt=""
-            fill
-            priority
-            unoptimized
-            draggable={false}
-            className="pointer-events-none scale-x-[-1] object-cover object-center"
-            sizes="50vw"
-          />
-        </div>
-      </div>
+      </Container>
     </div>
   );
 }
@@ -330,7 +342,7 @@ function CinematicSlide({
             >
               <CtaButton
                 href="/our-operations"
-                variant="secondary"
+                variant="primary"
                 className="w-full max-w-full sm:w-auto"
               >
                 Explore Our Operations
@@ -354,9 +366,10 @@ function HeroPager({
 }) {
   return (
     <div
-      className="absolute bottom-4 left-[var(--spacing-gutter)] z-[4] flex items-end gap-4 md:bottom-8 md:gap-5"
+      className="pointer-events-none absolute inset-x-0 bottom-4 z-[4] md:bottom-8"
       onPointerDown={(event) => event.stopPropagation()}
     >
+      <Container className="pointer-events-auto flex items-end gap-4 md:gap-5">
       {SLIDES.map((slide, i) => {
         const current = i === index;
         return (
@@ -396,6 +409,7 @@ function HeroPager({
           </button>
         );
       })}
+      </Container>
     </div>
   );
 }

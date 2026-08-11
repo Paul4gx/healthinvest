@@ -85,8 +85,8 @@ export function AboutStoryPage() {
         <IntroSection />
 
         <StoryBand
-          image="/images/home/what-we-do.jpg"
-          alt="Healthcare professionals reviewing patient care together"
+          image="/images/about/purpose-consultation.jpg"
+          alt="A clinician consulting with a patient in a care setting"
           title={ABOUT.purpose.title}
           body={ABOUT.purpose.body}
         />
@@ -206,7 +206,8 @@ function StoryBand({
           src={image}
           alt={alt}
           fill
-          className="object-cover"
+          unoptimized
+          className="object-cover object-top"
           sizes="100vw"
         />
         <div
@@ -218,7 +219,7 @@ function StoryBand({
         />
       </motion.div>
 
-      <Container className="relative z-10 flex min-h-[420px] flex-col justify-end py-8 md:min-h-[620px] md:py-16">
+      <Container className="relative z-10 flex min-h-[420px] flex-col justify-center py-8 md:min-h-[620px] md:py-16">
         <Reveal>
           <h2 className="max-w-[18ch] text-[clamp(1.85rem,6vw,3.75rem)] font-light leading-[1.08] tracking-[-0.03em]">
             {title}
