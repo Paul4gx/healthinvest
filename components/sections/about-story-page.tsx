@@ -86,7 +86,7 @@ export function AboutStoryPage() {
 
         <StoryBand
           image="/images/about/purpose-consultation.jpg"
-          alt="A clinician consulting with a patient in a care setting"
+          alt="A clinician consulting with a parent and child"
           title={ABOUT.purpose.title}
           body={ABOUT.purpose.body}
         />
