@@ -1,0 +1,24 @@
+/**
+ * Health Invest design tokens.
+ * Canonical values live in `app/globals.css` (:root + @theme).
+ * Keep this file as documentation for the Figma → code mapping.
+ *
+ * Colors
+ * - primary #4C5393
+ * - navy-deep #02051E
+ * - navy-mid #171E5E
+ * - navy-card #2D3474
+ * - ink #151B50
+ * - black #1A1A1A
+ * - muted #818181
+ * - accent #5EC8F0
+ *
+ * Typography
+ * - Montserrat → --font-montserrat (body/UI)
+ * - Aeonik → --font-aeonik (Manrope substitute for nav/display)
+ *
+ * Layout
+ * - Desktop artboard 1728px
+ * - Gutter clamp(1.25rem, 5.2vw, 6.25rem) ≈ 100px at large desktop
+ * - Radii: media 20–30px, buttons pill
+ */

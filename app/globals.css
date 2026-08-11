@@ -1,26 +1,209 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
+@custom-variant dark (&:is(.dark *));
+
+/* Desktop: hover. Touch: press/tap, so card and button motion is visible on mobile. */
+@custom-variant hover {
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      @slot;
+    }
+  }
+}
+
+@custom-variant group-hover {
+  @media (hover: hover) {
+    &:is(:where(.group):hover *) {
+      @slot;
+    }
+  }
+  @media (hover: none) {
+    &:is(:where(.group):active *) {
+      @slot;
+    }
+  }
+}
+
+/* Health Invest design tokens — sourced from Figma */
 :root {
+  --hi-primary: #4c5393;
+  --hi-primary-hover: #3d447a;
+  --hi-navy-deep: #02051e;
+  --hi-navy-mid: #171e5e;
+  --hi-navy-card: #2d3474;
+  --hi-ink: #151b50;
+  --hi-black: #1a1a1a;
+  --hi-muted: #818181;
+  --hi-white: #ffffff;
+  --hi-accent: #00cff3;
+  --hi-accent-soft: #7ae6f8;
+  --hi-surface: #f5f6f8;
+  --hi-overlay: rgba(0, 0, 0, 0.4);
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #4c5393;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f6f8;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f5f6f8;
+  --muted-foreground: #818181;
+  --accent: #5ec8f0;
+  --accent-foreground: #02051e;
+  --destructive: #dc2626;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #4c5393;
+  --radius: 0.625rem;
+  --spacing-gutter: clamp(1.25rem, 5.2vw, 6.25rem);
+  --container-content: 95.5rem;
+  --header-height: 72px;
+  --hero-max-height: 1000px;
+  /* Mobile: tall enough for copy + CTAs; desktop keeps cinematic 1920 ratio */
+  --hero-height: min(72dvh, 560px);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 98px;
+    --hero-height: min(var(--hero-max-height), calc(100vw * 1000 / 1920));
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-hi-primary: var(--hi-primary);
+  --color-hi-primary-hover: var(--hi-primary-hover);
+  --color-hi-navy-deep: var(--hi-navy-deep);
+  --color-hi-navy-mid: var(--hi-navy-mid);
+  --color-hi-navy-card: var(--hi-navy-card);
+  --color-hi-ink: var(--hi-ink);
+  --color-hi-black: var(--hi-black);
+  --color-hi-muted: var(--hi-muted);
+  --color-hi-white: var(--hi-white);
+  --color-hi-accent: var(--hi-accent);
+  --color-hi-accent-soft: var(--hi-accent-soft);
+  --color-hi-surface: var(--hi-surface);
+
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-aeonik), var(--font-montserrat), ui-sans-serif, sans-serif;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.875rem;
+  --radius-pill: 999px;
+
+  --container-content: 95.5rem;
+  --spacing-gutter: clamp(1.25rem, 5.2vw, 6.25rem);
+
+  --animate-duration-150: 150ms;
+  --animate-duration-250: 250ms;
+  --animate-duration-400: 400ms;
+  --animate-duration-600: 600ms;
+  --animate-hero-rise: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  ::selection {
+    @apply bg-hi-primary/20 text-hi-ink;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+
+  /* next/image fill heroes must span the full positioned parent */
+  span[data-nimg="fill"] > img,
+  img[data-nimg="fill"] {
+    max-width: none;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-hi-primary;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    [data-preloader] {
+      display: none !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/40;
+  }
+
+  .glass-dark {
+    @apply bg-hi-navy-deep/50 backdrop-blur-md border border-white/10;
+  }
 }
