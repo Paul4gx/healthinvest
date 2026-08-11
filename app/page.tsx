@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <PageBody>
+      <PageBody className="shadow-none">
         <NetworkGlance />
         <PlatformsSection />
         <ModelTeaser />

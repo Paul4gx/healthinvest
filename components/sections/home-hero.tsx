@@ -140,7 +140,7 @@ export function HomeHero() {
   const slideW = Math.max(width, 1);
 
   return (
-    <section className="sticky top-0 z-0 w-full bg-[#4C5393] pt-[var(--header-height)]">
+    <section className="relative w-full bg-[#4C5393] pt-[var(--header-height)]">
       <div
         ref={viewportRef}
         className="relative h-[65dvh] min-h-[65dvh] cursor-grab overflow-hidden active:cursor-grabbing md:h-[var(--hero-height)] md:min-h-[var(--hero-height)]"
@@ -210,7 +210,7 @@ function SplitSlide({
     <div className="relative h-full">
       <div className="absolute inset-0 md:hidden">
         <Image
-          src="/images/hero/home-family-consultation.jpg"
+          src="/images/hero/home-family-consultation.webp"
           alt="A clinician consulting with a parent and child"
           fill
           priority
@@ -232,8 +232,9 @@ function SplitSlide({
               {HOME_HERO.eyebrow}
             </p>
             <h1 className="mt-3 font-sans text-[clamp(1.55rem,6.4vw,2.65rem)] font-medium leading-[1.14] tracking-[-0.02em] text-white md:mt-6">
-              We bring specialty care{" "}
-              <span className="md:block">to the underserved</span>
+              We bring{" "}
+              <span className="whitespace-nowrap">specialty care</span>{" "}
+              <span className="block">to the underserved</span>
             </h1>
             <p className="mt-3 line-clamp-3 max-w-[32rem] text-sm font-light leading-relaxed text-white/85 md:mt-7 md:line-clamp-none md:text-[1.05rem] md:leading-[1.75]">
               {HOME_HERO.body}
@@ -266,7 +267,7 @@ function SplitSlide({
         </div>
         <div className="relative hidden overflow-hidden md:block">
           <Image
-            src="/images/hero/home-family-consultation.jpg"
+            src="/images/hero/home-family-consultation.webp"
             alt=""
             fill
             priority
@@ -291,7 +292,7 @@ function CinematicSlide({
   return (
     <div className="relative h-full w-full">
       <Image
-        src="/images/hero/home-consultation.jpg"
+        src="/images/hero/home-consultation.webp"
         alt="Clinician consulting with a patient in a care setting"
         fill
         priority
@@ -311,9 +312,10 @@ function CinematicSlide({
             <SectionLabel tone="light">Our mission</SectionLabel>
           </HeroRise>
           <HeroRise delay={0.18}>
-            <h1 className="text-balance text-[clamp(1.55rem,6.4vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
-              Building Africa’s{" "}
-              <span className="md:block">Specialist Healthcare Networks</span>
+            <h1 className="text-[clamp(1.55rem,6.4vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+              Building{" "}
+              <span className="whitespace-nowrap">Africa’s Specialist</span>{" "}
+              <span className="md:block">Healthcare Networks</span>
             </h1>
           </HeroRise>
           <HeroRise delay={0.28}>
