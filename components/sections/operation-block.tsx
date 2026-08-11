@@ -149,6 +149,7 @@ export function OperationBlock({
                   href={href}
                   variant="secondary"
                   className="w-full max-w-full sm:w-auto"
+                  wrapperClassName="w-full max-w-full sm:w-auto"
                 >
                   {cta}
                 </CtaButton>

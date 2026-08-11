@@ -16,6 +16,8 @@ type CtaButtonProps = {
   variant?: CtaVariant;
   icon?: CtaIcon;
   className?: string;
+  /** Width/layout on the outer motion wrapper only — not padding or color. */
+  wrapperClassName?: string;
   magnetic?: boolean;
   type?: "button" | "submit";
   onClick?: () => void;
@@ -38,6 +40,7 @@ export function CtaButton({
   variant = "primary",
   icon = "arrow",
   className,
+  wrapperClassName,
   magnetic = true,
   type = "button",
   onClick,
@@ -99,7 +102,7 @@ export function CtaButton({
         reduce || !magnetic || disabled ? undefined : { y: -2, scale: 0.98 }
       }
       transition={{ duration: MOTION.fast, ease: MOTION.ease }}
-      className="inline-flex max-w-full"
+      className={cn("inline-flex max-w-full", wrapperClassName)}
     >
       {inner}
     </motion.div>

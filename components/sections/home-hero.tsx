@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   animate,
   motion,
@@ -170,11 +169,7 @@ export function HomeHero() {
               aria-hidden={real !== realIndex}
             >
               {real === 0 ? (
-                <SplitSlide
-                  active={realIndex === 0 && i === loopIndex}
-                  textY={textY}
-                  textOpacity={textOpacity}
-                />
+                <SplitSlide textY={textY} textOpacity={textOpacity} />
               ) : (
                 <CinematicSlide textY={textY} textOpacity={textOpacity} />
               )}
@@ -198,17 +193,15 @@ export function HomeHero() {
 }
 
 function SplitSlide({
-  active,
   textY,
   textOpacity,
 }: {
-  active: boolean;
   textY: ReturnType<typeof useHeroParallax>["textY"];
   textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
 }) {
   return (
-    <div className="relative h-full bg-[#4C5393]">
-      <div className="absolute inset-0 md:hidden">
+    <div className="relative flex h-full flex-col bg-[#4C5393] lg:block">
+      <div className="relative min-h-0 flex-1 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <Image
           src="/images/hero/home-family-consultation.webp"
           alt="A clinician consulting with a parent and child"
@@ -216,28 +209,15 @@ function SplitSlide({
           priority
           unoptimized
           draggable={false}
-          className="pointer-events-none scale-x-[-1] object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#4C5393] via-[#4C5393]/80 to-[#4C5393]/35" />
-      </div>
-
-      <div className="absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block">
-        <Image
-          src="/images/hero/home-family-consultation.webp"
-          alt=""
-          fill
-          priority
-          unoptimized
-          draggable={false}
-          className="pointer-events-none scale-x-[-1] object-cover object-center"
-          sizes="50vw"
+          className="pointer-events-none scale-x-[-1] object-cover object-top lg:object-center"
+          sizes="(max-width: 1024px) 100vw, 50vw"
         />
       </div>
 
-      <Container className="relative z-10 flex h-full flex-col justify-end pb-[4.5rem] pt-6 md:absolute md:inset-0 md:justify-center md:pb-24 md:pt-0">
+      <div className="shrink-0 bg-[#4C5393] pb-[4.5rem] pt-5 lg:absolute lg:inset-0 lg:flex lg:items-center lg:bg-transparent lg:pb-24 lg:pt-0">
+        <Container>
           <motion.div
-            className="flex w-full max-w-[34rem] flex-col gap-3 md:gap-6"
+            className="flex w-full min-w-0 max-w-[34rem] flex-col gap-3 lg:gap-6"
             style={{ y: textY, opacity: textOpacity }}
           >
             <HeroRise delay={0.08}>
@@ -253,7 +233,7 @@ function SplitSlide({
             <HeroRise delay={0.18}>
               <h1 className="text-[clamp(1.55rem,6.4vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
                 We bring{" "}
-                <span className="whitespace-nowrap">specialty care</span>{" "}
+                <span className="lg:whitespace-nowrap">specialty care</span>{" "}
                 <span className="block">to the underserved</span>
               </h1>
             </HeroRise>
@@ -264,32 +244,21 @@ function SplitSlide({
             </HeroRise>
             <HeroRise delay={0.38}>
               <div
-                className="flex w-full flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+                className="pt-1"
                 onPointerDown={(event) => event.stopPropagation()}
               >
                 <CtaButton
                   href="/our-operations"
-                  variant="primary"
-                  className="w-full max-w-full ring-1 ring-white/35 sm:w-auto"
+                  variant="secondary"
+                  wrapperClassName="self-start"
                 >
                   Explore Our Operations
                 </CtaButton>
-                <Link
-                  href="/our-model"
-                  tabIndex={active ? 0 : -1}
-                  className="group inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.06em] text-white sm:text-[14px]"
-                >
-                  <span className="border-b border-white/40 pb-0.5 transition-colors duration-300 group-hover:border-white">
-                    Our model
-                  </span>
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
-                    →
-                  </span>
-                </Link>
               </div>
             </HeroRise>
           </motion.div>
-      </Container>
+        </Container>
+      </div>
     </div>
   );
 }
@@ -342,8 +311,8 @@ function CinematicSlide({
             >
               <CtaButton
                 href="/our-operations"
-                variant="primary"
-                className="w-full max-w-full sm:w-auto"
+                variant="secondary"
+                wrapperClassName="self-start"
               >
                 Explore Our Operations
               </CtaButton>

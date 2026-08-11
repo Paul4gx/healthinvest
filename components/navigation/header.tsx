@@ -216,6 +216,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
                   href="/contact?intent=partnership"
                   variant="primary"
                   className="w-full max-w-full"
+                  wrapperClassName="w-full max-w-full"
                 >
                   Partner With Us
                 </CtaButton>

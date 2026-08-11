@@ -22,6 +22,7 @@ export function FinalCta() {
               href="/contact?intent=partnership"
               variant="secondary"
               className="w-full max-w-full sm:w-auto"
+              wrapperClassName="w-full max-w-full sm:w-auto"
             >
               Start a Partnership Conversation
             </CtaButton>
