@@ -70,8 +70,8 @@
   --container-content: 95.5rem;
   --header-height: 72px;
   --hero-max-height: 1000px;
-  /* Mobile: tall enough for copy + CTAs; desktop keeps cinematic 1920 ratio */
-  --hero-height: min(72dvh, 560px);
+  /* Mobile slider: room for photo, copy, CTAs and pager */
+  --hero-height: min(90dvh, 720px);
 }
 
 @media (min-width: 768px) {
@@ -143,6 +143,15 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 

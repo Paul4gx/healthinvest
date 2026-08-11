@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { HomeHero } from "@/components/sections/home-hero";
 import { NetworkGlance } from "@/components/sections/network-glance";
-import { HomeMission } from "@/components/sections/home-mission";
 import { PlatformsSection } from "@/components/sections/platforms-section";
 import { ModelTeaser } from "@/components/sections/model-teaser";
 import { ImpactTeaser } from "@/components/sections/impact-teaser";
@@ -24,7 +23,6 @@ export default function HomePage() {
       <HomeHero />
       <PageBody>
         <NetworkGlance />
-        <HomeMission />
         <PlatformsSection />
         <ModelTeaser />
         <ImpactTeaser />
