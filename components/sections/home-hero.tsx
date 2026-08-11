@@ -142,14 +142,14 @@ export function HomeHero() {
     <section className="relative w-full bg-[#4C5393] pt-[var(--header-height)]">
       <div
         ref={viewportRef}
-        className="relative h-[65dvh] min-h-[65dvh] cursor-grab overflow-hidden active:cursor-grabbing md:h-[var(--hero-height)] md:min-h-[var(--hero-height)]"
+        className="relative min-h-[65dvh] cursor-grab overflow-hidden active:cursor-grabbing lg:h-[var(--hero-height)] lg:min-h-[var(--hero-height)]"
         role="region"
         aria-roledescription="carousel"
         aria-label="Homepage hero"
         style={{ touchAction: "pan-x" }}
       >
         <motion.div
-          className="flex h-full select-none"
+          className="flex min-h-[65dvh] select-none items-stretch lg:h-full lg:min-h-0"
           style={{ x, width: slideW * LOOP.length }}
           drag={reduce ? false : "x"}
           dragElastic={0.18}
@@ -164,7 +164,7 @@ export function HomeHero() {
           {LOOP.map((real, i) => (
             <div
               key={`loop-${i}`}
-              className="h-full shrink-0"
+              className="flex min-h-[65dvh] shrink-0 flex-col lg:h-full lg:min-h-0"
               style={{ width: slideW }}
               aria-hidden={real !== realIndex}
             >
@@ -178,7 +178,7 @@ export function HomeHero() {
         </motion.div>
 
         <motion.div
-          className="pointer-events-none absolute inset-0 z-[3] hidden bg-hi-navy-deep md:block"
+          className="pointer-events-none absolute inset-0 z-[3] hidden bg-hi-navy-deep lg:block"
           style={{ opacity: dim }}
         />
 
@@ -200,8 +200,9 @@ function SplitSlide({
   textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
 }) {
   return (
-    <div className="relative flex h-full flex-col bg-[#4C5393] lg:block">
-      <div className="relative min-h-0 flex-1 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+    <div className="relative flex h-full min-h-[65dvh] flex-col bg-[#4C5393] lg:block lg:min-h-0">
+      {/* Mobile/tablet: fixed viewport-based photo band so the image stays visible while copy can grow. */}
+      <div className="relative h-[min(50dvh,24rem)] min-h-[13.75rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:min-h-0 lg:w-1/2 lg:max-h-none">
         <Image
           src="/images/hero/home-family-consultation.webp"
           alt="A clinician consulting with a parent and child"
@@ -214,7 +215,7 @@ function SplitSlide({
         />
       </div>
 
-      <div className="shrink-0 bg-[#4C5393] pb-[4.5rem] pt-5 lg:absolute lg:inset-0 lg:flex lg:items-center lg:bg-transparent lg:pb-24 lg:pt-0">
+      <div className="relative z-[1] shrink-0 bg-[#4C5393] pb-16 pt-5 lg:absolute lg:inset-0 lg:z-auto lg:flex lg:items-center lg:bg-transparent lg:pb-24 lg:pt-0">
         <Container>
           <motion.div
             className="flex w-full min-w-0 max-w-[34rem] flex-col gap-3 lg:gap-6"
@@ -231,14 +232,14 @@ function SplitSlide({
               </SectionLabel>
             </HeroRise>
             <HeroRise delay={0.18}>
-              <h1 className="text-[clamp(1.55rem,6.4vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+              <h1 className="text-[clamp(1.45rem,6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
                 We bring{" "}
                 <span className="lg:whitespace-nowrap">specialty care</span>{" "}
                 <span className="block">to the underserved</span>
               </h1>
             </HeroRise>
             <HeroRise delay={0.28}>
-              <p className="line-clamp-3 max-w-[640px] text-sm leading-relaxed text-white/90 md:line-clamp-none md:text-lg md:leading-7">
+              <p className="max-w-[640px] text-sm leading-relaxed text-white/90 lg:text-lg lg:leading-7">
                 {HOME_HERO.body}
               </p>
             </HeroRise>
@@ -271,7 +272,7 @@ function CinematicSlide({
   textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
 }) {
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full min-h-[65dvh] w-full lg:min-h-0">
       <Image
         src="/images/hero/home-consultation.webp"
         alt="Clinician consulting with a patient in a care setting"
@@ -282,25 +283,25 @@ function CinematicSlide({
         className="pointer-events-none object-cover object-center"
         sizes="100vw"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#47261b]/90 via-[#47261b]/55 to-[#47261b]/20 md:hidden" />
-      <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-[#47261b]/80 via-[#47261b]/45 to-transparent md:block" />
-      <Container className="relative z-10 flex h-full flex-col justify-end pb-[4.5rem] pt-6 md:absolute md:inset-0 md:justify-center md:pb-24 md:pt-0">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#47261b]/90 via-[#47261b]/55 to-[#47261b]/20 lg:hidden" />
+      <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-[#47261b]/80 via-[#47261b]/45 to-transparent lg:block" />
+      <Container className="relative z-10 flex h-full flex-col justify-end pb-16 pt-6 lg:absolute lg:inset-0 lg:justify-center lg:pb-24 lg:pt-0">
         <motion.div
-          className="flex w-full max-w-[820px] flex-col gap-3 md:gap-6"
+          className="flex w-full max-w-[820px] flex-col gap-3 lg:gap-6"
           style={{ y: textY, opacity: textOpacity }}
         >
           <HeroRise delay={0.08}>
             <SectionLabel tone="light">Our mission</SectionLabel>
           </HeroRise>
           <HeroRise delay={0.18}>
-            <h1 className="text-[clamp(1.55rem,6.4vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+            <h1 className="text-[clamp(1.45rem,6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
               Building{" "}
               <span className="whitespace-nowrap">Africa’s Specialist</span>{" "}
-              <span className="md:block">Healthcare Networks</span>
+              <span className="lg:block">Healthcare Networks</span>
             </h1>
           </HeroRise>
           <HeroRise delay={0.28}>
-            <p className="line-clamp-3 max-w-[640px] text-sm leading-relaxed text-white/90 md:line-clamp-none md:text-lg md:leading-7">
+            <p className="max-w-[640px] text-sm leading-relaxed text-white/90 lg:text-lg lg:leading-7">
               {HOME_MISSION.body}
             </p>
           </HeroRise>

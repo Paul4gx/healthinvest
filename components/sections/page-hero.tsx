@@ -31,7 +31,7 @@ export function PageHero({
         className
       )}
     >
-      <div className="relative flex min-h-[var(--hero-height)] w-full flex-col justify-end overflow-hidden md:block md:h-[var(--hero-height)] md:min-h-0">
+      <div className="relative flex h-[60dvh] min-h-[60dvh] w-full flex-col justify-end overflow-hidden md:block">
         <Image
           src={image}
           alt={alt}
