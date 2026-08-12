@@ -54,10 +54,10 @@ export function PageHero({
       return;
     }
     if (force || lockedMobileHeightRef.current == null) {
-      lockedMobileHeightRef.current = Math.min(
-        Math.round(window.innerHeight * 0.6),
-        560
-      );
+      const tablet = window.matchMedia("(min-width: 768px)").matches;
+      lockedMobileHeightRef.current = tablet
+        ? Math.min(Math.round(window.innerHeight * 0.58), 640)
+        : Math.min(Math.round(window.innerHeight * 0.6), 560);
     }
     const h = lockedMobileHeightRef.current;
     node.style.height = `${h}px`;
@@ -72,11 +72,14 @@ export function PageHero({
       lockMobileHeroHeight(true);
     };
     window.addEventListener("orientationchange", relock);
-    const mq = window.matchMedia("(min-width: 1024px)");
-    mq.addEventListener("change", relock);
+    const mqDesktop = window.matchMedia("(min-width: 1024px)");
+    const mqTablet = window.matchMedia("(min-width: 768px)");
+    mqDesktop.addEventListener("change", relock);
+    mqTablet.addEventListener("change", relock);
     return () => {
       window.removeEventListener("orientationchange", relock);
-      mq.removeEventListener("change", relock);
+      mqDesktop.removeEventListener("change", relock);
+      mqTablet.removeEventListener("change", relock);
     };
   }, [lockMobileHeroHeight]);
 
@@ -93,7 +96,7 @@ export function PageHero({
     >
       <div
         ref={frameRef}
-        className="relative flex h-[60svh] min-h-[60svh] w-full flex-col justify-end overflow-hidden md:block lg:h-[60svh] lg:min-h-[60svh] lg:max-h-none"
+        className="relative flex h-[60svh] min-h-[60svh] w-full flex-col justify-end overflow-hidden md:block md:h-[58svh] md:min-h-[58svh] lg:h-[60svh] lg:min-h-[60svh] lg:max-h-none"
       >
         <Image
           src={image}
@@ -112,7 +115,7 @@ export function PageHero({
         <Container className="relative z-10 pb-10 pt-8 md:absolute md:inset-0 md:flex md:items-center md:pb-0 md:pt-0">
           <motion.div style={parallaxStyle}>
             <HeroRise delay={0.12}>
-              <h1 className="max-w-[12ch] text-left text-[clamp(2.15rem,9vw,5.375rem)] font-light leading-[1.05] tracking-[-0.03em] text-white">
+              <h1 className="max-w-[12ch] text-left text-[clamp(2.15rem,9vw,5.375rem)] font-light leading-[1.05] tracking-[-0.03em] text-white md:max-w-[14ch] md:text-[clamp(2.5rem,6vw,4.5rem)]">
                 {title}
               </h1>
             </HeroRise>

@@ -103,48 +103,50 @@ export function Header({ variant = "solid" }: HeaderProps) {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <CtaButton
-            href="/contact?intent=partnership"
-            variant="primary"
-            className="min-w-0 px-4"
-          >
-            Partner With Us
-          </CtaButton>
-        </div>
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="hidden md:block">
+            <CtaButton
+              href="/contact?intent=partnership"
+              variant="primary"
+              className="h-10 min-w-0 px-4 lg:h-12"
+            >
+              Partner With Us
+            </CtaButton>
+          </div>
 
-        <button
-          type="button"
-          className={cn(
-            "group/menu relative inline-flex size-11 items-center justify-center lg:hidden",
-            overlayMode ? "text-white" : "text-hi-black"
-          )}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="relative flex h-[13px] w-[22px] flex-col justify-between">
-            <span
-              className={cn(
-                "block h-px w-full origin-center rounded-full bg-current transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                open && "translate-y-[6px] rotate-45"
-              )}
-            />
-            <span
-              className={cn(
-                "block h-px w-[12px] rounded-full bg-current transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/menu:w-full",
-                open && "w-full scale-x-0 opacity-0"
-              )}
-            />
-            <span
-              className={cn(
-                "block h-px w-[17px] origin-center rounded-full bg-current transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/menu:w-full",
-                open && "w-full -translate-y-[6px] -rotate-45"
-              )}
-            />
-          </span>
-        </button>
+          <button
+            type="button"
+            className={cn(
+              "group/menu relative inline-flex size-11 items-center justify-center lg:hidden",
+              overlayMode ? "text-white" : "text-hi-black"
+            )}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="relative flex h-[13px] w-[22px] flex-col justify-between">
+              <span
+                className={cn(
+                  "block h-px w-full origin-center rounded-full bg-current transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                  open && "translate-y-[6px] rotate-45"
+                )}
+              />
+              <span
+                className={cn(
+                  "block h-px w-[12px] rounded-full bg-current transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/menu:w-full",
+                  open && "w-full scale-x-0 opacity-0"
+                )}
+              />
+              <span
+                className={cn(
+                  "block h-px w-[17px] origin-center rounded-full bg-current transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/menu:w-full",
+                  open && "w-full -translate-y-[6px] -rotate-45"
+                )}
+              />
+            </span>
+          </button>
+        </div>
       </Container>
 
       <AnimatePresence>
@@ -158,7 +160,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
             className="max-h-[calc(100dvh-var(--header-height))] overflow-y-auto overscroll-contain border-t border-hi-black/5 bg-white lg:hidden"
           >
             <nav
-              className="flex flex-col gap-1 px-[var(--spacing-gutter)] py-5 pb-8"
+              className="flex flex-col gap-1 px-[var(--spacing-gutter)] py-5 pb-8 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-1 md:py-7 md:pb-10"
               aria-label="Mobile"
             >
               {NAV_LINKS.map((link, i) => {
@@ -211,7 +213,7 @@ export function Header({ variant = "solid" }: HeaderProps) {
                   </motion.div>
                 );
               })}
-              <div className="mt-4 px-4">
+              <div className="mt-4 px-4 md:col-span-2 md:mt-6 md:hidden">
                 <CtaButton
                   href="/contact?intent=partnership"
                   variant="primary"

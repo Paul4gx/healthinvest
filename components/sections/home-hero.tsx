@@ -73,7 +73,7 @@ export function HomeHero() {
     setWidth(next);
   }, []);
 
-  /** Freeze mobile hero px height so browser chrome show/hide doesn't resize `dvh`/`svh` mid-scroll. */
+  /** Freeze phone/tablet hero height so browser chrome doesn't resize mid-scroll. */
   const lockMobileHeroHeight = useCallback((force = false) => {
     const node = viewportRef.current;
     if (!node) return;
@@ -85,10 +85,10 @@ export function HomeHero() {
       return;
     }
     if (force || lockedMobileHeightRef.current == null) {
-      lockedMobileHeightRef.current = Math.min(
-        Math.round(window.innerHeight * 0.66),
-        616
-      );
+      const tablet = window.matchMedia("(min-width: 768px)").matches;
+      lockedMobileHeightRef.current = tablet
+        ? Math.min(Math.round(window.innerHeight * 0.72), 720)
+        : Math.min(Math.round(window.innerHeight * 0.66), 616);
     }
     const h = lockedMobileHeightRef.current;
     node.style.setProperty("--mobile-hero-h", `${h}px`);
@@ -149,13 +149,16 @@ export function HomeHero() {
       x.set(-loopIndexRef.current * (viewportRef.current?.offsetWidth ?? 0));
     };
     window.addEventListener("orientationchange", relock);
-    const mq = window.matchMedia("(min-width: 1024px)");
-    mq.addEventListener("change", relock);
+    const mqDesktop = window.matchMedia("(min-width: 1024px)");
+    const mqTablet = window.matchMedia("(min-width: 768px)");
+    mqDesktop.addEventListener("change", relock);
+    mqTablet.addEventListener("change", relock);
 
     return () => {
       ro.disconnect();
       window.removeEventListener("orientationchange", relock);
-      mq.removeEventListener("change", relock);
+      mqDesktop.removeEventListener("change", relock);
+      mqTablet.removeEventListener("change", relock);
     };
   }, [lockMobileHeroHeight, measure, x]);
 
@@ -236,7 +239,7 @@ export function HomeHero() {
     <section className="relative w-full bg-[#4C5393] pt-[var(--header-height)]">
       <div
         ref={viewportRef}
-        className="relative h-[66svh] max-h-[616px] overflow-hidden lg:h-[var(--hero-height)] lg:max-h-none lg:min-h-[var(--hero-height)] lg:cursor-grab lg:active:cursor-grabbing"
+        className="relative h-[66svh] max-h-[616px] overflow-hidden md:h-[72svh] md:max-h-[720px] lg:h-[var(--hero-height)] lg:max-h-none lg:min-h-[var(--hero-height)] lg:cursor-grab lg:active:cursor-grabbing"
         role="region"
         aria-roledescription="carousel"
         aria-label="Homepage hero"
@@ -299,7 +302,7 @@ function SplitSlide({
   return (
     <div className="relative flex h-full flex-col bg-[#4C5393] lg:block">
       {/* Short landscape crop on mobile so ~half the photo shows; desktop keeps the right-half split. */}
-      <div className="relative aspect-[2/1] max-h-[47%] min-h-[10.5rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-auto lg:max-h-none lg:min-h-0 lg:w-1/2">
+      <div className="relative aspect-[2/1] max-h-[47%] min-h-[10.5rem] shrink-0 overflow-hidden md:max-h-[48%] md:min-h-[13rem] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-auto lg:max-h-none lg:min-h-0 lg:w-1/2">
         <Image
           src="/images/hero/home-family-consultation.webp"
           alt="A clinician consulting with a parent and child"
@@ -312,10 +315,10 @@ function SplitSlide({
         />
       </div>
 
-      <div className="relative z-[1] flex min-h-0 flex-1 items-center bg-[#4C5393] pb-14 pt-4 lg:absolute lg:inset-0 lg:z-auto lg:bg-transparent lg:pb-24 lg:pt-0">
-        <Container>
+      <div className="relative z-[1] flex min-h-0 flex-1 items-center overflow-hidden bg-[#4C5393] pb-14 pt-4 md:pb-14 md:pt-5 lg:absolute lg:inset-0 lg:z-auto lg:overflow-visible lg:bg-transparent lg:pb-24 lg:pt-0">
+        <Container className="min-w-0 lg:pr-[calc(50%+0.75rem)]">
           <motion.div
-            className="flex w-full min-w-0 max-w-[34rem] flex-col gap-2.5 lg:gap-6"
+            className="flex w-full min-w-0 max-w-[34rem] flex-col gap-2.5 md:max-w-full md:gap-3.5 lg:gap-5 xl:max-w-[40rem] xl:gap-6"
             style={parallaxStyle}
           >
             <HeroRise delay={0.08}>
@@ -329,17 +332,19 @@ function SplitSlide({
               </SectionLabel>
             </HeroRise>
             <HeroRise delay={0.18}>
-              <h1 className="text-[clamp(1.35rem,5.6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+              <h1 className="text-[clamp(1.35rem,5.6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white md:text-[clamp(1.75rem,3.4vw,2.45rem)] lg:text-[clamp(1.85rem,2.6vw,2.65rem)] xl:text-[clamp(2rem,2.8vw,2.75rem)]">
                 We bring{" "}
-                <span className="lg:whitespace-nowrap">specialty care</span>{" "}
+                <span className="md:whitespace-nowrap lg:whitespace-normal xl:whitespace-nowrap">
+                  specialty care
+                </span>{" "}
                 <span className="block">to the underserved</span>
               </h1>
             </HeroRise>
             <HeroRise delay={0.28}>
-              <p className="max-w-[640px] text-[13px] leading-relaxed text-white/90 lg:hidden">
+              <p className="max-w-full text-[13px] leading-relaxed text-white/90 md:hidden">
                 {HOME_HERO.bodyMobile}
               </p>
-              <p className="hidden max-w-[640px] text-[13px] leading-relaxed text-white/90 lg:block lg:text-lg lg:leading-7">
+              <p className="hidden max-w-full text-[14px] leading-relaxed text-white/90 md:block lg:text-[15px] lg:leading-relaxed xl:text-lg xl:leading-7">
                 {HOME_HERO.body}
               </p>
             </HeroRise>
@@ -385,23 +390,23 @@ function CinematicSlide({
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#47261b]/90 via-[#47261b]/55 to-[#47261b]/20 lg:hidden" />
       <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-[#47261b]/80 via-[#47261b]/45 to-transparent lg:block" />
-      <Container className="relative z-10 flex h-full flex-col justify-end pb-14 pt-6 lg:absolute lg:inset-0 lg:justify-center lg:pb-24 lg:pt-0">
+      <Container className="relative z-10 flex h-full flex-col justify-end pb-14 pt-6 md:pb-16 lg:absolute lg:inset-0 lg:justify-center lg:pb-24 lg:pt-0">
         <motion.div
-          className="flex w-full max-w-[820px] flex-col gap-3 lg:gap-6"
+          className="flex w-full max-w-[820px] flex-col gap-3 md:gap-4 lg:gap-6"
           style={parallaxStyle}
         >
           <HeroRise delay={0.08}>
             <SectionLabel tone="light">Our mission</SectionLabel>
           </HeroRise>
           <HeroRise delay={0.18}>
-            <h1 className="text-[clamp(1.45rem,6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+            <h1 className="text-[clamp(1.45rem,6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white md:text-[clamp(1.9rem,4vw,2.85rem)]">
               Building{" "}
               <span className="whitespace-nowrap">Africa’s Specialist</span>{" "}
-              <span className="lg:block">Healthcare Networks</span>
+              <span className="md:block">Healthcare Networks</span>
             </h1>
           </HeroRise>
           <HeroRise delay={0.28}>
-            <p className="max-w-[640px] text-sm leading-relaxed text-white/90 lg:text-lg lg:leading-7">
+            <p className="max-w-[640px] text-sm leading-relaxed text-white/90 md:text-[15px] lg:text-lg lg:leading-7">
               {HOME_MISSION.body}
             </p>
           </HeroRise>

@@ -61,11 +61,21 @@ function StatCard({
       whileTap={reduce ? undefined : { y: -4, scale: 0.99 }}
       transition={{ duration: MOTION.base, ease: MOTION.ease }}
       className={cn(
-        "group relative z-0 min-h-[148px] overflow-hidden text-white transition-shadow duration-200 hover:z-10 hover:shadow-[0_16px_40px_rgba(2,5,30,0.28)] sm:min-h-[200px] md:h-[260px]",
+        "@container/stat group relative z-0 overflow-hidden text-white transition-shadow duration-200 hover:z-10 hover:shadow-[0_16px_40px_rgba(2,5,30,0.28)]",
+        "min-h-[148px] sm:min-h-[188px] md:min-h-[205px] lg:min-h-[228px] xl:h-[260px] xl:min-h-0",
         tone
       )}
     >
-      <div className="absolute left-3.5 top-3.5 size-[40px] transition-transform duration-200 ease-out group-hover:scale-105 sm:left-5 sm:top-5 sm:size-[56px] md:left-6 md:top-6 md:size-[80px]">
+      <div
+        className={cn(
+          "absolute transition-transform duration-200 ease-out group-hover:scale-105",
+          "left-3.5 top-3.5 size-10",
+          "sm:left-4 sm:top-4 sm:size-11",
+          "md:left-4 md:top-4 md:size-[52px]",
+          "lg:left-5 lg:top-5 lg:size-16",
+          "xl:left-6 xl:top-6 xl:size-[80px]"
+        )}
+      >
         <Image
           src="/icons/stats/circle.svg"
           alt=""
@@ -84,17 +94,49 @@ function StatCard({
         </span>
       </div>
 
-      <div className="flex h-full flex-col items-center justify-center px-4 pb-5 pt-14 text-center sm:px-5 sm:pb-7 sm:pt-16 md:pt-14">
+      <div
+        className={cn(
+          "flex h-full flex-col items-center justify-center text-center",
+          "px-4 pb-5 pt-14",
+          "sm:px-4 sm:pb-6 sm:pt-[3.75rem]",
+          "md:px-4 md:pb-6 md:pt-14",
+          "lg:px-5 lg:pb-7 lg:pt-14",
+          "xl:px-5 xl:pb-7 xl:pt-14"
+        )}
+      >
         {item.prefix ? (
-          <p className="mb-0.5 text-xs font-normal text-white/80 sm:mb-1 sm:text-sm md:text-base">
+          <p
+            className={cn(
+              "mb-0.5 font-normal text-white/80",
+              "text-[11px] sm:text-xs md:text-xs lg:text-sm xl:text-base",
+              "sm:mb-1"
+            )}
+          >
             {item.prefix.trim()}
           </p>
         ) : null}
-        <p className="text-[clamp(2rem,8vw,3.5rem)] leading-none tracking-[-0.03em]">
+        <p
+          className={cn(
+            "leading-none tracking-[-0.03em]",
+            "text-[clamp(2rem,8vw,2.75rem)]",
+            "sm:text-[clamp(1.75rem,16cqw,2.25rem)]",
+            "md:text-[clamp(1.9rem,15cqw,2.5rem)]",
+            "lg:text-[clamp(2.15rem,14cqw,2.85rem)]",
+            "xl:text-[clamp(2.5rem,16cqw,3.5rem)]"
+          )}
+        >
           {count}
           {item.suffix}
         </p>
-        <p className="mt-1.5 max-w-[16ch] text-xs leading-snug text-white/90 sm:mt-2 sm:text-sm md:mt-3 md:text-lg">
+        <p
+          className={cn(
+            "mt-1.5 max-w-[15ch] leading-snug text-white/90",
+            "text-xs sm:mt-1.5 sm:max-w-[13ch] sm:text-[13px]",
+            "md:mt-2 md:max-w-[14ch] md:text-sm",
+            "lg:mt-2.5 lg:max-w-[15ch] lg:text-base",
+            "xl:mt-3 xl:max-w-[16ch] xl:text-lg"
+          )}
+        >
           {item.label}
         </p>
       </div>
