@@ -59,6 +59,7 @@ export function HomeHero() {
   const widthRef = useRef(0);
   const skipSnapRef = useRef(false);
   const loopIndexRef = useRef(loopIndex);
+  const lockedMobileHeightRef = useRef<number | null>(null);
   const swipeRef = useRef<{ x: number; y: number; locked: "x" | "y" | null } | null>(
     null
   );
@@ -70,6 +71,29 @@ export function HomeHero() {
     const next = viewportRef.current?.offsetWidth ?? 0;
     widthRef.current = next;
     setWidth(next);
+  }, []);
+
+  /** Freeze mobile hero px height so browser chrome show/hide doesn't resize `dvh`/`svh` mid-scroll. */
+  const lockMobileHeroHeight = useCallback((force = false) => {
+    const node = viewportRef.current;
+    if (!node) return;
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      lockedMobileHeightRef.current = null;
+      node.style.removeProperty("height");
+      node.style.removeProperty("max-height");
+      node.style.removeProperty("--mobile-hero-h");
+      return;
+    }
+    if (force || lockedMobileHeightRef.current == null) {
+      lockedMobileHeightRef.current = Math.min(
+        Math.round(window.innerHeight * 0.66),
+        616
+      );
+    }
+    const h = lockedMobileHeightRef.current;
+    node.style.setProperty("--mobile-hero-h", `${h}px`);
+    node.style.height = `${h}px`;
+    node.style.maxHeight = `${h}px`;
   }, []);
 
   const snapTo = useCallback(
@@ -107,6 +131,7 @@ export function HomeHero() {
 
   useLayoutEffect(() => {
     measure();
+    lockMobileHeroHeight();
     x.set(-LOOP_START * (viewportRef.current?.offsetWidth ?? 0));
     const node = viewportRef.current;
     if (!node) return;
@@ -116,8 +141,23 @@ export function HomeHero() {
       x.set(-loopIndexRef.current * w);
     });
     ro.observe(node);
-    return () => ro.disconnect();
-  }, [measure, x]);
+
+    const relock = () => {
+      lockedMobileHeightRef.current = null;
+      lockMobileHeroHeight(true);
+      measure();
+      x.set(-loopIndexRef.current * (viewportRef.current?.offsetWidth ?? 0));
+    };
+    window.addEventListener("orientationchange", relock);
+    const mq = window.matchMedia("(min-width: 1024px)");
+    mq.addEventListener("change", relock);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("orientationchange", relock);
+      mq.removeEventListener("change", relock);
+    };
+  }, [lockMobileHeroHeight, measure, x]);
 
   useEffect(() => {
     if (skipSnapRef.current) {
@@ -196,7 +236,7 @@ export function HomeHero() {
     <section className="relative w-full bg-[#4C5393] pt-[var(--header-height)]">
       <div
         ref={viewportRef}
-        className="relative h-[66dvh] max-h-[616px] overflow-hidden lg:h-[var(--hero-height)] lg:max-h-none lg:min-h-[var(--hero-height)] lg:cursor-grab lg:active:cursor-grabbing"
+        className="relative h-[66svh] max-h-[616px] overflow-hidden lg:h-[var(--hero-height)] lg:max-h-none lg:min-h-[var(--hero-height)] lg:cursor-grab lg:active:cursor-grabbing"
         role="region"
         aria-roledescription="carousel"
         aria-label="Homepage hero"
@@ -259,7 +299,7 @@ function SplitSlide({
   return (
     <div className="relative flex h-full flex-col bg-[#4C5393] lg:block">
       {/* Short landscape crop on mobile so ~half the photo shows; desktop keeps the right-half split. */}
-      <div className="relative aspect-[2/1] max-h-[31dvh] min-h-[10.5rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-auto lg:max-h-none lg:min-h-0 lg:w-1/2">
+      <div className="relative aspect-[2/1] max-h-[47%] min-h-[10.5rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-auto lg:max-h-none lg:min-h-0 lg:w-1/2">
         <Image
           src="/images/hero/home-family-consultation.webp"
           alt="A clinician consulting with a parent and child"
