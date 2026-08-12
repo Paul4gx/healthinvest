@@ -167,35 +167,40 @@ export function HomeHero() {
     if (!start || !t || start.locked) return;
     const dx = t.clientX - start.x;
     const dy = t.clientY - start.y;
-    if (Math.abs(dx) < 12 && Math.abs(dy) < 12) return;
-    start.locked = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    // Prefer vertical scroll; only lock to swipe after a clearer horizontal intent.
+    if (Math.abs(dx) < 18 && Math.abs(dy) < 18) return;
+    start.locked = Math.abs(dx) > Math.abs(dy) * 1.35 ? "x" : "y";
   }, []);
 
   const onTouchEnd = useCallback(
     (event: React.TouchEvent) => {
       const start = swipeRef.current;
       swipeRef.current = null;
+      if (desktop || reduce) return;
       if (!start || start.locked !== "x") return;
       const t = event.changedTouches[0];
       if (!t) return;
       const dx = t.clientX - start.x;
-      if (Math.abs(dx) < 40) return;
+      if (Math.abs(dx) < 48) return;
       goLoop(dx < 0 ? loopIndex + 1 : loopIndex - 1);
     },
-    [goLoop, loopIndex]
+    [desktop, goLoop, loopIndex, reduce]
   );
 
   const slideW = Math.max(width, 1);
+  const parallaxStyle = desktop
+    ? { y: textY, opacity: textOpacity }
+    : undefined;
 
   return (
     <section className="relative w-full bg-[#4C5393] pt-[var(--header-height)]">
       <div
         ref={viewportRef}
-        className="relative h-[60dvh] max-h-[560px] cursor-grab overflow-hidden active:cursor-grabbing lg:h-[var(--hero-height)] lg:max-h-none lg:min-h-[var(--hero-height)]"
+        className="relative h-[66dvh] max-h-[616px] overflow-hidden lg:h-[var(--hero-height)] lg:max-h-none lg:min-h-[var(--hero-height)] lg:cursor-grab lg:active:cursor-grabbing"
         role="region"
         aria-roledescription="carousel"
         aria-label="Homepage hero"
-        style={{ touchAction: desktop ? "pan-x" : "pan-y" }}
+        style={{ touchAction: desktop ? "pan-x" : "manipulation" }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
@@ -221,9 +226,9 @@ export function HomeHero() {
               aria-hidden={real !== realIndex}
             >
               {real === 0 ? (
-                <SplitSlide textY={textY} textOpacity={textOpacity} />
+                <SplitSlide parallaxStyle={parallaxStyle} />
               ) : (
-                <CinematicSlide textY={textY} textOpacity={textOpacity} />
+                <CinematicSlide parallaxStyle={parallaxStyle} />
               )}
             </div>
           ))}
@@ -245,16 +250,16 @@ export function HomeHero() {
 }
 
 function SplitSlide({
-  textY,
-  textOpacity,
+  parallaxStyle,
 }: {
-  textY: ReturnType<typeof useHeroParallax>["textY"];
-  textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
+  parallaxStyle:
+    | { y: ReturnType<typeof useHeroParallax>["textY"]; opacity: ReturnType<typeof useHeroParallax>["textOpacity"] }
+    | undefined;
 }) {
   return (
     <div className="relative flex h-full flex-col bg-[#4C5393] lg:block">
       {/* Short landscape crop on mobile so ~half the photo shows; desktop keeps the right-half split. */}
-      <div className="relative aspect-[2/1] max-h-[28dvh] min-h-[9.5rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-auto lg:max-h-none lg:min-h-0 lg:w-1/2">
+      <div className="relative aspect-[2/1] max-h-[31dvh] min-h-[10.5rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-auto lg:max-h-none lg:min-h-0 lg:w-1/2">
         <Image
           src="/images/hero/home-family-consultation.webp"
           alt="A clinician consulting with a parent and child"
@@ -267,11 +272,11 @@ function SplitSlide({
         />
       </div>
 
-      <div className="relative z-[1] min-h-0 flex-1 overflow-y-auto overscroll-contain bg-[#4C5393] pb-14 pt-4 lg:absolute lg:inset-0 lg:z-auto lg:flex lg:overflow-visible lg:bg-transparent lg:pb-24 lg:pt-0 lg:items-center">
+      <div className="relative z-[1] flex min-h-0 flex-1 items-center bg-[#4C5393] pb-14 pt-4 lg:absolute lg:inset-0 lg:z-auto lg:bg-transparent lg:pb-24 lg:pt-0">
         <Container>
           <motion.div
             className="flex w-full min-w-0 max-w-[34rem] flex-col gap-2.5 lg:gap-6"
-            style={{ y: textY, opacity: textOpacity }}
+            style={parallaxStyle}
           >
             <HeroRise delay={0.08}>
               <SectionLabel
@@ -291,7 +296,10 @@ function SplitSlide({
               </h1>
             </HeroRise>
             <HeroRise delay={0.28}>
-              <p className="max-w-[640px] text-[13px] leading-relaxed text-white/90 lg:text-lg lg:leading-7">
+              <p className="max-w-[640px] text-[13px] leading-relaxed text-white/90 lg:hidden">
+                {HOME_HERO.bodyMobile}
+              </p>
+              <p className="hidden max-w-[640px] text-[13px] leading-relaxed text-white/90 lg:block lg:text-lg lg:leading-7">
                 {HOME_HERO.body}
               </p>
             </HeroRise>
@@ -317,11 +325,11 @@ function SplitSlide({
 }
 
 function CinematicSlide({
-  textY,
-  textOpacity,
+  parallaxStyle,
 }: {
-  textY: ReturnType<typeof useHeroParallax>["textY"];
-  textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
+  parallaxStyle:
+    | { y: ReturnType<typeof useHeroParallax>["textY"]; opacity: ReturnType<typeof useHeroParallax>["textOpacity"] }
+    | undefined;
 }) {
   return (
     <div className="relative h-full w-full">
@@ -340,7 +348,7 @@ function CinematicSlide({
       <Container className="relative z-10 flex h-full flex-col justify-end pb-14 pt-6 lg:absolute lg:inset-0 lg:justify-center lg:pb-24 lg:pt-0">
         <motion.div
           className="flex w-full max-w-[820px] flex-col gap-3 lg:gap-6"
-          style={{ y: textY, opacity: textOpacity }}
+          style={parallaxStyle}
         >
           <HeroRise delay={0.08}>
             <SectionLabel tone="light">Our mission</SectionLabel>

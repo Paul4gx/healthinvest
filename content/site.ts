@@ -11,6 +11,8 @@ export const HOME_HERO = {
   eyebrow: "Specialist healthcare investment and operations in Africa",
   title: "We bring specialty care to the underserved",
   body: "Across Africa, many patients still travel far or go without the specialist care they need. Health Invest Africa builds sustainable care networks that bring cancer, renal and other specialist services closer to underserved communities.",
+  bodyMobile:
+    "We bring cancer, renal and specialist healthcare closer to underserved communities across Africa.",
 };
 
 export const STATS: StatItem[] = [
