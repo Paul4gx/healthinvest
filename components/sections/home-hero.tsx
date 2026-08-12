@@ -33,9 +33,24 @@ function realFromLoop(loopIndex: number) {
   return LOOP[loopIndex] ?? 0;
 }
 
+function useIsDesktopHero() {
+  const [desktop, setDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setDesktop(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  return desktop;
+}
+
 export function HomeHero() {
   const { textY, textOpacity, dim } = useHeroParallax();
   const reduce = usePrefersReducedMotion();
+  const desktop = useIsDesktopHero();
   const [loopIndex, setLoopIndex] = useState(LOOP_START);
   const [dragging, setDragging] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -44,6 +59,9 @@ export function HomeHero() {
   const widthRef = useRef(0);
   const skipSnapRef = useRef(false);
   const loopIndexRef = useRef(loopIndex);
+  const swipeRef = useRef<{ x: number; y: number; locked: "x" | "y" | null } | null>(
+    null
+  );
   const x = useMotionValue(0);
   const realIndex = realFromLoop(loopIndex);
   loopIndexRef.current = loopIndex;
@@ -136,22 +154,56 @@ export function HomeHero() {
     [goLoop, loopIndex, snapTo]
   );
 
+  const onTouchStart = useCallback((event: React.TouchEvent) => {
+    if (desktop || reduce) return;
+    const t = event.touches[0];
+    if (!t) return;
+    swipeRef.current = { x: t.clientX, y: t.clientY, locked: null };
+  }, [desktop, reduce]);
+
+  const onTouchMove = useCallback((event: React.TouchEvent) => {
+    const start = swipeRef.current;
+    const t = event.touches[0];
+    if (!start || !t || start.locked) return;
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dx) < 12 && Math.abs(dy) < 12) return;
+    start.locked = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+  }, []);
+
+  const onTouchEnd = useCallback(
+    (event: React.TouchEvent) => {
+      const start = swipeRef.current;
+      swipeRef.current = null;
+      if (!start || start.locked !== "x") return;
+      const t = event.changedTouches[0];
+      if (!t) return;
+      const dx = t.clientX - start.x;
+      if (Math.abs(dx) < 40) return;
+      goLoop(dx < 0 ? loopIndex + 1 : loopIndex - 1);
+    },
+    [goLoop, loopIndex]
+  );
+
   const slideW = Math.max(width, 1);
 
   return (
     <section className="relative w-full bg-[#4C5393] pt-[var(--header-height)]">
       <div
         ref={viewportRef}
-        className="relative min-h-[65dvh] cursor-grab overflow-hidden active:cursor-grabbing lg:h-[var(--hero-height)] lg:min-h-[var(--hero-height)]"
+        className="relative h-[60dvh] max-h-[560px] cursor-grab overflow-hidden active:cursor-grabbing lg:h-[var(--hero-height)] lg:max-h-none lg:min-h-[var(--hero-height)]"
         role="region"
         aria-roledescription="carousel"
         aria-label="Homepage hero"
-        style={{ touchAction: "pan-x" }}
+        style={{ touchAction: desktop ? "pan-x" : "pan-y" }}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
         <motion.div
-          className="flex min-h-[65dvh] select-none items-stretch lg:h-full lg:min-h-0"
+          className="flex h-full select-none"
           style={{ x, width: slideW * LOOP.length }}
-          drag={reduce ? false : "x"}
+          drag={reduce || !desktop ? false : "x"}
           dragElastic={0.18}
           dragMomentum={false}
           dragConstraints={{
@@ -164,7 +216,7 @@ export function HomeHero() {
           {LOOP.map((real, i) => (
             <div
               key={`loop-${i}`}
-              className="flex min-h-[65dvh] shrink-0 flex-col lg:h-full lg:min-h-0"
+              className="h-full shrink-0"
               style={{ width: slideW }}
               aria-hidden={real !== realIndex}
             >
@@ -200,9 +252,9 @@ function SplitSlide({
   textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
 }) {
   return (
-    <div className="relative flex h-full min-h-[65dvh] flex-col bg-[#4C5393] lg:block lg:min-h-0">
-      {/* Mobile/tablet: fixed viewport-based photo band so the image stays visible while copy can grow. */}
-      <div className="relative h-[min(50dvh,24rem)] min-h-[13.75rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:min-h-0 lg:w-1/2 lg:max-h-none">
+    <div className="relative flex h-full flex-col bg-[#4C5393] lg:block">
+      {/* Short landscape crop on mobile so ~half the photo shows; desktop keeps the right-half split. */}
+      <div className="relative aspect-[2/1] max-h-[28dvh] min-h-[9.5rem] shrink-0 overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-auto lg:max-h-none lg:min-h-0 lg:w-1/2">
         <Image
           src="/images/hero/home-family-consultation.webp"
           alt="A clinician consulting with a parent and child"
@@ -215,10 +267,10 @@ function SplitSlide({
         />
       </div>
 
-      <div className="relative z-[1] shrink-0 bg-[#4C5393] pb-16 pt-5 lg:absolute lg:inset-0 lg:z-auto lg:flex lg:items-center lg:bg-transparent lg:pb-24 lg:pt-0">
+      <div className="relative z-[1] min-h-0 flex-1 overflow-y-auto overscroll-contain bg-[#4C5393] pb-14 pt-4 lg:absolute lg:inset-0 lg:z-auto lg:flex lg:overflow-visible lg:bg-transparent lg:pb-24 lg:pt-0 lg:items-center">
         <Container>
           <motion.div
-            className="flex w-full min-w-0 max-w-[34rem] flex-col gap-3 lg:gap-6"
+            className="flex w-full min-w-0 max-w-[34rem] flex-col gap-2.5 lg:gap-6"
             style={{ y: textY, opacity: textOpacity }}
           >
             <HeroRise delay={0.08}>
@@ -232,14 +284,14 @@ function SplitSlide({
               </SectionLabel>
             </HeroRise>
             <HeroRise delay={0.18}>
-              <h1 className="text-[clamp(1.45rem,6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+              <h1 className="text-[clamp(1.35rem,5.6vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
                 We bring{" "}
                 <span className="lg:whitespace-nowrap">specialty care</span>{" "}
                 <span className="block">to the underserved</span>
               </h1>
             </HeroRise>
             <HeroRise delay={0.28}>
-              <p className="max-w-[640px] text-sm leading-relaxed text-white/90 lg:text-lg lg:leading-7">
+              <p className="max-w-[640px] text-[13px] leading-relaxed text-white/90 lg:text-lg lg:leading-7">
                 {HOME_HERO.body}
               </p>
             </HeroRise>
@@ -272,7 +324,7 @@ function CinematicSlide({
   textOpacity: ReturnType<typeof useHeroParallax>["textOpacity"];
 }) {
   return (
-    <div className="relative h-full min-h-[65dvh] w-full lg:min-h-0">
+    <div className="relative h-full w-full">
       <Image
         src="/images/hero/home-consultation.webp"
         alt="Clinician consulting with a patient in a care setting"
@@ -285,7 +337,7 @@ function CinematicSlide({
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#47261b]/90 via-[#47261b]/55 to-[#47261b]/20 lg:hidden" />
       <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-[#47261b]/80 via-[#47261b]/45 to-transparent lg:block" />
-      <Container className="relative z-10 flex h-full flex-col justify-end pb-16 pt-6 lg:absolute lg:inset-0 lg:justify-center lg:pb-24 lg:pt-0">
+      <Container className="relative z-10 flex h-full flex-col justify-end pb-14 pt-6 lg:absolute lg:inset-0 lg:justify-center lg:pb-24 lg:pt-0">
         <motion.div
           className="flex w-full max-w-[820px] flex-col gap-3 lg:gap-6"
           style={{ y: textY, opacity: textOpacity }}
