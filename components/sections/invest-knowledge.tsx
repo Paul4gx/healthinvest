@@ -31,7 +31,7 @@ const SPIN_MS = 0.78;
 
 export function InvestKnowledge() {
   const reduce = usePrefersReducedMotion();
-  const [index, setIndex] = useState(START);
+  const [index, setIndex] = useState<number>(START);
   const [slotWidth, setSlotWidth] = useState(0);
   const [rowH, setRowH] = useState(0);
   const measureRef = useRef<HTMLSpanElement>(null);
