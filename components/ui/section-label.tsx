@@ -33,8 +33,8 @@ export function SectionLabel({
       </span>
       <span
         className={cn(
-          "max-w-[22ch] font-display text-[12px] font-medium uppercase leading-snug tracking-[0.08em] sm:max-w-none sm:text-[14px] sm:leading-normal",
-          tone === "dark" ? "text-hi-accent" : "text-hi-accent-soft"
+          "max-w-[22ch] font-display text-[16px] font-normal uppercase leading-none tracking-[-0.02em] sm:max-w-none sm:text-[20px]",
+          tone === "dark" ? "text-hi-black" : "text-white"
         )}
       >
         {children}

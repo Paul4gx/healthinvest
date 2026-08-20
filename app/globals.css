@@ -155,6 +155,15 @@
   }
 }
 
+@keyframes photo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -214,5 +223,13 @@
 
   .glass-dark {
     @apply bg-hi-navy-deep/50 backdrop-blur-md border border-white/10;
+  }
+
+  .animate-photo-marquee {
+    animation: photo-marquee 42s linear infinite;
+  }
+
+  .animate-photo-marquee:hover {
+    animation-play-state: paused;
   }
 }

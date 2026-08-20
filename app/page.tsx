@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { HomeHero } from "@/components/sections/home-hero";
-import { NetworkGlance } from "@/components/sections/network-glance";
-import { PlatformsSection } from "@/components/sections/platforms-section";
-import { ModelTeaser } from "@/components/sections/model-teaser";
-import { ImpactTeaser } from "@/components/sections/impact-teaser";
+import { WhoWeAre } from "@/components/sections/who-we-are";
+import { InvestKnowledge } from "@/components/sections/invest-knowledge";
+import { WhatWeDo } from "@/components/sections/what-we-do";
+import { OurFocus } from "@/components/sections/our-focus";
+import { MissionSection } from "@/components/sections/mission-section";
 import { Quarterly } from "@/components/sections/quarterly";
-import { FinalCta } from "@/components/sections/final-cta";
-import { PageBody } from "@/components/layout/page-body";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -21,14 +20,12 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <PageBody className="shadow-none">
-        <NetworkGlance />
-        <PlatformsSection />
-        <ModelTeaser />
-        <ImpactTeaser />
-        <Quarterly />
-        <FinalCta />
-      </PageBody>
+      <WhoWeAre />
+      <InvestKnowledge />
+      <WhatWeDo />
+      <OurFocus />
+      <MissionSection />
+      <Quarterly />
     </>
   );
 }

@@ -24,7 +24,7 @@ export function BlogCard({ post, className }: BlogCardProps) {
       className={cn("group flex h-full flex-col gap-[22px]", className)}
     >
       <Link href={`/insights/${post.slug}`} className="block focus-visible:outline-none">
-        <div className="relative aspect-[488/222] overflow-hidden rounded-[16px] md:rounded-[20px]">
+        <div className="relative aspect-[488/273] overflow-hidden">
           <Image
             src={post.image}
             alt=""
@@ -36,10 +36,10 @@ export function BlogCard({ post, className }: BlogCardProps) {
           <div className="absolute inset-0 origin-left scale-x-0 bg-hi-primary/20 transition-transform duration-500 group-hover:scale-x-100" />
         </div>
         <div className="mt-[22px] flex flex-col gap-4">
-          <p className="text-sm font-light tracking-[0.04em] text-hi-accent md:text-2xl">
+          <p className="font-display text-lg font-light tracking-[0.02em] text-hi-black md:text-[29.5px] md:leading-[1.1]">
             {post.category}
           </p>
-          <h3 className="text-xl font-normal leading-8 text-hi-black transition-colors group-hover:text-hi-primary md:text-2xl md:leading-[30px]">
+          <h3 className="font-display text-xl font-normal leading-8 text-hi-black transition-colors duration-200 group-hover:text-hi-primary md:text-[29.5px] md:leading-[37px]">
             {post.title}
           </h3>
         </div>

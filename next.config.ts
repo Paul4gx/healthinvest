@@ -30,6 +30,8 @@ const nextConfig: NextConfig = {
           return [
             { source: "/about-us", destination: "/about", permanent: true },
             { source: "/about-us/", destination: "/about", permanent: true },
+            { source: "/about/story", destination: "/about", permanent: true },
+            { source: "/about/story/", destination: "/about", permanent: true },
             {
               source: "/our-operation",
               destination: "/our-operations",

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/layout/container";
 import { PageBody } from "@/components/layout/page-body";
-import { TeamCard } from "@/components/sections/team-card";
-import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
+import { TeamGrid } from "@/components/sections/team-grid";
+import { Reveal } from "@/components/ui/reveal";
 import { LEADERSHIP, LEADERSHIP_INTRO } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -31,13 +31,7 @@ export default function LeadershipPage() {
               {LEADERSHIP_INTRO}
             </p>
           </Reveal>
-          <Stagger className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {LEADERSHIP.map((member) => (
-              <StaggerItem key={member.name}>
-                <TeamCard member={member} />
-              </StaggerItem>
-            ))}
-          </Stagger>
+          <TeamGrid members={LEADERSHIP} />
         </Container>
       </section>
       </PageBody>

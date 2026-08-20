@@ -3,6 +3,7 @@ import { fontAeonik, fontMontserrat } from "@/lib/fonts";
 import { SiteShell } from "@/components/layout/site-shell";
 import { Footer } from "@/components/footer/footer";
 import { Preloader } from "@/components/ui/preloader";
+import { VideoModalProvider } from "@/components/ui/video-modal";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
@@ -58,7 +59,9 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SiteShell footer={<Footer />}>{children}</SiteShell>
+        <VideoModalProvider>
+          <SiteShell footer={<Footer />}>{children}</SiteShell>
+        </VideoModalProvider>
       </body>
     </html>
   );

@@ -8,23 +8,56 @@ import type {
 } from "@/types";
 
 export const HOME_HERO = {
-  eyebrow: "Specialist healthcare investment and operations in Africa",
-  title: "We bring specialty care to the underserved",
-  body: "Across Africa, many patients still travel far or go without the specialist care they need. Health Invest Africa builds sustainable care networks that bring cancer, renal and other specialist services closer to underserved communities.",
-  bodyMobile:
-    "We bring cancer, renal and specialist healthcare closer to underserved communities across Africa.",
+  title: "We Are Transforming Specialized Healthcare in Africa",
+  subtitle:
+    "Driving access, innovation, and impact across the continent\u2019s healthcare systems.",
+};
+
+export const WHO_WE_ARE = {
+  eyebrow: "WHO WE ARE",
+  title: "Investing in Life,\nOne Patient at a Time.",
+  body: "At Health Invest, we believe that beyond treatment, healthcare is an investment in life itself. In a country where access to quality healthcare remains a challenge, we are reshaping the narrative by investing in medical infrastructure, cutting-edge technology, and, most importantly, the people who make healing possible.\n\nOur focus is on non-communicable diseases\u2014silent threats like kidney disease and cancer that often go undiagnosed until it\u2019s too late. Through Rencare and Oncoclinics, we are creating a healthcare ecosystem where patients receive not just treatment, but hope, dignity, and a fighting chance at life.\n\nBut we are more than a healthcare provider\u2014we are a collective of specialised institutions tackling different aspects of medical care, each with autonomy but bound by a shared mission: to redefine what is possible in African healthcare.",
+};
+
+export const OUR_FOCUS = {
+  eyebrow: "OUR FOCUS",
+  intro: "Our networks deliver accessible critical care for the most urgent non communicable diseases (NCDs) impacting Nigeria and Sub-Saharan Africa.",
+  areas: [
+    {
+      number: "01",
+      title: "Oncology",
+      description:
+        "Radiation Oncology services using state-of-the-art imaging, planning, and treatment technologies and techniques.",
+    },
+    {
+      number: "02",
+      title: "Nephrology",
+      description:
+        "Renal replacement therapy through best-in-class dialysis and medication",
+    },
+    {
+      number: "03",
+      title: "Cardiology",
+      description:
+        "Cardiovascular care through our advanced cardiac catheterization lab",
+    },
+    {
+      number: "04",
+      title: "Diagnostics",
+      description: "Imaging solutions in select locations",
+    },
+  ],
+};
+
+export const OUR_MISSION_HOME = {
+  title: "Our\nMission",
+  body: "Every two seconds, a person under the age of 70 dies of a non-communicable disease (NCD), and more than 85% of those deaths occur in low-to-medium income countries. As it stands, more than 27% of deaths in Nigeria are caused by NCDs.\n\nWe estimate that more than 200 linear accelerators are required for adequate cancer care in Nigeria, however fewer than 10 machines are currently installed in the country. Furthermore, Nigeria requires more than 6,000 hemodialysis machines for effective renal care, with only roughly 10% of this number currently installed.\n\nOur mission is to help bridge this gap by developing and operating a network of specialty centres which provide reliable, quality, and accessible healthcare to all.",
 };
 
 export const STATS: StatItem[] = [
-  { value: 12, label: "Specialist centres", icon: "centers" },
-  { value: 200, suffix: "+", label: "Professionals", icon: "professionals" },
-  {
-    value: 250,
-    prefix: "More than ",
-    suffix: "",
-    label: "Patients treated per day",
-    icon: "patients",
-  },
+  { value: 8, label: "Medical Centers", icon: "centers" },
+  { value: 60, suffix: "+", label: "Medical Professionals", icon: "professionals" },
+  { value: 100, suffix: "+", label: "Patients Treated Per Day", icon: "patients" },
 ];
 
 export const HOME_MISSION = {
@@ -136,6 +169,66 @@ export const ABOUT = {
   },
   closing:
     "We invest beyond infrastructure. We invest in the systems, technology and people that make reliable care possible. We invest in life.",
+};
+
+export const ABOUT_PAGE = {
+  heroTitle: "About Us",
+  introEyebrow: "WHO ARE WE",
+  stories: {
+    title: "The Human Stories That Define Us",
+    body: "While our strategy focuses on large-scale transformation, the heart of our story lies in the lives we impact every day.",
+  },
+  storyColumns: [
+    {
+      title: "Patients Who Find Hope",
+      body: "A father at Rencare receives life-saving dialysis, giving him more time with his family. A young mother at Oncoclinics, once without options, now fights cancer with access to world-class treatment.",
+    },
+    {
+      title: "Clinicians Who Lead With Passion",
+      body: "From the physicists in Ebonyi to the therapists in Enugu, our medical professionals are not just providing care\u2014they are rewriting what it means to practice medicine in Nigeria.",
+    },
+    {
+      title: "Centers That Bring Healing Closer",
+      body: "In Enugu, where our journey began, we see the power of a well-built healthcare system. In Sokoto, we witness the impact of efficiency and strong infrastructure. Each center tells a different chapter in our story.",
+    },
+  ],
+  africa: {
+    title: "Redefining Healthcare Investment in Africa",
+    body: "The healthcare system in Nigeria has long been plagued by gaps\u2014gaps in infrastructure, affordability, expertise, and patient trust. Health Invest is bridging those gaps, not just by building medical centers but by fostering an entirely new approach to healthcare investment.",
+  },
+  africaColumns: [
+    {
+      title: "Building Infrastructure for a Stronger Tomorrow",
+      body: "With multiple dialysis and oncology centers, we are creating the largest privately managed multi-location healthcare network in Nigeria, ensuring that advanced treatment is not limited to just a few cities.",
+    },
+    {
+      title: "Tackling Systemic Challenges",
+      body: "From solving power issues in our centers to training and retaining top-tier medical professionals, we are proving that quality healthcare is achievable with the right model.",
+    },
+    {
+      title: "Sustainability Through Collaboration",
+      body: "Whether it\u2019s working with government agencies, insurance companies, or research institutions, we are committed to long-term, systemic change in healthcare.",
+    },
+  ],
+  brandLine: "We invest in life.",
+  values: [
+    {
+      title: "Technology & Equipment",
+      body: "Cutting-edge diagnostic tools, advanced treatment methods, and life-saving medical innovations.",
+    },
+    {
+      title: "Finance",
+      body: "The funding that fuels accessibility, affordability, and expansion of our specialized clinics nationwide.",
+    },
+    {
+      title: "Expertise & Knowledge",
+      body: "A team of highly skilled doctors, researchers, and medical professionals committed to advancing healthcare solutions.",
+    },
+    {
+      title: "Care & Time",
+      body: "The human touch\u2014every consultation, every surgery, every reassuring word that brings hope to patients and their families.",
+    },
+  ],
 };
 
 export const MODEL_PAGE = {
@@ -367,7 +460,7 @@ export const LEADERSHIP: TeamMember[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "unexpected-realities-accessible-healthcare",
-    category: "Access",
+    category: "ISSUE 01:",
     title: "The Unexpected Realities of Accessible Healthcare",
     excerpt:
       "What it takes to deliver specialty care where infrastructure, power and talent are constrained.",
@@ -376,8 +469,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "building-oncology-capacity-nigeria",
-    category: "Oncology",
-    title: "Building Oncology Capacity Across Nigeria",
+    category: "ISSUE 02:",
+    title: "Lessons from Years of Investing in Africa\u2019s Healthcare",
     excerpt:
       "How OncoClinics Africa is closing the gap in radiotherapy and cancer pathways.",
     image: "/images/home/strip-2.jpg",
@@ -385,8 +478,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "renal-care-closer-to-home",
-    category: "Renal Care",
-    title: "Renal Care, Closer to Home",
+    category: "ISSUE 03:",
+    title: "Building from Within Sustaining Medical Talent in Nigeria",
     excerpt:
       "Expanding dialysis access through Rencare Africa’s multi-location network.",
     image: "/images/home/strip-3.jpg",

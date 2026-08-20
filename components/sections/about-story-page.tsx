@@ -4,24 +4,17 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Container } from "@/components/layout/container";
-import { PageBody } from "@/components/layout/page-body";
-import { PageHero } from "@/components/sections/page-hero";
-import { CtaButton } from "@/components/ui/cta-button";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
-import { MOTION, SITE } from "@/lib/constants";
+import { SectionLabel } from "@/components/ui/section-label";
+import { MOTION } from "@/lib/constants";
+import { ABOUT_PAGE, WHO_WE_ARE } from "@/content/site";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import {
-  ABOUT,
-  HOME_MODEL_STEPS,
-  IMPACT,
-  PILLARS,
-} from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const COLLAGE = [
   {
     src: "/images/home/strip-1.jpg",
-    alt: "Clinician with a patient in a care setting",
+    alt: "A clinician with a patient",
     className: "col-span-2 aspect-[16/10]",
   },
   {
@@ -30,91 +23,69 @@ const COLLAGE = [
     className: "aspect-[4/3]",
   },
   {
-    src: "/images/home/strip-3.jpg",
-    alt: "Specialist healthcare professional at work",
+    src: "/images/home/who-1.png",
+    alt: "A specialist healthcare professional",
     className: "aspect-[4/3]",
-  },
-] as const;
-
-const STORY_CARDS = [
-  {
-    title: IMPACT.sections[1].title,
-    body: IMPACT.sections[1].body,
-    image: "/images/gallery/ren-3.jpg",
-    alt: "Patient receiving specialist care",
-  },
-  {
-    title: IMPACT.sections[0].title,
-    body: IMPACT.sections[0].body,
-    image: "/images/gallery/onco-4.jpg",
-    alt: "Clinicians collaborating on specialist treatment",
-  },
-  {
-    title: IMPACT.sections[3].title,
-    body: IMPACT.sections[3].body,
-    image: "/images/operations/rencare.png",
-    alt: "Specialist centre delivering care closer to home",
-  },
-] as const;
-
-const PILLAR_IMAGES = [
-  {
-    image: "/images/about/partner.jpg",
-    alt: "Care teams joining hands in partnership",
-  },
-  {
-    image: "/images/about/technology-halcyon.png",
-    alt: "Halcyon radiotherapy system supporting specialist cancer care",
-  },
-  {
-    image: "/images/about/operational-excellence-vitalbeam.jpg",
-    alt: "OncoClinics team delivering radiotherapy with a VitalBeam system",
   },
 ] as const;
 
 export function AboutStoryPage() {
   return (
     <>
-      <PageHero
-        title="About Us"
-        image="/images/gallery/hero-brand.png"
-        alt="Health Invest Africa brand in the community"
+      <AboutHero />
+      <IntroSection />
+      <PhotoBand
+        image="/images/about/human-stories.jpg"
+        alt="Clinicians reviewing care together"
+        title={ABOUT_PAGE.stories.title}
+        body={ABOUT_PAGE.stories.body}
       />
-
-      <PageBody>
-        <IntroSection />
-
-        <StoryBand
-          image="/images/about/purpose-consultation.jpg"
-          alt="A clinician consulting with a parent and child"
-          title={ABOUT.purpose.title}
-          body={ABOUT.purpose.body}
-        />
-
-        <CardGrid cards={STORY_CARDS} />
-
-        <StoryBand
-          image="/images/about/hero-team.png"
-          alt="Healthcare professionals collaborating in a clinical facility"
-          title={ABOUT.ambition.title}
-          body={ABOUT.ambition.body}
-          overlay="left"
-        />
-
-        <CardGrid
-          cards={PILLARS.map((pillar, index) => ({
-            title: pillar.title,
-            body: pillar.body,
-            image: PILLAR_IMAGES[index].image,
-            alt: PILLAR_IMAGES[index].alt,
-          }))}
-        />
-
-        <BrandBanner />
-
-        <FeatureColumns />
-      </PageBody>
+      <TextColumns items={ABOUT_PAGE.storyColumns} />
+      <PhotoBand
+        image="/images/about/redefining-africa.jpg"
+        alt="A clinician speaking with a patient"
+        title={ABOUT_PAGE.africa.title}
+        body={ABOUT_PAGE.africa.body}
+      />
+      <TextColumns items={ABOUT_PAGE.africaColumns} />
+      <BrandBanner />
+      <ValueColumns />
     </>
+  );
+}
+
+function AboutHero() {
+  const reduce = usePrefersReducedMotion();
+
+  return (
+    <section className="relative h-[min(62svh,560px)] min-h-[360px] w-full overflow-hidden bg-hi-navy-deep pt-[var(--header-height)] md:h-[min(72svh,720px)] md:min-h-[420px]">
+      <motion.div
+        className="absolute inset-0"
+        initial={reduce ? false : { scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.1, ease: MOTION.ease }}
+      >
+        <Image
+          src="/images/about/hero-about.jpg"
+          alt="A clinician reviewing a tablet"
+          fill
+          priority
+          className="object-cover object-[center_30%] md:object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/40" />
+      </motion.div>
+      <Container className="relative z-10 flex h-full items-end pb-10 md:items-center md:pb-0">
+        <motion.h1
+          className="font-display text-[clamp(2.25rem,10vw,5.375rem)] font-light leading-[1.02] tracking-[-0.03em] text-white"
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: MOTION.ease }}
+        >
+          {ABOUT_PAGE.heroTitle}
+        </motion.h1>
+      </Container>
+    </section>
   );
 }
 
@@ -122,16 +93,15 @@ function IntroSection() {
   const reduce = usePrefersReducedMotion();
 
   return (
-    <section className="bg-white py-10 md:py-16">
-      <Container className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-16">
-        <Stagger className="grid grid-cols-2 gap-3 md:gap-4">
+    <section className="bg-white py-8 md:py-12">
+      <Container className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
+        <Stagger className="order-2 grid grid-cols-2 gap-3 md:gap-4 lg:order-1">
           {COLLAGE.map((photo, index) => (
             <StaggerItem key={photo.src} className={photo.className}>
               <motion.div
                 whileHover={reduce ? undefined : { scale: 1.03 }}
-                whileTap={reduce ? undefined : { scale: 1.02 }}
                 transition={{ duration: MOTION.base, ease: MOTION.ease }}
-                className="relative h-full min-h-[140px] overflow-hidden rounded-[20px] md:rounded-[28px]"
+                className="relative h-full min-h-[100px] overflow-hidden rounded-[16px] sm:min-h-[140px] sm:rounded-[20px]"
               >
                 <Image
                   src={photo.src}
@@ -141,29 +111,22 @@ function IntroSection() {
                     "object-cover transition duration-500",
                     index === 0 && "object-[center_30%]"
                   )}
-                  sizes="(max-width:1024px) 90vw, 40vw"
+                  sizes="(max-width:1024px) 90vw, 42vw"
                 />
               </motion.div>
             </StaggerItem>
           ))}
         </Stagger>
 
-        <Reveal>
-          <h2 className="max-w-[16ch] text-[clamp(2rem,4vw,3.35rem)] font-normal leading-[1.12] tracking-[-0.03em]">
-            <span className="text-hi-ink">Building the systems</span>{" "}
-            <span className="text-hi-black/50">
-              that make specialty care possible
-            </span>
+        <Reveal className="order-1 lg:order-2">
+          <SectionLabel>{ABOUT_PAGE.introEyebrow}</SectionLabel>
+          <h2 className="mt-5 whitespace-pre-line font-display text-[clamp(1.85rem,5vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.02em] text-hi-primary md:mt-6">
+            {WHO_WE_ARE.title}
           </h2>
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-hi-black/80 md:text-lg">
-            <p>{ABOUT.intro}</p>
-            <p>{ABOUT.platformNote.body}</p>
-            <p>{ABOUT.why.body}</p>
-          </div>
-          <div className="mt-8">
-            <CtaButton href="/our-model" variant="primary">
-              Explore Our Model
-            </CtaButton>
+          <div className="mt-5 flex flex-col gap-4 text-[15px] leading-relaxed text-hi-black md:mt-6 md:gap-5 md:text-[20px] md:leading-[1.45]">
+            {WHO_WE_ARE.body.split("\n\n").map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
         </Reveal>
       </Container>
@@ -171,18 +134,16 @@ function IntroSection() {
   );
 }
 
-function StoryBand({
+function PhotoBand({
   image,
   alt,
   title,
   body,
-  overlay = "bottom",
 }: {
   image: string;
   alt: string;
   title: string;
   body: string;
-  overlay?: "bottom" | "left";
 }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = usePrefersReducedMotion();
@@ -190,93 +151,94 @@ function StoryBand({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.12, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <section
       ref={ref}
-      className="relative min-h-[460px] overflow-hidden text-white md:min-h-[620px]"
+      className="relative overflow-hidden bg-[#f5f6f8] text-white"
     >
-      <motion.div
-        className="absolute inset-0"
-        style={reduce ? undefined : { y, scale }}
-      >
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          unoptimized
-          className="object-cover object-top"
-          sizes="100vw"
-        />
-        <div
-          className={
-            overlay === "left"
-              ? "absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25 md:bg-gradient-to-r md:from-black/80 md:via-black/45 md:to-transparent"
-              : "absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/20"
-          }
-        />
-      </motion.div>
+      <Container className="relative py-0">
+        <div className="relative min-h-[300px] overflow-hidden md:min-h-[520px]">
+          <motion.div
+            className="absolute inset-0"
+            style={reduce ? undefined : { y }}
+          >
+            <Image
+              src={image}
+              alt={alt}
+              fill
+              className="object-cover object-center"
+              sizes="(max-width:1728px) 100vw, 1528px"
+            />
+            <div className="absolute inset-0 bg-black/45" />
+          </motion.div>
 
-      <Container className="relative z-10 flex min-h-[420px] flex-col justify-center py-8 md:min-h-[620px] md:py-16">
-        <Reveal>
-          <h2 className="max-w-[18ch] text-[clamp(1.85rem,6vw,3.75rem)] font-light leading-[1.08] tracking-[-0.03em]">
-            {title}
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
-            {body}
-          </p>
-        </Reveal>
+          <div className="relative z-10 grid min-h-[300px] items-end gap-5 px-5 py-8 md:min-h-[520px] md:grid-cols-2 md:gap-16 md:px-10 md:py-14 lg:px-12 lg:pb-16">
+            <Reveal>
+              <h2 className="max-w-[14ch] font-display text-[clamp(1.75rem,5vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.03em]">
+                {title}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <p className="max-w-[42ch] text-[15px] leading-relaxed text-white/90 md:ml-auto md:text-[18px]">
+                {body}
+              </p>
+            </Reveal>
+          </div>
+        </div>
       </Container>
     </section>
   );
 }
 
-function CardGrid({
-  cards,
+const COLUMN_TONES = ["bg-[#f8f8f9]", "bg-[#f3f4f6]", "bg-[#eceef2]"] as const;
+
+function splitTitle(title: string) {
+  const [lead, ...rest] = title.trim().split(/\s+/);
+  return { lead, rest: rest.join(" ") };
+}
+
+function TextColumns({
+  items,
 }: {
-  cards: readonly {
-    title: string;
-    body: string;
-    image: string;
-    alt: string;
-  }[];
+  items: readonly { title: string; body: string }[];
 }) {
   const reduce = usePrefersReducedMotion();
 
   return (
-    <section className="bg-white py-10 md:py-14">
+    <section className="bg-[#f5f6f8]">
       <Container>
-        <Stagger className="grid gap-5 md:grid-cols-3 md:gap-6">
-          {cards.map((card) => (
-            <StaggerItem key={card.title}>
-              <motion.article
-                whileHover={reduce ? undefined : { y: -8 }}
-                whileTap={reduce ? undefined : { y: -4, scale: 0.99 }}
-                transition={{ duration: MOTION.base, ease: MOTION.ease }}
-                className="group flex h-full flex-col overflow-hidden rounded-[24px] bg-hi-surface shadow-[0_1px_0_rgba(21,27,80,0.04)] transition-shadow duration-300 hover:shadow-[0_18px_40px_rgba(21,27,80,0.12)]"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={card.image}
-                    alt={card.alt}
-                    fill
-                    className="object-cover transition duration-700 ease-out group-hover:scale-105"
-                    sizes="(max-width:768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6 md:p-8">
-                  <h3 className="text-[1.35rem] font-normal leading-snug tracking-[-0.02em] text-hi-ink md:text-[1.5rem]">
-                    {card.title}
+        <Stagger className="grid overflow-hidden md:grid-cols-3">
+          {items.map((item, index) => {
+            const { lead, rest } = splitTitle(item.title);
+
+            return (
+              <StaggerItem key={item.title} className="h-full">
+                <motion.article
+                  whileHover={reduce ? undefined : { y: -2 }}
+                  transition={{ duration: MOTION.base, ease: MOTION.ease }}
+                  className={cn(
+                    "flex h-full min-h-0 flex-col justify-between gap-8 px-6 py-10 md:min-h-[420px] md:gap-24 md:px-10 md:py-16 lg:px-12 lg:py-[72px]",
+                    COLUMN_TONES[index % COLUMN_TONES.length]
+                  )}
+                >
+                  <h3 className="max-w-[14ch] font-display text-[clamp(1.45rem,3.5vw,2.35rem)] leading-[1.12] tracking-[-0.03em] text-hi-ink">
+                    <span className="font-medium">{lead}</span>
+                    {rest ? (
+                      <>
+                        {" "}
+                        <span className="font-light">{rest}</span>
+                      </>
+                    ) : null}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-hi-black/75 md:text-base">
-                    {card.body}
+                  <p className="max-w-[36ch] text-[14px] leading-relaxed text-hi-black/80 md:text-[16px] md:leading-[1.55]">
+                    {item.body}
                   </p>
-                </div>
-              </motion.article>
-            </StaggerItem>
-          ))}
+                </motion.article>
+              </StaggerItem>
+            );
+          })}
         </Stagger>
       </Container>
     </section>
@@ -290,70 +252,69 @@ function BrandBanner() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const scale = useTransform(scrollYProgress, [0, 1], [1.15, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.12, 1]);
 
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[380px] items-center justify-center overflow-hidden text-white md:min-h-[520px]"
+      className="relative flex min-h-[280px] items-center justify-center overflow-hidden text-white md:min-h-[520px]"
     >
       <motion.div
         className="absolute inset-0"
         style={reduce ? undefined : { scale }}
       >
         <Image
-          src="/images/gallery/onco-5.jpg"
-          alt="Clinical team delivering specialist care"
+          src="/images/about/we-invest-in-life.jpg"
+          alt="A surgeon in an operating room"
           fill
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/40" />
       </motion.div>
       <Reveal className="relative z-10 px-[var(--spacing-gutter)] text-center">
-        <p className="text-[clamp(2rem,8vw,5rem)] font-light tracking-[-0.04em]">
-          {SITE.brandLine}
+        <p className="font-display text-[clamp(1.85rem,7vw,5rem)] font-normal tracking-[-0.04em]">
+          {ABOUT_PAGE.brandLine}
         </p>
       </Reveal>
     </section>
   );
 }
 
-function FeatureColumns() {
+function ValueColumns() {
   const reduce = usePrefersReducedMotion();
 
   return (
-    <section className="bg-white py-10 md:py-16">
+    <section className="bg-white py-10 md:py-16 lg:py-20">
       <Container>
-        <Stagger className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-          {HOME_MODEL_STEPS.map((step, index) => (
-            <StaggerItem
-              key={step.number}
-              className={cn(
-                "lg:px-8",
-                index > 0 && "lg:border-l lg:border-hi-black/10",
-                index === 0 && "lg:pl-0",
-                index === HOME_MODEL_STEPS.length - 1 && "lg:pr-0"
-              )}
-            >
-              <motion.div
-                whileHover={reduce ? undefined : { y: -4 }}
-                whileTap={reduce ? undefined : { y: -2, scale: 0.99 }}
-                transition={{ duration: MOTION.base, ease: MOTION.ease }}
+        <div className="bg-[#f1f1f1] px-5 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-10 lg:py-14">
+          <Stagger className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-0">
+            {ABOUT_PAGE.values.map((value, index) => (
+              <StaggerItem
+                key={value.title}
+                className={cn(
+                  "lg:px-8 xl:px-10",
+                  index > 0 && "lg:border-l lg:border-hi-black/15",
+                  index === 0 && "lg:pl-0",
+                  index === ABOUT_PAGE.values.length - 1 && "lg:pr-0"
+                )}
               >
-                <p className="font-display text-sm font-medium text-hi-accent">
-                  {step.number}
-                </p>
-                <h3 className="mt-3 text-xl tracking-[-0.02em] text-hi-ink md:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-hi-black/75 md:text-base">
-                  {step.body}
-                </p>
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </Stagger>
+                <motion.div
+                  whileHover={reduce ? undefined : { y: -3 }}
+                  transition={{ duration: MOTION.base, ease: MOTION.ease }}
+                  className="flex h-full flex-col"
+                >
+                  <h3 className="max-w-[12ch] font-display text-[clamp(1.35rem,2.4vw,2rem)] font-medium leading-[1.15] tracking-[-0.03em] text-hi-ink">
+                    {value.title}
+                  </h3>
+                  <p className="mt-4 text-[14px] leading-relaxed text-hi-black/75 md:mt-6 md:text-[16px] md:leading-[1.55]">
+                    {value.body}
+                  </p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
       </Container>
     </section>
   );

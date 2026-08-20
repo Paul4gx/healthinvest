@@ -13,6 +13,8 @@ export const SITE = {
     "Health Invest Africa develops and operates oncology, renal-care and specialist hospital networks through sustainable partnerships across Nigeria and Africa.",
   brandLine: "We invest in life.",
   mission: "We bring specialty care to the underserved.",
+  /** Placeholder until the client video is supplied. */
+  videoId: "aqz-KE-bpKQ",
 } as const;
 
 export const PLATFORM_LINKS = [
@@ -39,17 +41,16 @@ export const RESOURCE_LINKS = [
 ] as const;
 
 export const NAV_LINKS = [
-  { href: "/about/story", label: "About" },
-  { href: "/our-model", label: "Our Model" },
-  { href: "/our-operations", label: "Our Operations", children: PLATFORM_LINKS },
-  { href: "/impact", label: "Impact" },
-  { href: "/leadership", label: "Leadership" },
-  { href: "/insights", label: "Resources", children: RESOURCE_LINKS },
+  { href: "/about", label: "About" },
+  { href: "/our-operations", label: "Our Operations" },
+  { href: "/leadership", label: "Our Team" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/insights", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 export const FOOTER_INFO_LINKS = [
-  { href: "/about/story", label: "About" },
+  { href: "/about", label: "About" },
   { href: "/our-model", label: "Our Model" },
   { href: "/our-operations", label: "Our Operations" },
   { href: "/impact", label: "Impact" },
@@ -72,9 +73,9 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const MOTION = {
-  fast: 0.15,
-  base: 0.25,
-  medium: 0.4,
-  slow: 0.6,
+  fast: 0.12,
+  base: 0.2,
+  medium: 0.32,
+  slow: 0.5,
   ease: [0.22, 1, 0.36, 1] as const,
 } as const;

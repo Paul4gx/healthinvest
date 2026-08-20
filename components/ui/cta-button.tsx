@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { MOTION } from "@/lib/constants";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { useVideoModal } from "@/components/ui/video-modal";
 
 type CtaVariant = "primary" | "secondary" | "ghost" | "outline";
 type CtaIcon = "arrow" | "play" | "down" | "none";
@@ -22,6 +23,7 @@ type CtaButtonProps = {
   type?: "button" | "submit";
   onClick?: () => void;
   disabled?: boolean;
+  videoId?: string;
 };
 
 const variants: Record<CtaVariant, string> = {
@@ -45,8 +47,11 @@ export function CtaButton({
   type = "button",
   onClick,
   disabled = false,
+  videoId,
 }: CtaButtonProps) {
   const reduce = usePrefersReducedMotion();
+  const { openVideo } = useVideoModal();
+  const isPlay = icon === "play";
   const external = Boolean(href?.startsWith("http"));
   const Icon =
     icon === "play" ? Play : icon === "down" ? ChevronDown : ArrowRight;
@@ -59,7 +64,12 @@ export function CtaButton({
       </span>
       {showIcon ? (
         <span
-          className="relative z-10 flex size-8 items-center justify-center rounded-full bg-hi-accent text-white transition-transform duration-200 group-hover:scale-110 group-active:scale-110"
+          className={cn(
+            "relative z-10 flex size-8 items-center justify-center rounded-full transition-transform duration-200 group-hover:scale-110 group-active:scale-110",
+            variant === "ghost"
+              ? "bg-white text-hi-primary"
+              : "bg-hi-accent text-white"
+          )}
           aria-hidden
         >
           <Icon
@@ -79,8 +89,22 @@ export function CtaButton({
     className
   );
 
-  const inner = href ? (
-    external ? (
+  const handleClick = () => {
+    if (isPlay) openVideo(videoId);
+    onClick?.();
+  };
+
+  const inner =
+    isPlay || !href ? (
+      <button
+        type={type}
+        onClick={handleClick}
+        disabled={disabled}
+        className={classes}
+      >
+        {content}
+      </button>
+    ) : external ? (
       <a href={href} className={classes}>
         {content}
       </a>
@@ -88,12 +112,7 @@ export function CtaButton({
       <Link href={href} className={classes}>
         {content}
       </Link>
-    )
-  ) : (
-    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
-      {content}
-    </button>
-  );
+    );
 
   return (
     <motion.div
