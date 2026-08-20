@@ -12,7 +12,7 @@ export function HomeHero() {
   const reduce = usePrefersReducedMotion();
 
   return (
-    <section className="relative h-[min(100svh,1000px)] min-h-[480px] w-full overflow-hidden bg-hi-primary pt-[var(--header-height)] md:min-h-[560px]">
+    <section className="relative h-[min(65svh,1000px)] min-h-[360px] w-full overflow-hidden bg-hi-primary pt-[var(--header-height)] md:h-[min(100svh,1000px)] md:min-h-[560px]">
       <motion.div
         className="absolute inset-0"
         initial={reduce ? false : { scale: 1.08 }}
@@ -51,25 +51,15 @@ export function HomeHero() {
           </motion.p>
 
           <motion.div
-            className="mt-1 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-[19px]"
+            className="mt-1 flex flex-row flex-wrap gap-3 sm:gap-[19px]"
             initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.16, ease: MOTION.ease }}
           >
-            <CtaButton
-              href="/about"
-              variant="secondary"
-              className="w-full sm:w-auto"
-              wrapperClassName="w-full sm:w-auto"
-            >
+            <CtaButton href="/about" variant="secondary">
               Learn more
             </CtaButton>
-            <CtaButton
-              variant="ghost"
-              icon="play"
-              className="w-full sm:w-auto"
-              wrapperClassName="w-full sm:w-auto"
-            >
+            <CtaButton variant="ghost" icon="play">
               Watch video
             </CtaButton>
           </motion.div>

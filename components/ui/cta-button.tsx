@@ -59,7 +59,7 @@ export function CtaButton({
 
   const content = (
     <>
-      <span className="relative z-10 min-w-0 flex-1 pl-1 pr-1 text-left text-[13px] font-medium tracking-[-0.01em] sm:flex-none sm:text-[14px]">
+      <span className="relative z-10 min-w-0 shrink-0 pl-1 pr-1 text-left text-[13px] font-medium tracking-[-0.01em] sm:text-[14px]">
         {children}
       </span>
       {showIcon ? (
