@@ -39,6 +39,7 @@ export function AboutStoryPage() {
         alt="Clinicians reviewing care together"
         title={ABOUT_PAGE.stories.title}
         body={ABOUT_PAGE.stories.body}
+        stacked
       />
       <TextColumns items={ABOUT_PAGE.storyColumns} />
       <PhotoBand
@@ -58,7 +59,7 @@ function AboutHero() {
   const reduce = usePrefersReducedMotion();
 
   return (
-    <section className="relative h-[min(62svh,560px)] min-h-[360px] w-full overflow-hidden bg-hi-navy-deep pt-[var(--header-height)] md:h-[min(72svh,720px)] md:min-h-[420px]">
+    <section className="relative h-[min(72svh,640px)] min-h-[400px] w-full overflow-hidden bg-hi-navy-deep pt-[var(--header-height)] md:h-[min(78svh,820px)] md:min-h-[480px]">
       <motion.div
         className="absolute inset-0"
         initial={reduce ? false : { scale: 1.08 }}
@@ -66,11 +67,11 @@ function AboutHero() {
         transition={{ duration: 1.1, ease: MOTION.ease }}
       >
         <Image
-          src="/images/about/hero-about.jpg"
-          alt="A clinician reviewing a tablet"
+          src="/images/gallery/hero-brand.png"
+          alt="Health Invest Africa brand in the community"
           fill
           priority
-          className="object-cover object-[center_30%] md:object-center"
+          className="object-cover object-[center_calc(50%-50px)]"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/40" />
@@ -139,53 +140,59 @@ function PhotoBand({
   alt,
   title,
   body,
+  stacked = false,
 }: {
   image: string;
   alt: string;
   title: string;
   body: string;
+  stacked?: boolean;
 }) {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = usePrefersReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-
   return (
-    <section
-      ref={ref}
-      className="relative overflow-hidden bg-[#f5f6f8] text-white"
-    >
+    <section className="relative overflow-hidden bg-[#f5f6f8] text-white">
       <Container className="relative py-0">
-        <div className="relative min-h-[300px] overflow-hidden md:min-h-[520px]">
-          <motion.div
-            className="absolute inset-0"
-            style={reduce ? undefined : { y }}
-          >
+        <div className="relative min-h-[380px] overflow-hidden md:min-h-[680px]">
+          <div className="absolute inset-0">
             <Image
               src={image}
               alt={alt}
               fill
-              className="object-cover object-center"
+              className="object-cover object-top"
               sizes="(max-width:1728px) 100vw, 1528px"
             />
             <div className="absolute inset-0 bg-black/45" />
-          </motion.div>
-
-          <div className="relative z-10 grid min-h-[300px] items-end gap-5 px-5 py-8 md:min-h-[520px] md:grid-cols-2 md:gap-16 md:px-10 md:py-14 lg:px-12 lg:pb-16">
-            <Reveal>
-              <h2 className="max-w-[14ch] font-display text-[clamp(1.75rem,5vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.03em]">
-                {title}
-              </h2>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <p className="max-w-[42ch] text-[15px] leading-relaxed text-white/90 md:ml-auto md:text-[18px]">
-                {body}
-              </p>
-            </Reveal>
           </div>
+
+          {stacked ? (
+            <div className="relative z-10 flex min-h-[380px] flex-col justify-end px-5 py-8 md:min-h-[680px] md:px-10 md:py-14 lg:px-12 lg:pb-16">
+              <Reveal>
+                <h2 className="max-w-[18ch] whitespace-pre-line font-display text-[clamp(1.75rem,5vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.03em]">
+                  {title}
+                </h2>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="mt-4 max-w-[42ch] text-[15px] leading-relaxed text-white/90 md:mt-5 md:text-[18px]">
+                  {body}
+                </p>
+              </Reveal>
+            </div>
+          ) : (
+            <div className="relative z-10 grid min-h-[380px] content-end items-start md:min-h-[680px] md:grid-cols-2">
+              <Reveal className="px-5 py-8 md:px-10 md:py-14 lg:px-12 lg:pb-16">
+                <h2 className="font-display text-[clamp(1.75rem,5vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.03em]">
+                  {title}
+                </h2>
+              </Reveal>
+              <Reveal
+                delay={0.08}
+                className="px-5 pb-8 md:px-10 md:py-14 lg:px-12 lg:pb-16"
+              >
+                <p className="text-[15px] leading-relaxed text-white/90 md:text-[18px]">
+                  {body}
+                </p>
+              </Reveal>
+            </div>
+          )}
         </div>
       </Container>
     </section>
@@ -209,30 +216,30 @@ function TextColumns({
   return (
     <section className="bg-[#f5f6f8]">
       <Container>
-        <Stagger className="grid overflow-hidden md:grid-cols-3">
+        <Stagger className="grid overflow-hidden md:grid-cols-3 md:grid-rows-[auto_1fr]">
           {items.map((item, index) => {
             const { lead, rest } = splitTitle(item.title);
 
             return (
-              <StaggerItem key={item.title} className="h-full">
+              <StaggerItem key={item.title} className="h-full md:contents">
                 <motion.article
                   whileHover={reduce ? undefined : { y: -2 }}
                   transition={{ duration: MOTION.base, ease: MOTION.ease }}
                   className={cn(
-                    "flex h-full min-h-0 flex-col justify-between gap-8 px-6 py-10 md:min-h-[420px] md:gap-24 md:px-10 md:py-16 lg:px-12 lg:py-[72px]",
+                    "flex h-full min-h-0 flex-col gap-10 px-6 py-10 md:col-span-1 md:row-span-2 md:grid md:min-h-[420px] md:grid-rows-subgrid md:gap-16 md:px-10 md:py-16 lg:gap-20 lg:px-12 lg:py-[72px]",
                     COLUMN_TONES[index % COLUMN_TONES.length]
                   )}
                 >
-                  <h3 className="max-w-[14ch] font-display text-[clamp(1.45rem,3.5vw,2.35rem)] leading-[1.12] tracking-[-0.03em] text-hi-ink">
+                  <h3 className="max-w-[14ch] font-display text-[clamp(1.45rem,3.5vw,2.35rem)] leading-[1.12] tracking-[-0.03em] text-black">
                     <span className="font-medium">{lead}</span>
                     {rest ? (
                       <>
                         {" "}
-                        <span className="font-light">{rest}</span>
+                        <span className="font-light text-black/45">{rest}</span>
                       </>
                     ) : null}
                   </h3>
-                  <p className="max-w-[36ch] text-[14px] leading-relaxed text-hi-black/80 md:text-[16px] md:leading-[1.55]">
+                  <p className="max-w-[36ch] self-start text-[14px] leading-relaxed text-black md:text-[16px] md:leading-[1.55]">
                     {item.body}
                   </p>
                 </motion.article>
@@ -288,26 +295,28 @@ function ValueColumns() {
     <section className="bg-white py-10 md:py-16 lg:py-20">
       <Container>
         <div className="bg-[#f1f1f1] px-5 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-10 lg:py-14">
-          <Stagger className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-0">
+          <Stagger className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:grid-rows-[auto_1fr] lg:gap-x-0 lg:gap-y-14">
             {ABOUT_PAGE.values.map((value, index) => (
-              <StaggerItem
-                key={value.title}
-                className={cn(
-                  "lg:px-8 xl:px-10",
-                  index > 0 && "lg:border-l lg:border-hi-black/15",
-                  index === 0 && "lg:pl-0",
-                  index === ABOUT_PAGE.values.length - 1 && "lg:pr-0"
-                )}
-              >
+              <StaggerItem key={value.title} className="h-full lg:contents">
                 <motion.div
                   whileHover={reduce ? undefined : { y: -3 }}
                   transition={{ duration: MOTION.base, ease: MOTION.ease }}
-                  className="flex h-full flex-col"
+                  className={cn(
+                    "relative flex h-full flex-col gap-8 lg:col-span-1 lg:row-span-2 lg:grid lg:grid-rows-subgrid lg:gap-14 lg:px-8 xl:px-10",
+                    index === 0 && "lg:pl-0",
+                    index === ABOUT_PAGE.values.length - 1 && "lg:pr-0"
+                  )}
                 >
-                  <h3 className="max-w-[12ch] font-display text-[clamp(1.35rem,2.4vw,2rem)] font-medium leading-[1.15] tracking-[-0.03em] text-hi-ink">
+                  {index > 0 ? (
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute top-1/2 left-0 hidden h-[78%] w-px -translate-y-1/2 bg-hi-black/15 lg:block"
+                    />
+                  ) : null}
+                  <h3 className="max-w-[12ch] font-display text-[clamp(1.35rem,2.4vw,2rem)] font-medium leading-[1.15] tracking-[-0.03em] text-black">
                     {value.title}
                   </h3>
-                  <p className="mt-4 text-[14px] leading-relaxed text-hi-black/75 md:mt-6 md:text-[16px] md:leading-[1.55]">
+                  <p className="self-start text-[14px] leading-relaxed text-black md:text-[16px] md:leading-[1.55]">
                     {value.body}
                   </p>
                 </motion.div>

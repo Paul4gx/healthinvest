@@ -33,7 +33,7 @@ export function HomeHero() {
       <Container className="relative z-10 flex h-full flex-col justify-center py-10 md:py-0">
         <div className="flex max-w-[810px] flex-col gap-5 md:gap-6">
           <motion.h1
-            className="font-display text-[clamp(1.85rem,7vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.02em] text-white"
+            className="whitespace-pre-line font-display text-[clamp(1.85rem,7vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.02em] text-white"
             initial={reduce ? false : { opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: MOTION.ease }}
@@ -59,9 +59,11 @@ export function HomeHero() {
             <CtaButton href="/about" variant="secondary">
               Learn more
             </CtaButton>
+            {/* Video CTA paused until the client supplies a video
             <CtaButton variant="ghost" icon="play">
               Watch video
             </CtaButton>
+            */}
           </motion.div>
         </div>
       </Container>

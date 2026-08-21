@@ -56,8 +56,8 @@ export function PageHero({
     if (force || lockedMobileHeightRef.current == null) {
       const tablet = window.matchMedia("(min-width: 768px)").matches;
       lockedMobileHeightRef.current = tablet
-        ? Math.min(Math.round(window.innerHeight * 0.58), 640)
-        : Math.min(Math.round(window.innerHeight * 0.6), 560);
+        ? Math.min(Math.round(window.innerHeight * 0.72), 760)
+        : Math.min(Math.round(window.innerHeight * 0.72), 680);
     }
     const h = lockedMobileHeightRef.current;
     node.style.height = `${h}px`;
@@ -96,14 +96,17 @@ export function PageHero({
     >
       <div
         ref={frameRef}
-        className="relative flex h-[60svh] min-h-[60svh] w-full flex-col justify-end overflow-hidden md:block md:h-[58svh] md:min-h-[58svh] lg:h-[60svh] lg:min-h-[60svh] lg:max-h-none"
+        className="relative flex h-[72svh] min-h-[72svh] w-full flex-col justify-end overflow-hidden md:block md:h-[70svh] md:min-h-[70svh] lg:h-[72svh] lg:min-h-[72svh] lg:max-h-none"
       >
         <Image
           src={image}
           alt={alt}
           fill
           priority
-          className={cn("object-cover object-top", imageClassName)}
+          className={cn(
+            "object-cover object-[center_calc(50%-50px)]",
+            imageClassName
+          )}
           sizes="100vw"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20 md:hidden" />

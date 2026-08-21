@@ -51,10 +51,9 @@ export const NAV_LINKS = [
 
 export const FOOTER_INFO_LINKS = [
   { href: "/about", label: "About" },
-  { href: "/our-model", label: "Our Model" },
   { href: "/our-operations", label: "Our Operations" },
-  { href: "/impact", label: "Impact" },
-  { href: "/leadership", label: "Leadership" },
+  // { href: "/impact", label: "Impact" },
+  { href: "/leadership", label: "Our Team" },
   { href: "/insights", label: "Insights" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },

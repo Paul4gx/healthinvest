@@ -8,9 +8,9 @@ import type {
 } from "@/types";
 
 export const HOME_HERO = {
-  title: "We Are Transforming Specialized Healthcare in Africa",
+  title: "We bring Specialty Care\nto the Underserved",
   subtitle:
-    "Driving access, innovation, and impact across the continent\u2019s healthcare systems.",
+    "Across Africa, many patients still travel far or go without the specialist care they need. Health Invest Africa builds sustainable care networks that bring cancer, renal and other specialist services closer to underserved communities.",
 };
 
 export const WHO_WE_ARE = {
@@ -55,9 +55,9 @@ export const OUR_MISSION_HOME = {
 };
 
 export const STATS: StatItem[] = [
-  { value: 8, label: "Medical Centers", icon: "centers" },
-  { value: 60, suffix: "+", label: "Medical Professionals", icon: "professionals" },
-  { value: 100, suffix: "+", label: "Patients Treated Per Day", icon: "patients" },
+  { value: 12, label: "Medical Centers", icon: "centers" },
+  { value: 200, suffix: "+", label: "Medical Professionals", icon: "professionals" },
+  { value: 250, suffix: "+", label: "Patients Treated Per Day", icon: "patients" },
 ];
 
 export const HOME_MISSION = {
@@ -175,7 +175,7 @@ export const ABOUT_PAGE = {
   heroTitle: "About Us",
   introEyebrow: "WHO ARE WE",
   stories: {
-    title: "The Human Stories That Define Us",
+    title: "The Human Stories\nThat Define Us",
     body: "While our strategy focuses on large-scale transformation, the heart of our story lies in the lives we impact every day.",
   },
   storyColumns: [

@@ -18,8 +18,8 @@ const TONES = [
 ] as const;
 
 const ICONS = [
+  "/icons/focus/nephrology.svg", // cancer mark (exported under this filename)
   "/icons/focus/oncology.svg",
-  "/icons/focus/nephrology.svg",
   "/icons/focus/cardiology.svg",
   "/icons/focus/diagnostics.svg",
 ] as const;

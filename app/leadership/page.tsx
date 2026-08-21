@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { LEADERSHIP, LEADERSHIP_INTRO } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Leadership Team | Health Invest Africa",
+  title: "Our Team | Health Invest Africa",
   description:
     "Meet the investment, clinical, quality and operations leaders behind Health Invest Africa’s specialist healthcare platforms.",
 };
@@ -16,9 +16,9 @@ export default function LeadershipPage() {
   return (
     <>
       <PageHero
-        title="Leadership"
-        image="/images/team/leadership.png"
-        alt="Health Invest Africa leadership team"
+        title="Our Team"
+        image="/images/gallery/hero-brand.png"
+        alt="Health Invest Africa brand in the community"
       />
       <PageBody>
       <section className="bg-white py-10 md:py-16">

@@ -104,7 +104,7 @@ export function InvestKnowledge() {
 
       <span
         ref={measureRef}
-        className="pointer-events-none absolute -left-[9999px] top-0 font-display text-[clamp(1.45rem,5.5vw,3.25rem)] font-normal leading-none whitespace-nowrap opacity-0"
+        className="pointer-events-none absolute -left-[9999px] top-0 font-display text-[clamp(1.45rem,5.5vw,3.25rem)] font-semibold leading-none whitespace-nowrap opacity-0"
         aria-hidden
       >
         {WORDS.map((w) => (
@@ -127,7 +127,7 @@ export function InvestKnowledge() {
             style={slotWidth ? { width: slotWidth } : undefined}
           >
             {rowH === 0 ? (
-              <span className="flex h-full items-center whitespace-nowrap text-white">
+              <span className="flex h-full items-center whitespace-nowrap font-semibold text-white">
                 {WORDS[0]}
               </span>
             ) : (
@@ -183,7 +183,7 @@ function TickerWord({
       className="flex items-center"
       style={{ height: rowH || undefined }}
     >
-      <motion.span className="whitespace-nowrap" style={{ color }}>
+      <motion.span className="whitespace-nowrap font-semibold" style={{ color }}>
         {word}
       </motion.span>
     </div>

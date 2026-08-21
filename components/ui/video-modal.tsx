@@ -23,8 +23,12 @@ const VideoModalContext = createContext<VideoModalContextValue | null>(null);
 
 export function useVideoModal() {
   const ctx = useContext(VideoModalContext);
+  // No-op when the provider is paused (no client video yet).
   if (!ctx) {
-    throw new Error("useVideoModal must be used within VideoModalProvider");
+    return {
+      openVideo: () => undefined,
+      closeVideo: () => undefined,
+    };
   }
   return ctx;
 }
