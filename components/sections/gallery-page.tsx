@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/layout/container";
 import { PageBody } from "@/components/layout/page-body";
-import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
+import { Reveal } from "@/components/ui/reveal";
 import { CtaButton } from "@/components/ui/cta-button";
 import { GALLERY_IMAGES } from "@/content/site";
 import { MOTION } from "@/lib/constants";
@@ -40,7 +40,7 @@ export default function GalleryPageClient() {
     <>
       <PageHero
         title="Gallery"
-        image="/images/gallery/hero-brand.png"
+        image="/images/gallery/hero-brand.webp"
         alt="Health Invest Africa brand in the community"
       />
 
@@ -89,9 +89,18 @@ export default function GalleryPageClient() {
               transition={{ duration: MOTION.medium, ease: MOTION.ease }}
               className="mt-10"
             >
-              <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-                {shown.map((img) => (
-                  <StaggerItem key={img.src}>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+                {shown.map((img, index) => (
+                  <motion.div
+                    key={img.src}
+                    initial={reduce ? false : { opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.35,
+                      delay: reduce ? 0 : Math.min(index * 0.05, 0.3),
+                      ease: MOTION.ease,
+                    }}
+                  >
                     <div className="group relative aspect-square overflow-hidden rounded-[20px]">
                       <Image
                         src={img.src}
@@ -103,9 +112,9 @@ export default function GalleryPageClient() {
                       />
                       <div className="absolute inset-0 bg-hi-navy-deep/0 transition group-hover:bg-hi-navy-deep/20" />
                     </div>
-                  </StaggerItem>
+                  </motion.div>
                 ))}
-              </Stagger>
+              </div>
             </motion.div>
           </AnimatePresence>
 

@@ -17,36 +17,28 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 const PHOTOS = [
   {
-    src: "/images/home/who-1.png",
+    src: "/images/home/slider-1.webp",
     alt: "A clinician holding a tablet",
   },
   {
-    src: "/images/home/who-2.jpg",
+    src: "/images/home/slider-2.webp",
     alt: "A doctor reviewing results with a patient",
   },
   {
-    src: "/images/home/strip-1.jpg",
+    src: "/images/home/slider-3.webp",
     alt: "A clinician with a patient in a care setting",
   },
   {
-    src: "/images/home/strip-2.jpg",
+    src: "/images/home/slider-4.webp",
     alt: "Hands-on clinical care",
   },
   {
-    src: "/images/home/strip-3.jpg",
+    src: "/images/home/slider-5.webp",
     alt: "A specialist healthcare professional at work",
   },
   {
-    src: "/images/about/human-stories.jpg",
+    src: "/images/home/slider-6.webp",
     alt: "Clinicians reviewing care together",
-  },
-  {
-    src: "/images/about/redefining-africa.jpg",
-    alt: "A clinician speaking with a patient",
-  },
-  {
-    src: "/images/about/we-invest-in-life.jpg",
-    alt: "A surgeon preparing for care",
   },
 ] as const;
 

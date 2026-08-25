@@ -74,7 +74,7 @@ export const PLATFORMS: PlatformCard[] = [
     summary:
       "Developing and operating radiotherapy and cancer-care services in partnership with leading healthcare institutions.",
     cta: "Visit OncoClinics Africa",
-    image: "/images/operations/oncoclinics.png",
+    image: "/images/operations/oncoclinic.webp",
     logo: "/logos/oncoclinics.png",
     metric: "2,500+ cancer patients supported to date",
   },
@@ -86,7 +86,7 @@ export const PLATFORMS: PlatformCard[] = [
     summary:
       "Operating reliable dialysis and renal-care centres designed around access, clinical quality and sustainable partnerships.",
     cta: "Visit Rencare Africa",
-    image: "/images/operations/rencare-bay.png",
+    image: "/images/operations/rencare.webp",
     logo: "/logos/rencare.svg",
     metric: "25,000+ dialysis sessions delivered",
   },
@@ -98,7 +98,7 @@ export const PLATFORMS: PlatformCard[] = [
     summary:
       "A leading tertiary hospital in Port Harcourt delivering oncology, cardiovascular, renal, surgical and diagnostic care under one roof.",
     cta: "Visit POCCH",
-    image: "/images/operations/pocch-exterior.png",
+    image: "/images/operations/Dr. Peter Odili Cancer and Cadiovascular Hospital.webp",
     logo: "/logos/pocch.svg",
   },
 ];
@@ -512,23 +512,22 @@ export const CONTACT_PATIENT_ROUTES = [
 ];
 
 export const GALLERY_IMAGES = [
-  { src: "/images/operations/oncoclinics.png", alt: "OncoClinics radiotherapy treatment room", brand: "oncoclinics" as const },
-  { src: "/images/gallery/onco-1.jpg", alt: "OncoClinics clinical team", brand: "oncoclinics" as const },
-  { src: "/images/gallery/onco-2.jpg", alt: "Radiotherapy suite", brand: "oncoclinics" as const },
-  { src: "/images/gallery/onco-3.jpg", alt: "Patient consultation", brand: "oncoclinics" as const },
-  { src: "/images/gallery/onco-4.jpg", alt: "Medical imaging", brand: "oncoclinics" as const },
-  { src: "/images/gallery/onco-5.jpg", alt: "Clinic exterior", brand: "oncoclinics" as const },
-  { src: "/images/gallery/onco-6.jpg", alt: "Care team", brand: "oncoclinics" as const },
-  { src: "/images/operations/rencare.png", alt: "Rencare dialysis treatment room", brand: "rencare" as const },
-  { src: "/images/gallery/ren-1.jpg", alt: "Dialysis chairs", brand: "rencare" as const },
-  { src: "/images/gallery/ren-2.jpg", alt: "Nephrology nurse", brand: "rencare" as const },
-  { src: "/images/gallery/ren-3.jpg", alt: "Rencare facility", brand: "rencare" as const },
-  { src: "/images/gallery/ren-4.jpg", alt: "Patient care", brand: "rencare" as const },
-  { src: "/images/gallery/ren-5.jpg", alt: "Medical equipment", brand: "rencare" as const },
-  { src: "/images/gallery/ren-6.jpg", alt: "Clinic corridor", brand: "rencare" as const },
-  { src: "/images/operations/pocch.png", alt: "Dr. Peter Odili Cancer Cardiovascular Diagnostics and Treatment Centre", brand: "pocch" as const },
-  { src: "/images/home/mission.jpg", alt: "POCCH specialist reviewing a patient record", brand: "pocch" as const },
-  { src: "/images/home/strip-3.jpg", alt: "POCCH consultation between clinician and patient", brand: "pocch" as const },
+  { src: "/images/gallery/oncoclinic-1.webp", alt: "OncoClinics radiotherapy treatment room", brand: "oncoclinics" as const },
+  { src: "/images/gallery/oncoclinic-2.webp", alt: "OncoClinics clinical team", brand: "oncoclinics" as const },
+  { src: "/images/gallery/oncoclinic-3.webp", alt: "Radiotherapy suite", brand: "oncoclinics" as const },
+  { src: "/images/gallery/oncoclinic-4.webp", alt: "Patient consultation", brand: "oncoclinics" as const },
+  { src: "/images/gallery/oncoclinic-5.webp", alt: "Medical imaging", brand: "oncoclinics" as const },
+  { src: "/images/gallery/oncoclinic-6.webp", alt: "Clinic exterior", brand: "oncoclinics" as const },
+  { src: "/images/gallery/rencare-1.webp", alt: "Rencare dialysis treatment room", brand: "rencare" as const },
+  { src: "/images/gallery/rencare-2.webp", alt: "Dialysis chairs", brand: "rencare" as const },
+  { src: "/images/gallery/rencare-3.webp", alt: "Nephrology nurse", brand: "rencare" as const },
+  { src: "/images/gallery/rencare-4.webp", alt: "Rencare facility", brand: "rencare" as const },
+  { src: "/images/gallery/rencare-5.webp", alt: "Patient care", brand: "rencare" as const },
+  { src: "/images/gallery/rencare-7.webp", alt: "Medical equipment", brand: "rencare" as const },
+  { src: "/images/gallery/rencare-8.webp", alt: "Clinic corridor", brand: "rencare" as const },
+  { src: "/images/gallery/POCCH-1.webp", alt: "Dr. Peter Odili Cancer and Cardiovascular Hospital", brand: "pocch" as const },
+  { src: "/images/gallery/POCCH-2.webp", alt: "POCCH specialist reviewing a patient record", brand: "pocch" as const },
+  { src: "/images/gallery/POCCH-3.webp", alt: "POCCH consultation between clinician and patient", brand: "pocch" as const },
 ];
 
 export const FOOTER_STATEMENT =

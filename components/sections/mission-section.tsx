@@ -13,7 +13,7 @@ export function MissionSection() {
       <div className="relative min-h-[640px] overflow-hidden rounded-none md:min-h-[820px] lg:min-h-[954px]">
         <div className="absolute inset-0 rounded-none">
           <Image
-            src="/images/home/who-1.png"
+            src="/images/home/our_missson.webp"
             alt="A healthcare professional"
             fill
             loading="lazy"

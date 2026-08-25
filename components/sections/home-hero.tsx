@@ -20,7 +20,7 @@ export function HomeHero() {
         transition={{ duration: 1.1, ease: MOTION.ease }}
       >
         <Image
-          src="/images/home/figma-hero.jpg"
+          src="/images/home/hero.webp"
           alt="A clinician consulting with a patient"
           fill
           priority

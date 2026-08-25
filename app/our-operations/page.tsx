@@ -28,7 +28,7 @@ export default function OurOperationsPage() {
               overview={ONCOCLINICS.overview}
               locations={ONCOCLINICS.locations}
               href="/our-operations/oncoclinics-africa"
-              image="/images/operations/oncoclinics.png"
+              image="/images/operations/oncoclinic.webp"
               imageAlt="OncoClinics radiotherapy treatment room"
               logo="/logos/oncoclinics.png"
               logoAlt="OncoClinics"
@@ -40,7 +40,7 @@ export default function OurOperationsPage() {
               overview={RENCARE.overview}
               locations={RENCARE.locations}
               href="/our-operations/rencare-africa"
-              image="/images/operations/rencare-bay.png"
+              image="/images/operations/rencare.webp"
               imageAlt="Rencare dialysis treatment bay"
               logo="/logos/rencare.svg"
               logoAlt="Rencare"
@@ -51,7 +51,7 @@ export default function OurOperationsPage() {
               overview={`${POCCH.overview} ${POCCH.specialties}`}
               locations={POCCH.locations}
               href="/our-operations/pocch"
-              image="/images/operations/pocch-exterior.png"
+              image="/images/operations/Dr. Peter Odili Cancer and Cadiovascular Hospital.webp"
               imageAlt="Dr. Peter Odili Cancer and Cardiovascular Hospital exterior"
               logo="/logos/pocch.svg"
               logoAlt="Dr. Peter Odili Cancer and Cardiovascular Hospital"

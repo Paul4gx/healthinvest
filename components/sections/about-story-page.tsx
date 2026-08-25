@@ -13,17 +13,17 @@ import { cn } from "@/lib/utils";
 
 const COLLAGE = [
   {
-    src: "/images/home/strip-1.jpg",
+    src: "/images/about/about-section-1.webp",
     alt: "A clinician with a patient",
     className: "col-span-2 aspect-[16/10]",
   },
   {
-    src: "/images/home/strip-2.jpg",
+    src: "/images/about/about-section-2.webp",
     alt: "Hands-on clinical care",
     className: "aspect-[4/3]",
   },
   {
-    src: "/images/home/who-1.png",
+    src: "/images/about/about-section-3.webp",
     alt: "A specialist healthcare professional",
     className: "aspect-[4/3]",
   },
@@ -35,7 +35,7 @@ export function AboutStoryPage() {
       <AboutHero />
       <IntroSection />
       <PhotoBand
-        image="/images/about/human-stories.jpg"
+        image="/images/about/human_stories.webp"
         alt="Clinicians reviewing care together"
         title={ABOUT_PAGE.stories.title}
         body={ABOUT_PAGE.stories.body}
@@ -67,7 +67,7 @@ function AboutHero() {
         transition={{ duration: 1.1, ease: MOTION.ease }}
       >
         <Image
-          src="/images/gallery/hero-brand.png"
+          src="/images/about/hero-brand.webp"
           alt="Health Invest Africa brand in the community"
           fill
           priority

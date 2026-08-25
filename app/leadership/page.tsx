@@ -17,7 +17,7 @@ export default function LeadershipPage() {
     <>
       <PageHero
         title="Our Team"
-        image="/images/gallery/hero-brand.png"
+        image="/images/team/hero-brand.webp"
         alt="Health Invest Africa brand in the community"
       />
       <PageBody>
