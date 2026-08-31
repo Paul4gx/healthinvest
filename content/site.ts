@@ -468,7 +468,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Project STRAWN: Strengthening Nigeria\u2019s Radiotherapy Workforce for Better Cancer Care",
     excerpt:
       "Infrastructure alone does not deliver cancer care. Project STRAWN strengthens Nigeria\u2019s radiotherapy workforce so investments in equipment translate into safe, effective treatment for patients.",
-    image: "/images/gallery/oncoclinic-2.webp",
+    image: "/images/blog/project-strawn.webp",
     date: "2025-09-18",
     sections: [
       {
@@ -603,7 +603,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Nigeria\u2019s Silent Health Crisis",
     excerpt:
       "Non communicable diseases are surging across Nigeria. Here is what the data shows, and how Health Invest Africa is strengthening systems to close the gap.",
-    image: "/images/blog/issue-1.jpg",
+    image: "/images/blog/health-crisis.webp",
     date: "2026-08-12",
     sections: [
       {
@@ -623,6 +623,12 @@ export const BLOG_POSTS: BlogPost[] = [
         text: "Nigeria faces a double disease burden: communicable illnesses drive youth mortality, while non communicable diseases (NCDs) surge among the elderly. Here are some facts:",
       },
       {
+        type: "image",
+        src: "/images/blog/nigeria-double-burden-of-disease.webp",
+        alt: "Nigeria\u2019s double burden of disease: communicable illnesses and non communicable diseases",
+        caption: "Nigeria\u2019s double burden of disease",
+      },
+      {
         type: "list",
         items: [
           "Life Expectancy: Stands at just over 54 years according to World Bank data, ranking among the lowest globally.",
@@ -633,6 +639,12 @@ export const BLOG_POSTS: BlogPost[] = [
           "Financial Strain: 70% of healthcare spending is out-of-pocket, driving catastrophic health spending that forces households into poverty.",
           "Patient Impact: Every statistic translates to citizens facing long travel, high costs, and dangerous delays before treatment begins.",
         ],
+      },
+      {
+        type: "image",
+        src: "/images/blog/the-numbers-tell-a-story.webp",
+        alt: "Key statistics on Nigeria\u2019s non communicable disease burden",
+        caption: "The numbers tell a story",
       },
       {
         type: "heading",
@@ -649,6 +661,12 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "paragraph",
         text: "In terms of systems strengthening, Health Invest Africa (HIA) is built specifically to respond to this key lever of the NCD crisis. HIA strengthens and activates existing healthcare systems and assets through its management and specialist healthcare platforms.",
+      },
+      {
+        type: "image",
+        src: "/images/blog/one-healthcare-system-three-specialist-platforms.webp",
+        alt: "One healthcare system with three specialist platforms: OncoClinics, Rencare and POCCH",
+        caption: "One healthcare system, three specialist platforms",
       },
       {
         type: "paragraph",
@@ -831,62 +849,108 @@ export const CONTACT_PATIENT_ROUTES = [
   },
 ];
 
+function gallerySrc(...segments: string[]) {
+  return encodeURI(`/images/gallery/${segments.join("/")}`);
+}
+
+function numberedImages(
+  folderSegments: string[],
+  count: number,
+  alt: string
+) {
+  return Array.from({ length: count }, (_, index) => {
+    const n = index + 1;
+    return {
+      src: gallerySrc(...folderSegments, `${n}.webp`),
+      alt: `${alt}, photo ${n}`,
+    };
+  });
+}
+
 export const GALLERY_EVENTS = [
   {
-    id: "oncoclinics-unth-enugu",
-    brand: "oncoclinics" as const,
-    title: "UNTH Enugu Radiotherapy Commissioning",
-    year: "2023",
-    location: "Enugu",
-    summary: "Launch of radiotherapy services at University of Nigeria Teaching Hospital.",
-    images: [
-      { src: "/images/gallery/oncoclinic-1.webp", alt: "OncoClinics radiotherapy treatment room" },
-      { src: "/images/gallery/oncoclinic-2.webp", alt: "OncoClinics clinical team" },
-      { src: "/images/gallery/oncoclinic-3.webp", alt: "Radiotherapy suite" },
-      { src: "/images/gallery/oncoclinic-4.webp", alt: "Patient consultation" },
-      { src: "/images/gallery/oncoclinic-5.webp", alt: "Medical imaging" },
-      { src: "/images/gallery/oncoclinic-6.webp", alt: "Clinic exterior" },
-    ],
-  },
-  {
-    id: "rencare-network-launch",
+    id: "rencare-ibadan-church-outreach-2026",
     brand: "rencare" as const,
-    title: "Dialysis Network Expansion",
-    year: "2023",
-    location: "Multi-site",
-    summary: "Opening and scaling renal care centres across Nigeria.",
-    images: [
-      { src: "/images/gallery/rencare-1.webp", alt: "Rencare dialysis treatment room" },
-      { src: "/images/gallery/rencare-2.webp", alt: "Dialysis chairs" },
-      { src: "/images/gallery/rencare-3.webp", alt: "Nephrology nurse" },
-      { src: "/images/gallery/rencare-4.webp", alt: "Rencare facility" },
-      { src: "/images/gallery/rencare-5.webp", alt: "Patient care" },
-      { src: "/images/gallery/rencare-7.webp", alt: "Medical equipment" },
-    ],
+    title: "Ibadan Church Outreach",
+    year: "2026",
+    location: "Ibadan",
+    summary:
+      "Community kidney health outreach with church partners in Ibadan.",
+    images: numberedImages(
+      ["Rencare", "2026", "Ibadan Church Outreach"],
+      4,
+      "Rencare Ibadan church outreach"
+    ),
   },
   {
-    id: "rencare-lagos-opening",
+    id: "rencare-nurses-week-2026",
     brand: "rencare" as const,
-    title: "Lagos Centre Opening",
-    year: "2024",
-    location: "Lagos",
-    summary: "Community event marking expanded dialysis access in Lagos.",
-    images: [
-      { src: "/images/gallery/rencare-8.webp", alt: "Clinic corridor" },
-    ],
+    title: "Nurses Week",
+    year: "2026",
+    location: "Rencare Network",
+    summary:
+      "Celebrating the nurses who deliver dialysis care across the Rencare network.",
+    images: numberedImages(
+      ["Rencare", "2026", "Nurses Week"],
+      7,
+      "Rencare Nurses Week"
+    ),
   },
   {
-    id: "pocch-facility-tour",
+    id: "rencare-wkd-2026-bodija",
+    brand: "rencare" as const,
+    title: "World Kidney Day",
+    year: "2026",
+    location: "Bodija, Ibadan",
+    summary:
+      "Community outreach and kidney health awareness activities in Bodija, Ibadan for World Kidney Day 2026.",
+    images: numberedImages(
+      ["Rencare", "2026", "World Kidney Day - WKD 2026", "Ibadan Bodija Ibadan"],
+      8,
+      "Rencare World Kidney Day in Bodija, Ibadan"
+    ),
+  },
+  {
+    id: "rencare-wkd-2026-rccg",
+    brand: "rencare" as const,
+    title: "World Kidney Day",
+    year: "2026",
+    location: "RCCG, Ibadan",
+    summary:
+      "Rencare World Kidney Day engagement with the RCCG community in Ibadan.",
+    images: numberedImages(
+      ["Rencare", "2026", "World Kidney Day - WKD 2026", "Ibadan RCCG"],
+      8,
+      "Rencare World Kidney Day at RCCG Ibadan"
+    ),
+  },
+  {
+    id: "rencare-wkd-2026-magodo",
+    brand: "rencare" as const,
+    title: "World Kidney Day",
+    year: "2026",
+    location: "Magodo, Lagos",
+    summary:
+      "Partnership event in Magodo marking World Kidney Day 2026 with Rencare.",
+    images: numberedImages(
+      ["Rencare", "2026", "World Kidney Day - WKD 2026", "Magodo Partnership Event"],
+      8,
+      "Rencare World Kidney Day partnership event in Magodo"
+    ),
+  },
+  {
+    id: "pocch-world-cancer-day-2026",
     brand: "pocch" as const,
-    title: "POCCH Facility Tour",
-    year: "2024",
+    title: "World Cancer Day March",
+    year: "2026",
     location: "Port Harcourt",
-    summary: "Specialist hospital services under one roof.",
-    images: [
-      { src: "/images/gallery/POCCH-1.webp", alt: "Dr. Peter Odili Cancer and Cardiovascular Hospital" },
-      { src: "/images/gallery/POCCH-2.webp", alt: "POCCH specialist reviewing a patient record" },
-      { src: "/images/gallery/POCCH-3.webp", alt: "POCCH consultation between clinician and patient" },
-    ],
+    summary:
+      "POCCH Cancer March marking World Cancer Day, bringing awareness and solidarity across Port Harcourt.",
+    images: numberedImages(
+      ["POCCH", "2026", "POCCH Cancer MARCH - World Cancer Day"],
+      15,
+      "POCCH World Cancer Day march"
+    ),
   },
 ];
 

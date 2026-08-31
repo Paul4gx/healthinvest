@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { BlogPost, BlogPostSection } from "@/types";
 
 function renderSection(section: BlogPostSection, index: number) {
@@ -27,6 +28,27 @@ function renderSection(section: BlogPostSection, index: number) {
             <li key={item.slice(0, 48)}>{item}</li>
           ))}
         </ul>
+      );
+    case "image":
+      return (
+        <figure key={index} className="my-2">
+          <div className="overflow-hidden rounded-[20px] bg-[#f5f6f8]">
+            <Image
+              src={section.src}
+              alt={section.alt}
+              width={1400}
+              height={900}
+              loading="lazy"
+              className="h-auto w-full"
+              sizes="(max-width:896px) 100vw, 896px"
+            />
+          </div>
+          {section.caption ? (
+            <figcaption className="mt-3 text-sm leading-relaxed text-hi-black/60">
+              {section.caption}
+            </figcaption>
+          ) : null}
+        </figure>
       );
     case "tags":
       return (

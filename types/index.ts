@@ -13,6 +13,7 @@ export type BlogPostSection =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
   | { type: "list"; items: string[] }
+  | { type: "image"; src: string; alt: string; caption?: string }
   | { type: "references"; items: BlogReference[] }
   | { type: "tags"; items: string[] };
 

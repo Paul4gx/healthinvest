@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function InsightsPage() {
+  const posts = BLOG_POSTS;
   return (
     <section className="bg-white pb-12 pt-24 md:pb-16 md:pt-28">
       <Container>
@@ -25,7 +26,7 @@ export default function InsightsPage() {
           </p>
         </Reveal>
         <Stagger className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {BLOG_POSTS.map((post) => (
+          {posts.map((post) => (
             <StaggerItem key={post.slug}>
               <BlogCard post={post} />
             </StaggerItem>

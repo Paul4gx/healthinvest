@@ -7,137 +7,106 @@ import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/layout/container";
 import { PageBody } from "@/components/layout/page-body";
 import { Reveal } from "@/components/ui/reveal";
+import { CtaButton } from "@/components/ui/cta-button";
 import { GALLERY_EVENTS } from "@/content/site";
 import { MOTION } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import type { GalleryBrand, GalleryEvent, GalleryEventImage } from "@/types";
 
+const INITIAL_VISIBLE = 6;
+
 const GALLERY_TABS = [
-  ["oncoclinics", "OncoClinics"],
   ["rencare", "Rencare"],
   ["pocch", "POCCH"],
+  ["oncoclinics", "OncoClinics"],
 ] as const satisfies readonly (readonly [GalleryBrand, string])[];
+
+const HERO_IMAGE =
+  GALLERY_EVENTS.find((event) => event.brand === "rencare")?.images[0]?.src ??
+  "/images/gallery/rencare-1.webp";
 
 function eventsForBrand(brand: GalleryBrand) {
   return GALLERY_EVENTS.filter(
     (event) => event.brand === brand && event.images.length > 0
-  ).sort((a, b) => Number(b.year) - Number(a.year));
-}
-
-function BentoCell({
-  image,
-  className,
-  priority = false,
-}: {
-  image: GalleryEventImage;
-  className?: string;
-  priority?: boolean;
-}) {
-  return (
-    <div
-      className={cn(
-        "group relative min-h-[140px] overflow-hidden rounded-[16px] bg-hi-surface sm:min-h-[160px] sm:rounded-[20px]",
-        className
-      )}
-    >
-      <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        priority={priority}
-        loading={priority ? undefined : "lazy"}
-        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        sizes="(max-width:768px) 50vw, 25vw"
-      />
-      <div className="absolute inset-0 bg-hi-navy-deep/0 transition group-hover:bg-hi-navy-deep/15" />
-    </div>
   );
 }
 
-function EventBentoGrid({
+function EventPhoto({
+  image,
+  priority = false,
+}: {
+  image: GalleryEventImage;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="group mb-3 break-inside-avoid sm:mb-4">
+      <div className="overflow-hidden rounded-[16px] bg-hi-surface sm:rounded-[20px]">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={1000}
+          height={1250}
+          priority={priority}
+          loading={priority ? undefined : "lazy"}
+          className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.02]"
+          sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
+    </figure>
+  );
+}
+
+function EventPhotoGrid({
   images,
   priorityFirst = false,
 }: {
   images: GalleryEventImage[];
   priorityFirst?: boolean;
 }) {
-  if (images.length === 6) {
-    return (
-      <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4 md:grid-rows-[minmax(160px,1fr)_minmax(160px,1fr)_minmax(120px,0.75fr)]">
-        <BentoCell
-          image={images[0]}
-          priority={priorityFirst}
-          className="col-span-2 row-span-2 min-h-[220px] md:min-h-[340px]"
-        />
-        <BentoCell image={images[1]} className="min-h-[120px]" />
-        <BentoCell image={images[2]} className="min-h-[120px]" />
-        <BentoCell image={images[3]} className="min-h-[120px]" />
-        <BentoCell image={images[4]} className="min-h-[120px]" />
-        <BentoCell
-          image={images[5]}
-          className="col-span-2 min-h-[140px] md:col-span-4"
-        />
-      </div>
-    );
-  }
-
-  if (images.length === 5) {
-    return (
-      <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4 md:grid-rows-2">
-        <BentoCell
-          image={images[0]}
-          priority={priorityFirst}
-          className="col-span-2 row-span-2 min-h-[220px] md:min-h-[320px]"
-        />
-        {images.slice(1).map((image) => (
-          <BentoCell key={image.src} image={image} />
-        ))}
-      </div>
-    );
-  }
-
-  if (images.length === 4) {
-    return (
-      <div className="grid grid-cols-2 gap-2 sm:gap-3">
-        {images.map((image, index) => (
-          <BentoCell
-            key={image.src}
-            image={image}
-            priority={priorityFirst && index === 0}
-            className="min-h-[160px] sm:min-h-[200px]"
-          />
-        ))}
-      </div>
-    );
-  }
-
-  if (images.length === 3) {
-    return (
-      <div className="grid gap-2 sm:grid-cols-3 sm:gap-3">
-        <BentoCell
-          image={images[0]}
-          priority={priorityFirst}
-          className="min-h-[200px] sm:col-span-2 sm:min-h-[280px]"
-        />
-        <div className="grid grid-cols-2 gap-2 sm:col-span-1 sm:grid-cols-1 sm:gap-3">
-          <BentoCell image={images[1]} className="min-h-[140px]" />
-          <BentoCell image={images[2]} className="min-h-[140px]" />
-        </div>
-      </div>
-    );
-  }
+  const [visible, setVisible] = useState(
+    Math.min(INITIAL_VISIBLE, images.length)
+  );
+  const reduce = usePrefersReducedMotion();
+  const shown = images.slice(0, visible);
+  const canShowMore = visible < images.length;
 
   return (
-    <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3">
-      {images.map((image, index) => (
-        <BentoCell
-          key={image.src}
-          image={image}
-          priority={priorityFirst && index === 0}
-          className="min-h-[160px]"
-        />
-      ))}
+    <div>
+      <div className="columns-1 gap-3 sm:columns-2 sm:gap-4 lg:columns-3">
+        {shown.map((image, index) => (
+          <motion.div
+            key={image.src}
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.35,
+              delay: reduce ? 0 : Math.min(index * 0.04, 0.24),
+              ease: MOTION.ease,
+            }}
+          >
+            <EventPhoto image={image} priority={priorityFirst && index === 0} />
+          </motion.div>
+        ))}
+      </div>
+
+      {canShowMore ? (
+        <div className="mt-6 flex justify-center lg:justify-start">
+          <CtaButton
+            type="button"
+            icon="down"
+            variant="outline"
+            onClick={() =>
+              setVisible((current) =>
+                Math.min(current + INITIAL_VISIBLE, images.length)
+              )
+            }
+          >
+            Show more photos
+          </CtaButton>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -152,6 +121,9 @@ function GalleryEventSection({
   priorityFirst?: boolean;
 }) {
   const reduce = usePrefersReducedMotion();
+  const jumpLabel = event.location
+    ? `${event.title} · ${event.location}`
+    : event.title;
 
   return (
     <motion.article
@@ -170,7 +142,7 @@ function GalleryEventSection({
       )}
     >
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-12">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12">
           <div className="lg:sticky lg:top-28">
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-pill bg-hi-primary px-4 py-1.5 text-sm font-medium text-white">
@@ -194,9 +166,10 @@ function GalleryEventSection({
               {event.images.length}{" "}
               {event.images.length === 1 ? "photo" : "photos"}
             </p>
+            <span className="sr-only">{jumpLabel}</span>
           </div>
 
-          <EventBentoGrid images={event.images} priorityFirst={priorityFirst} />
+          <EventPhotoGrid images={event.images} priorityFirst={priorityFirst} />
         </div>
       </Container>
     </motion.article>
@@ -204,7 +177,7 @@ function GalleryEventSection({
 }
 
 export default function GalleryPageClient() {
-  const [brand, setBrand] = useState<GalleryBrand>("oncoclinics");
+  const [brand, setBrand] = useState<GalleryBrand>("rencare");
   const [activeEventId, setActiveEventId] = useState<string | null>(null);
   const reduce = usePrefersReducedMotion();
 
@@ -222,8 +195,8 @@ export default function GalleryPageClient() {
     <>
       <PageHero
         title="Gallery"
-        image="/images/gallery/rencare-1.webp"
-        alt="Rencare dialysis treatment room"
+        image={HERO_IMAGE}
+        alt="Rencare community event"
       />
 
       <PageBody>
@@ -234,8 +207,8 @@ export default function GalleryPageClient() {
                 Past events across our platforms
               </p>
               <p className="mx-auto mt-4 max-w-2xl text-center text-[15px] leading-relaxed text-hi-black/70 md:text-base">
-                Browse moments from commissioning ceremonies, centre openings
-                and community events across OncoClinics, Rencare and POCCH.
+                Browse moments from community outreach, awareness days and
+                partnership events across Rencare, POCCH and OncoClinics.
               </p>
             </Reveal>
 
@@ -295,7 +268,9 @@ export default function GalleryPageClient() {
                             : "border-hi-black/10 text-hi-black/70 hover:border-hi-primary/30 hover:text-hi-primary"
                         )}
                       >
-                        {event.year} · {event.title}
+                        {event.location
+                          ? `${event.title} · ${event.location}`
+                          : `${event.year} · ${event.title}`}
                       </button>
                     ))}
                   </div>

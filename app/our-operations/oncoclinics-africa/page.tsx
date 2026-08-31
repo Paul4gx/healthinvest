@@ -60,8 +60,8 @@ export default function OncoClinicsPage() {
             <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
               <div className="relative min-h-[200px] md:min-h-[260px]">
                 <Image
-                  src="/images/gallery/oncoclinic-2.webp"
-                  alt="OncoClinics clinical team at the Project STRAWN launch"
+                  src="/images/blog/project-strawn.webp"
+                  alt="Project STRAWN launch ceremony"
                   fill
                   loading="lazy"
                   className="object-cover"

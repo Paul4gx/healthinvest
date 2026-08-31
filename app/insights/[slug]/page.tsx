@@ -45,8 +45,9 @@ export default async function InsightArticlePage({ params }: Props) {
         </Reveal>
         <Reveal delay={0.08} className="relative mt-10 aspect-[16/9] overflow-hidden rounded-[24px]">
           <Image
+            key={post.image}
             src={post.image}
-            alt=""
+            alt={post.title}
             fill
             priority
             className="object-cover"

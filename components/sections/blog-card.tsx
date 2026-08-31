@@ -26,8 +26,9 @@ export function BlogCard({ post, className }: BlogCardProps) {
       <Link href={`/insights/${post.slug}`} className="block focus-visible:outline-none">
         <div className="relative aspect-[488/273] overflow-hidden">
           <Image
+            key={post.image}
             src={post.image}
-            alt=""
+            alt={post.title}
             fill
             loading="lazy"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
