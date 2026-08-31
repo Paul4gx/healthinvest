@@ -17,7 +17,7 @@ export function Quarterly() {
                 The Quarterly
               </h2>
               <p className="font-display text-[clamp(1.5rem,3vw,2rem)] font-light text-[#535353]">
-                By Health Invest
+                By Health Invest Africa
               </p>
             </div>
           </Reveal>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/layout/container";
 import { PageBody } from "@/components/layout/page-body";
@@ -7,16 +8,16 @@ import { Reveal } from "@/components/ui/reveal";
 import { ONCOCLINICS } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "OncoClinics Africa | Cancer Care Operations",
+  title: "OncoClinics | Cancer Care Operations",
   description:
-    "OncoClinics Africa develops and operates oncology services through partnerships that expand access to reliable cancer care.",
+    "OncoClinics develops and operates oncology services through partnerships that expand access to reliable cancer care.",
 };
 
 export default function OncoClinicsPage() {
   return (
     <>
       <PageHero
-        title="OncoClinics Africa"
+        title="OncoClinics"
         image="/images/operations/oncoclinics.png"
         alt="OncoClinics radiotherapy treatment room"
       />
@@ -33,7 +34,7 @@ export default function OncoClinicsPage() {
             <p className="mt-4 font-medium text-hi-primary">{ONCOCLINICS.metric}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <CtaButton href="https://oncoclinicsafrica.com/" variant="primary">
-                Visit OncoClinics Africa
+                Visit OncoClinics
               </CtaButton>
               <CtaButton href="/contact?intent=partnership" variant="outline">
                 Discuss an Oncology Partnership
@@ -55,13 +56,37 @@ export default function OncoClinicsPage() {
             </ul>
           </Reveal>
 
-          <Reveal delay={0.12} className="mt-12 rounded-[20px] bg-hi-surface p-8">
-            <h3 className="text-xl text-hi-ink">Strengthening the people behind cancer care</h3>
-            <p className="mt-4 max-w-3xl text-hi-black/80">
-              OncoClinics invests in clinical training, technical capability and recurring
-              professional development, including workforce initiatives such as Project
-              STRAWN.
-            </p>
+          <Reveal delay={0.12} className="mt-12 overflow-hidden rounded-[20px] border border-hi-black/10 bg-white">
+            <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+              <div className="relative min-h-[200px] md:min-h-[260px]">
+                <Image
+                  src="/images/gallery/oncoclinic-2.webp"
+                  alt="OncoClinics clinical team at the Project STRAWN launch"
+                  fill
+                  loading="lazy"
+                  className="object-cover"
+                  sizes="(max-width:768px) 100vw, 40vw"
+                />
+              </div>
+              <div className="flex flex-col justify-center p-6 md:p-8">
+                <p className="text-sm font-medium uppercase tracking-[0.08em] text-hi-accent">
+                  Insights
+                </p>
+                <h3 className="mt-2 font-display text-2xl tracking-[-0.02em] text-hi-ink">
+                  Project STRAWN: Strengthening Nigeria&apos;s Radiotherapy Workforce
+                </h3>
+                <p className="mt-3 max-w-xl text-base leading-relaxed text-hi-black/80">
+                  Read how Project STRAWN is strengthening Nigeria&apos;s radiotherapy
+                  workforce so investments in cancer infrastructure translate into safe,
+                  effective care for patients.
+                </p>
+                <div className="mt-6">
+                  <CtaButton href="/insights/project-strawn-launch-ceremony" variant="primary">
+                    Read the article
+                  </CtaButton>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </Container>
       </section>

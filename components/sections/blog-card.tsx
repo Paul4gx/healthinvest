@@ -35,8 +35,8 @@ export function BlogCard({ post, className }: BlogCardProps) {
           />
           <div className="absolute inset-0 origin-left scale-x-0 bg-hi-primary/20 transition-transform duration-500 group-hover:scale-x-100" />
         </div>
-        <div className="mt-[22px] flex flex-col gap-4">
-          <p className="font-display text-lg font-light tracking-[0.02em] text-hi-black md:text-[29.5px] md:leading-[1.1]">
+        <div className="mt-[22px] flex flex-col gap-2.5 md:gap-3">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-hi-accent md:text-sm">
             {post.category}
           </p>
           <h3 className="font-display text-xl font-normal leading-8 text-hi-black transition-colors duration-200 group-hover:text-hi-primary md:text-[29.5px] md:leading-[37px]">

@@ -16,7 +16,7 @@ export const HOME_HERO = {
 export const WHO_WE_ARE = {
   eyebrow: "WHO WE ARE",
   title: "Investing in Life,\nOne Patient at a Time.",
-  body: "At Health Invest, we believe that beyond treatment, healthcare is an investment in life itself. In a country where access to quality healthcare remains a challenge, we are reshaping the narrative by investing in medical infrastructure, cutting-edge technology, and, most importantly, the people who make healing possible.\n\nOur focus is on non-communicable diseases\u2014silent threats like kidney disease and cancer that often go undiagnosed until it\u2019s too late. Through Rencare and Oncoclinics, we are creating a healthcare ecosystem where patients receive not just treatment, but hope, dignity, and a fighting chance at life.\n\nBut we are more than a healthcare provider\u2014we are a collective of specialised institutions tackling different aspects of medical care, each with autonomy but bound by a shared mission: to redefine what is possible in African healthcare.",
+  body: "At Health Invest Africa, we believe that beyond treatment, healthcare is an investment in life itself. In a region where access to quality healthcare remains a challenge, we are reshaping the narrative by investing in medical infrastructure, cutting-edge technology, and, most importantly, the people who make healing possible.\n\nOur focus is on non communicable diseases, silent threats like kidney disease and cancer that often go undiagnosed until it\u2019s too late. Through our platforms, we are creating a healthcare ecosystem where patients receive not just treatment, but hope, dignity, and a fighting chance at life.\n\nBut we are more than a healthcare provider. We are a collective of specialised institutions tackling different aspects of medical care, each with autonomy but bound by a shared mission: to redefine what is possible in African healthcare.",
 };
 
 export const OUR_FOCUS = {
@@ -27,7 +27,7 @@ export const OUR_FOCUS = {
       number: "01",
       title: "Oncology",
       description:
-        "Radiation Oncology services using state-of-the-art imaging, planning, and treatment technologies and techniques.",
+        "Comprehensive cancer care spanning diagnosis, radiation oncology, clinical treatment and multidisciplinary pathways.",
     },
     {
       number: "02",
@@ -38,20 +38,20 @@ export const OUR_FOCUS = {
     {
       number: "03",
       title: "Cardiology",
-      description:
-        "Cardiovascular care through our advanced cardiac catheterization lab",
+      description: "Modern cardiovascular care.",
     },
     {
       number: "04",
-      title: "Diagnostics",
-      description: "Imaging solutions in select locations",
+      title: "Imaging",
+      description: "Advanced imaging solutions.",
     },
   ],
 };
 
 export const OUR_MISSION_HOME = {
   title: "Our\nMission",
-  body: "Every two seconds, a person under the age of 70 dies of a non-communicable disease (NCD), and more than 85% of those deaths occur in low-to-medium income countries. As it stands, more than 27% of deaths in Nigeria are caused by NCDs.\n\nWe estimate that more than 200 linear accelerators are required for adequate cancer care in Nigeria, however fewer than 10 machines are currently installed in the country. Furthermore, Nigeria requires more than 6,000 hemodialysis machines for effective renal care, with only roughly 10% of this number currently installed.\n\nOur mission is to help bridge this gap by developing and operating a network of specialty centres which provide reliable, quality, and accessible healthcare to all.",
+  subtitle: "We bring specialty care to the underserved.",
+  body: "Across Africa, many patients still travel far or go without the specialist care they need. Health Invest Africa builds and operates healthcare platforms that bring oncology, nephrology, cardiology and advanced imaging closer to underserved communities.\n\nThrough sustainable partnerships, investment in infrastructure and clinical teams, and disciplined operations, we are expanding reliable specialty care across Nigeria and the wider region.",
 };
 
 export const STATS: StatItem[] = [
@@ -68,15 +68,15 @@ export const HOME_MISSION = {
 export const PLATFORMS: PlatformCard[] = [
   {
     id: "oncoclinics",
-    name: "OncoClinics Africa",
+    name: "OncoClinics",
     href: "/our-operations/oncoclinics-africa",
     externalUrl: "https://oncoclinicsafrica.com/",
     summary:
       "Developing and operating radiotherapy and cancer-care services in partnership with leading healthcare institutions.",
-    cta: "Visit OncoClinics Africa",
+    cta: "Visit OncoClinics",
     image: "/images/operations/oncoclinic.webp",
     logo: "/logos/oncoclinics.png",
-    metric: "2,500+ cancer patients supported to date",
+    metric: "3,500 patients treated to date",
   },
   {
     id: "rencare",
@@ -174,6 +174,9 @@ export const ABOUT = {
 export const ABOUT_PAGE = {
   heroTitle: "About Us",
   introEyebrow: "WHO ARE WE",
+  introTitle: "Building and operating specialist healthcare capacity",
+  introBody:
+    "Health Invest Africa is a healthcare investment and operations platform. We identify partnership opportunities, deploy capital and infrastructure, and manage the clinical and administrative operations that turn specialist services into reliable, accessible care.\n\nOur operating model combines partnership structuring, equipment and technology deployment, workforce development, and disciplined financial and quality management. We remain accountable for performance long after assets are installed, ensuring services are clinically responsible, financially sustainable and built to endure.\n\nThrough focused healthcare platforms across oncology, nephrology, cardiology and advanced imaging, we are creating scalable networks that expand specialist capacity across Nigeria and the wider region.",
   stories: {
     title: "The Human Stories\nThat Define Us",
     body: "While our strategy focuses on large-scale transformation, the heart of our story lies in the lives we impact every day.",
@@ -181,11 +184,11 @@ export const ABOUT_PAGE = {
   storyColumns: [
     {
       title: "Patients Who Find Hope",
-      body: "A father at Rencare receives life-saving dialysis, giving him more time with his family. A young mother at Oncoclinics, once without options, now fights cancer with access to world-class treatment.",
+      body: "A father at Rencare receives life-saving dialysis, giving him more time with his family. A young mother at OncoClinics, once without options, now fights cancer with access to world-class treatment.",
     },
     {
       title: "Clinicians Who Lead With Passion",
-      body: "From the physicists in Ebonyi to the therapists in Enugu, our medical professionals are not just providing care\u2014they are rewriting what it means to practice medicine in Nigeria.",
+      body: "From the physicists in Ebonyi to the therapists in Enugu, our medical professionals are not just providing care. They are rewriting what it means to practice medicine in Nigeria.",
     },
     {
       title: "Centers That Bring Healing Closer",
@@ -194,20 +197,20 @@ export const ABOUT_PAGE = {
   ],
   africa: {
     title: "Redefining Healthcare Investment in Africa",
-    body: "The healthcare system in Nigeria has long been plagued by gaps\u2014gaps in infrastructure, affordability, expertise, and patient trust. Health Invest is bridging those gaps, not just by building medical centers but by fostering an entirely new approach to healthcare investment.",
+    body: "The healthcare system in Nigeria has long been plagued by gaps in infrastructure, affordability, expertise, and patient trust. Health Invest Africa is bridging those gaps, not just by building medical centers but by fostering an entirely new approach to healthcare investment.",
   },
   africaColumns: [
     {
-      title: "Building Infrastructure for a Stronger Tomorrow",
-      body: "With multiple dialysis and oncology centers, we are creating the largest privately managed multi-location healthcare network in Nigeria, ensuring that advanced treatment is not limited to just a few cities.",
+      title: "Building Infrastructure through Partnerships",
+      body: "Collaboration is at the centre of what we do. We specialise in deploying healthcare capacity through partnerships with public and private sectors, and we leverage our robust supplier network to ensure uninterrupted quality care across our facilities.",
     },
     {
-      title: "Tackling Systemic Challenges",
-      body: "From solving power issues in our centers to training and retaining top-tier medical professionals, we are proving that quality healthcare is achievable with the right model.",
+      title: "Technology-Enabled Operations",
+      body: "We focus on deploying modern treatment technology and tools to ensure the best care possible, and we utilise AI to bridge staffing and expertise gaps.",
     },
     {
-      title: "Sustainability Through Collaboration",
-      body: "Whether it\u2019s working with government agencies, insurance companies, or research institutions, we are committed to long-term, systemic change in healthcare.",
+      title: "Sustained Operational Excellence",
+      body: "We build robust, consistent operations that enable high-quality care across every location in our network.",
     },
   ],
   brandLine: "We invest in life.",
@@ -226,7 +229,7 @@ export const ABOUT_PAGE = {
     },
     {
       title: "Care & Time",
-      body: "The human touch\u2014every consultation, every surgery, every reassuring word that brings hope to patients and their families.",
+      body: "The human touch in every consultation, every surgery, and every reassuring word that brings hope to patients and their families.",
     },
   ],
 };
@@ -271,7 +274,7 @@ export const OPERATIONS_LANDING = {
   intro:
     "Health Invest Africa operates through focused healthcare platforms that combine specialist clinical services with disciplined operations and partnership-led growth.",
   expression:
-    "OncoClinics Africa expands access to cancer care. Rencare Africa builds reliable renal-care capacity. POCCH provides integrated specialist hospital services in Port Harcourt.",
+    "OncoClinics expands access to cancer care. Rencare Africa builds reliable renal-care capacity. POCCH provides integrated specialist hospital services in Port Harcourt.",
   footprint:
     "HIA’s network spans 12 centres across Nigeria (figures subject to the dated management-approved data register).",
 };
@@ -279,8 +282,8 @@ export const OPERATIONS_LANDING = {
 export const ONCOCLINICS = {
   title: "Expanding Access to Advanced Cancer Care",
   overview:
-    "OncoClinics Africa develops and operates oncology services in partnership with public and private healthcare institutions. The platform combines specialist equipment, clinical operations, multidisciplinary expertise and workforce development to bring cancer care closer to patients and strengthen local treatment capacity.",
-  metric: "2,500+ cancer patients supported to date",
+    "OncoClinics develops and operates oncology services in partnership with public and private healthcare institutions. The platform combines specialist equipment, clinical operations, multidisciplinary expertise and workforce development to bring cancer care closer to patients and strengthen local treatment capacity.",
+  metric: "3,500 patients treated to date",
   locations: [
     {
       name: "University of Nigeria Teaching Hospital, Enugu",
@@ -295,8 +298,8 @@ export const ONCOCLINICS = {
       city: "Sokoto",
     },
     {
-      name: "University of Benin Teaching Hospital, Benin City",
-      city: "Benin City",
+      name: "University of Benin Teaching Hospital, Edo",
+      city: "Edo",
     },
     {
       name: "Federal Teaching Hospital, Katsina",
@@ -309,7 +312,7 @@ export const RENCARE = {
   title: "Reliable Renal Care, Built to Scale",
   overview:
     "Rencare Africa develops and operates dialysis and renal-care services through partnerships with leading healthcare institutions. Rencare combines clinical teams, equipment, consumables, quality controls and efficient centre management to deliver consistent renal-care services across its network.",
-  metric: "25,000+ dialysis sessions delivered (as of 2026)",
+  metric: "25,000+ dialysis sessions delivered",
   locations: [
     {
       name: "Redeemer’s-Rencare Dialysis Centre, Ibadan",
@@ -320,12 +323,12 @@ export const RENCARE = {
       city: "Abuja",
     },
     {
-      name: "Rencare Dialysis Centre, Lagos",
-      city: "Lagos",
+      name: "Rencare Dialysis Centre, Ikeja, Lagos",
+      city: "Lagos-Ikeja",
     },
     {
-      name: "Rencare Dialysis Centre, Alimosho General Hospital, Lagos",
-      city: "Alimosho",
+      name: "Rencare Dialysis Centre, Alimosho, Lagos",
+      city: "Lagos-Alimosho",
     },
   ] satisfies LocationItem[],
 };
@@ -333,9 +336,9 @@ export const RENCARE = {
 export const POCCH = {
   title: "Dr. Peter Odili Specialist Cancer & Cardiovascular Hospital",
   overview:
-    "Dr. Peter Odili Specialist Cancer & Cardiovascular Hospital (POCCH) is a leading tertiary healthcare institution located in Port Harcourt, dedicated to delivering advanced and compassionate medical care at international standards.",
+    "Health Invest Africa operates Dr. Peter Odili Specialist Cancer & Cardiovascular Hospital (POCCH), a leading tertiary healthcare institution in Port Harcourt dedicated to delivering advanced and compassionate medical care at international standards.",
   specialties:
-    "Our hospital specializes in oncology (cancer care), cardiovascular medicine, renal (kidney) care, advanced surgery, and precision diagnostics, all under one roof.",
+    "The hospital specialises in oncology (cancer care), cardiovascular medicine, renal (kidney) care, advanced surgery, and precision diagnostics, all under one roof.",
   website: "https://peterodilihospital.com/",
   locations: [
     {
@@ -350,7 +353,7 @@ export const IMPACT = {
   intro:
     "HIA’s impact extends beyond facilities and equipment. We strengthen the workforce, support patient access, improve operating data and build local capability that can endure.",
   proof:
-    "Established in 2022 · 12 centres · 200+ professionals · More than 250 patients treated per day · 2,500+ cancer patients treated to date · 25,000+ dialysis sessions delivered",
+    "Established in 2022 · 12 centres · 200+ professionals · More than 250 patients treated per day · 3,500 patients treated to date · 25,000+ dialysis sessions delivered",
   ledger: [
     {
       value: "2022",
@@ -359,10 +362,10 @@ export const IMPACT = {
       note: null,
     },
     {
-      value: "2,500+",
-      label: "Cancer patients treated to date",
+      value: "3,500",
+      label: "Patients treated to date",
       href: "/our-operations/oncoclinics-africa",
-      note: "OncoClinics Africa",
+      note: "OncoClinics",
     },
     {
       value: "25,000+",
@@ -374,7 +377,7 @@ export const IMPACT = {
   sections: [
     {
       title: "Developing specialist healthcare capability",
-      body: "HIA supports licensing processes, recurring training, professional development and selected conference participation to strengthen local clinical and technical capacity—including workforce initiatives such as Project STRAWN.",
+      body: "HIA supports licensing processes, recurring training, professional development and selected conference participation to strengthen local clinical and technical capacity, including workforce initiatives such as Project STRAWN.",
     },
     {
       title: "Reducing barriers around treatment",
@@ -382,7 +385,7 @@ export const IMPACT = {
     },
     {
       title: "Building evidence for better access",
-      body: "More consistent service delivery and operating data can help healthcare payers better understand demand, utilisation and the requirements of specialist non-communicable disease care.",
+      body: "More consistent service delivery and operating data can help healthcare payers better understand demand, utilisation and the requirements of specialist non communicable diseases care.",
     },
     {
       title: "Reducing avoidable outbound medical travel",
@@ -415,19 +418,19 @@ export const LEADERSHIP: TeamMember[] = [
   },
   {
     name: "Dr Uchenna Okoro",
-    role: "Clinical Coordinator, OncoClinics Africa",
+    role: "Clinical Coordinator, OncoClinics",
     image: "/images/team/uchenna-okoro.png",
     bio: "Dr Uchenna Okoro is an oncologist with experience establishing and managing oncology operations. He previously supported oncology services at Evercare Hospital and served as lead oncologist at Federal Medical Centre, Ebute Metta.",
   },
   // {
   //   name: "Dr Etima Ukpe",
-  //   role: "Operations Manager, OncoClinics Africa",
+  //   role: "Operations Manager, OncoClinics",
   //   image: "/images/home/strip-3.jpg",
   //   bio: "Dr Etima Ukpe is a medical doctor with experience in healthcare management and clinical operations. She previously served as Managing Director at Neon Health Services.",
   // },
   {
     name: "Dr Abou Dao",
-    role: "Senior Radiation Oncologist, OncoClinics Africa",
+    role: "Senior Radiation Oncologist, OncoClinics",
     image: "/images/team/abou-dao.png",
     bio: "Dr Abou Dao is a radiation oncologist with 14 years of specialist experience. He previously taught at Joseph Ki-Zerbo University in Ouagadougou and led the Bogodogo radiotherapy centre.",
   },
@@ -459,31 +462,348 @@ export const LEADERSHIP: TeamMember[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "unexpected-realities-accessible-healthcare",
-    category: "ISSUE 01:",
-    title: "The Unexpected Realities of Accessible Healthcare",
+    slug: "project-strawn-launch-ceremony",
+    category: "Workforce Development",
+    title:
+      "Project STRAWN: Strengthening Nigeria\u2019s Radiotherapy Workforce for Better Cancer Care",
     excerpt:
-      "What it takes to deliver specialty care where infrastructure, power and talent are constrained.",
+      "Infrastructure alone does not deliver cancer care. Project STRAWN strengthens Nigeria\u2019s radiotherapy workforce so investments in equipment translate into safe, effective treatment for patients.",
+    image: "/images/gallery/oncoclinic-2.webp",
+    date: "2025-09-18",
+    sections: [
+      {
+        type: "heading",
+        text: "What is the missing link between cancer infrastructure and care?",
+      },
+      {
+        type: "paragraph",
+        text: "This is a question at the heart of our work at Health Invest Africa.",
+      },
+      {
+        type: "paragraph",
+        text: "Across Nigeria, investment in cancer infrastructure is expanding much-needed treatment capacity. But infrastructure alone does not deliver care.",
+      },
+      {
+        type: "paragraph",
+        text: "A radiotherapy machine is essential. Yet for that machine to translate into safe, effective treatment, patients also need skilled professionals, clear clinical pathways, quality-assurance systems, strong hospital processes, appropriate regulatory oversight, and the practical support required to begin and complete treatment.",
+      },
+      {
+        type: "paragraph",
+        text: "For us, building healthcare capacity means investing in all of these elements together.",
+      },
+      {
+        type: "heading",
+        text: "Infrastructure is only the beginning",
+      },
+      {
+        type: "paragraph",
+        text: "Specialist healthcare depends on more than equipment.",
+      },
+      {
+        type: "paragraph",
+        text: "A functioning cancer-care system requires the right technology, but it also depends on the people who operate it, the institutions that support them, and the systems that ensure care is delivered safely and consistently.",
+      },
+      {
+        type: "paragraph",
+        text: "This is particularly important in radiotherapy, where treatment planning, quality assurance, radiation safety, equipment operation and multidisciplinary coordination require specialised expertise.",
+      },
+      {
+        type: "paragraph",
+        text: "As Nigeria continues to strengthen its cancer-care infrastructure, developing the workforce behind that infrastructure must remain an equally important priority.",
+      },
+      {
+        type: "heading",
+        text: "Building Nigeria\u2019s radiotherapy workforce",
+      },
+      {
+        type: "paragraph",
+        text: "This thinking underpins Project STRAWN: Strengthening Radiation Therapy Workforce in Nigeria, an initiative of Health Invest Africa\u2019s oncology platform, OncoClinics, in partnership with the University of Nigeria Teaching Hospital, Ituku-Ozalla, Enugu (UNTH).",
+      },
+      {
+        type: "paragraph",
+        text: "Project STRAWN was presented to the Honourable Minister of State for Health and Social Welfare, Dr. Iziaq Kunle Salako, who described the initiative as timely and relevant to Nigeria\u2019s cancer-control priorities, particularly in the area of workforce development.",
+      },
+      {
+        type: "paragraph",
+        text: "The programme is designed to help strengthen Nigeria\u2019s radiotherapy workforce pipeline through a structured, supervised and competency-based pathway for developing professionals who support the delivery of radiotherapy services.",
+      },
+      {
+        type: "paragraph",
+        text: "At its core is a simple principle: investment in cancer infrastructure must be matched by investment in the people who make that infrastructure work.",
+      },
+      {
+        type: "heading",
+        text: "From healthcare investment to patient impact",
+      },
+      {
+        type: "paragraph",
+        text: "For patients, the value of a radiotherapy facility is ultimately measured by whether they can access treatment that is safe, reliable and clinically appropriate.",
+      },
+      {
+        type: "paragraph",
+        text: "That requires more than installing equipment.",
+      },
+      {
+        type: "paragraph",
+        text: "It means developing professionals with the competencies required to use that equipment effectively. It means supporting quality and safety standards. It means strengthening the systems around treatment delivery and building pathways that help patients move through care with greater consistency.",
+      },
+      {
+        type: "paragraph",
+        text: "Project STRAWN brings together public- and private-sector partners across Nigeria\u2019s health system to contribute toward this goal.",
+      },
+      {
+        type: "paragraph",
+        text: "By strengthening workforce capacity alongside infrastructure, the initiative aims to help ensure that investments in radiotherapy translate into something more meaningful: better access to quality cancer care and improved outcomes for patients.",
+      },
+      {
+        type: "heading",
+        text: "Partnership is part of the infrastructure",
+      },
+      {
+        type: "paragraph",
+        text: "No single organisation can address the workforce and infrastructure needs of cancer care alone.",
+      },
+      {
+        type: "paragraph",
+        text: "Sustainable progress requires collaboration between government, teaching institutions, healthcare providers, technology partners, professional communities and the private sector.",
+      },
+      {
+        type: "paragraph",
+        text: "Health Invest Africa is grateful to the Federal Ministry of Health and Social Welfare, the Honourable Minister of State for Health and Social Welfare, the University of Nigeria Teaching Hospital, Siemens Healthineers, and the technical and institutional partners contributing to Project STRAWN.",
+      },
+      {
+        type: "paragraph",
+        text: "Their participation reflects a broader understanding that strengthening specialist healthcare requires shared responsibility and long-term collaboration.",
+      },
+      {
+        type: "heading",
+        text: "Building beyond facilities",
+      },
+      {
+        type: "paragraph",
+        text: "At Health Invest Africa, we believe that healthcare investment should ultimately be measured by what it makes possible for people.",
+      },
+      {
+        type: "paragraph",
+        text: "The future of specialty healthcare in Africa will not be built by facilities alone.",
+      },
+      {
+        type: "paragraph",
+        text: "It will be built by the infrastructure, systems, partnerships and people behind them, working together to ensure that patients can access the specialist care they need.",
+      },
+      {
+        type: "paragraph",
+        text: "At Health Invest Africa, we invest in life.",
+      },
+    ],
+  },
+  {
+    slug: "nigeria-ncd-health-crisis",
+    category: "Health Policy",
+    title: "Nigeria\u2019s Silent Health Crisis",
+    excerpt:
+      "Non communicable diseases are surging across Nigeria. Here is what the data shows, and how Health Invest Africa is strengthening systems to close the gap.",
     image: "/images/blog/issue-1.jpg",
-    date: "2025-01-15",
+    date: "2026-08-12",
+    sections: [
+      {
+        type: "paragraph",
+        text: "Nigeria is facing a silent health crisis, and it isn\u2019t the one most people expect.",
+      },
+      {
+        type: "paragraph",
+        text: "It is the hidden culprit behind countless obituaries reading \u201cpassed away after a brief illness\u201d or \u201clost to a protracted battle.\u201d",
+      },
+      {
+        type: "paragraph",
+        text: "For decades, public health efforts across sub-Saharan Africa have focused on communicable diseases like Tuberculosis and HIV. However, according to the 2022 Lancet Nigeria Commission, non communicable diseases (NCDs) like cancer, cardiovascular, and chronic kidney diseases are surging, almost overtaking communicable, maternal, neonatal, and nutritional diseases as the leading contributor to age-standardized mortality in Nigeria.",
+      },
+      {
+        type: "paragraph",
+        text: "Nigeria faces a double disease burden: communicable illnesses drive youth mortality, while non communicable diseases (NCDs) surge among the elderly. Here are some facts:",
+      },
+      {
+        type: "list",
+        items: [
+          "Life Expectancy: Stands at just over 54 years according to World Bank data, ranking among the lowest globally.",
+          "Regional Risk Shift: NCD deaths across the WHO African Region rose from 24.2% in 2000 to 37.1% in 2019. In Nigeria, NCDs claimed 567 lives per 100,000 people in 2019.",
+          "Mortality Profile (2023): Communicable diseases claimed 1.04 million lives in Nigeria, while NCDs accounted for 602,000 deaths, and injuries caused 140,000.",
+          "Hypertension Prevalence: 1 in 3 Nigerian adults has hypertension, a major driver of cardiovascular disease and NCD mortality.",
+          "Structural Bottlenecks: Cancer care and NCD management are crippled by missing diagnostic tools, low health literacy, and severe delivery delays.",
+          "Financial Strain: 70% of healthcare spending is out-of-pocket, driving catastrophic health spending that forces households into poverty.",
+          "Patient Impact: Every statistic translates to citizens facing long travel, high costs, and dangerous delays before treatment begins.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "What is the way forward?",
+      },
+      {
+        type: "paragraph",
+        text: "Currently, there are two broad efforts required to address the growing NCD burden: stronger implementation and enforcement of existing NCD-related policies, and strengthening healthcare systems to improve the diagnosis and treatment of NCDs.",
+      },
+      {
+        type: "paragraph",
+        text: "From a policy point of view, while policies exist, implementation remains a significant gap. For instance, the enforcement of existing regulations on health-harming products that elevate the risk of non communicable diseases has been inconsistent or, often, nonexistent. These products include sugar-sweetened beverages, ultra-processed foods, skin-lightening cosmetics, and tobacco, as outlined in the 2019 National Multisectoral Action Plan for the Prevention and Control of Non-Communicable Diseases.",
+      },
+      {
+        type: "paragraph",
+        text: "In terms of systems strengthening, Health Invest Africa (HIA) is built specifically to respond to this key lever of the NCD crisis. HIA strengthens and activates existing healthcare systems and assets through its management and specialist healthcare platforms.",
+      },
+      {
+        type: "paragraph",
+        text: "HIA has developed platforms that sit at the intersection of public and private healthcare, enabling stronger cooperation and improving the ability of existing systems to diagnose and treat NCDs. To achieve this, HIA operates specialized care models, including OncoClinics for cancer care and Rencare for kidney care. Furthermore, HIA has launched a hospital management platform designed to empower healthcare assets that would otherwise be underutilized, with the first project being the Dr. Peter Odili Cancer and Cardiovascular Hospital (POCCH).",
+      },
+      {
+        type: "paragraph",
+        text: "Follow for more and learn how we are collaborating with government and stakeholders to close the NCD gap in Nigeria.",
+      },
+      {
+        type: "tags",
+        items: [
+          "#WeInvestInLife",
+          "#HealthcareInAfrica",
+          "#HealthSystems",
+          "#PublicPrivatePartnerships",
+        ],
+      },
+      {
+        type: "heading",
+        text: "References",
+      },
+      {
+        type: "references",
+        items: [
+          {
+            text: "Abubakar, I., Dalglish et al. (2022). The Lancet Nigeria Commission: investing in health and the future of the nation. The Lancet, 399(10330), 1155\u20131200.",
+            href: "https://doi.org/10.1016/S0140-6736(21)02488-0",
+          },
+          {
+            text: "Barry, A. et. Al. (2025). Non-communicable diseases in the WHO African region: analysis of risk factors, mortality, and responses based on WHO data. Scientific Reports, 15.",
+            href: "https://doi.org/10.1038/s41598-025-97180-3",
+          },
+          {
+            text: "Nwankwo, M., Makena, W., Idris, A. et al. Prevalence of hypertension among adults in Nigeria: a systematic review and meta-analysis. BMC Cardiovasc Disord 26, 330 (2026).",
+            href: "https://doi.org/10.1186/s12872-026-05722-y",
+          },
+          {
+            text: "Odunyemi A, Rahman T and Alam K. (2023). Economic burden of non-communicable diseases on households in Nigeria: evidence from the Nigeria living standard survey 2018-19. BMC Public Health. 2023 Aug 17;23(1):1563.",
+            href: "https://www.springermedicine.com/economic-burden-of-non-communicable-diseases-on-households-in-ni/25933356",
+          },
+          {
+            text: "Ritchie, H. (2026). Health: Nigeria Country Profile. Our World in Data.",
+            href: "https://ourworldindata.org/profile/health/nigeria",
+          },
+          {
+            text: "Venley, N. N. (2026, May 4th). Nigeria ranks lowest in global life expectancy. International Centre for Investigative Reporting.",
+            href: "https://www.icirnigeria.org/nigeria-ranks-lowest-in-global-life-expectancy/",
+          },
+          {
+            text: "World Bank. (n.d.). Life expectancy at birth, total (years) - Nigeria. World Bank Gender Data Portal. Retrieved August 12, 2026.",
+            href: "https://genderdata.worldbank.org/en/indicator/sp-dyn-le00-in?gender=total",
+          },
+        ],
+      },
+    ],
   },
   {
-    slug: "building-oncology-capacity-nigeria",
-    category: "ISSUE 02:",
-    title: "Lessons from Years of Investing in Africa\u2019s Healthcare",
+    slug: "bringing-renal-care-closer-to-home",
+    category: "Renal Care",
+    title: "Bringing Renal Care Closer to Home",
     excerpt:
-      "How OncoClinics Africa is closing the gap in radiotherapy and cancer pathways.",
-    image: "/images/home/strip-2.jpg",
-    date: "2025-04-10",
-  },
-  {
-    slug: "renal-care-closer-to-home",
-    category: "ISSUE 03:",
-    title: "Building from Within Sustaining Medical Talent in Nigeria",
-    excerpt:
-      "Expanding dialysis access through Rencare Africa’s multi-location network.",
-    image: "/images/home/strip-3.jpg",
-    date: "2025-07-22",
+      "Chronic kidney disease is one of Nigeria\u2019s fastest-growing non communicable disease challenges. Through Rencare, Health Invest Africa is expanding reliable dialysis access through institutional partnerships.",
+    image: "/images/gallery/rencare-1.webp",
+    date: "2025-06-20",
+    sections: [
+      {
+        type: "paragraph",
+        text: "For many Nigerian families, chronic kidney disease arrives with little warning and few nearby options for treatment.",
+      },
+      {
+        type: "paragraph",
+        text: "What begins as a manageable condition can quickly become a life-defining challenge when dialysis centres are far away, waiting times are long, and the cost of regular treatment places sustained pressure on household finances.",
+      },
+      {
+        type: "paragraph",
+        text: "As non communicable diseases continue to rise across Nigeria, renal care is no longer a specialist concern at the margins of the health system. It is a growing public health priority that demands reliable capacity, closer to the communities that need it.",
+      },
+      {
+        type: "heading",
+        text: "A growing burden few families are prepared for",
+      },
+      {
+        type: "paragraph",
+        text: "Chronic kidney disease often progresses quietly. By the time many patients require renal replacement therapy, the nearest dependable dialysis service may be hours away, in another city, or simply unavailable when it is needed most.",
+      },
+      {
+        type: "paragraph",
+        text: "Nigeria requires thousands more dialysis machines than are currently installed to meet national need. Yet closing that gap is not only a question of equipment. It is also a question of where services are located, how consistently they operate, and whether patients can access care without exhausting time, money and hope before treatment even begins.",
+      },
+      {
+        type: "heading",
+        text: "Why access matters as much as equipment",
+      },
+      {
+        type: "paragraph",
+        text: "Dialysis is not a one-time intervention. It is recurring, clinically demanding care that depends on trained teams, reliable infrastructure, quality controls and disciplined day-to-day operations.",
+      },
+      {
+        type: "paragraph",
+        text: "For patients, the difference between a functioning renal service and an underused facility is measured in missed sessions, delayed referrals, long journeys and treatment interruptions that put lives at risk.",
+      },
+      {
+        type: "paragraph",
+        text: "That is why Health Invest Africa approaches renal care as an operating challenge, not simply an infrastructure project. Sustainable dialysis capacity requires institutions, partnerships and management systems that keep services running well over time.",
+      },
+      {
+        type: "heading",
+        text: "Building dialysis capacity through partnership",
+      },
+      {
+        type: "paragraph",
+        text: "Through Rencare, Health Invest Africa develops and operates dialysis services in partnership with leading healthcare institutions. Rather than working in isolation, the platform combines clinical teams, equipment, consumables, quality controls and centre management to deliver consistent renal care across its network.",
+      },
+      {
+        type: "paragraph",
+        text: "This partnership-led model helps unlock existing healthcare assets, strengthen service delivery and bring dialysis closer to patients in cities including Ibadan, Abuja, Lagos-Ikeja and Lagos-Alimosho.",
+      },
+      {
+        type: "paragraph",
+        text: "To date, Rencare has delivered more than 25,000 dialysis sessions, reflecting both the scale of unmet need and the importance of building services patients can return to with confidence.",
+      },
+      {
+        type: "heading",
+        text: "What reliable renal care requires",
+      },
+      {
+        type: "paragraph",
+        text: "A dialysis centre only works when the systems around it work.",
+      },
+      {
+        type: "paragraph",
+        text: "That means appropriate staffing, preventive maintenance, infection control, patient scheduling, supply chain reliability and financial discipline. It also means designing services around the realities patients face: travel distance, affordability, continuity of care and trust in the institution providing treatment.",
+      },
+      {
+        type: "paragraph",
+        text: "By standardising operations while adapting to local institutional contexts, Rencare aims to make renal care more dependable, not only in major urban centres but across a growing network of locations.",
+      },
+      {
+        type: "heading",
+        text: "From centres to networks",
+      },
+      {
+        type: "paragraph",
+        text: "The long-term goal is not a single standout facility. It is a network of renal services that can scale responsibly, share operational learning and expand access without compromising clinical quality.",
+      },
+      {
+        type: "paragraph",
+        text: "For Health Invest Africa, that is the essence of specialist healthcare investment: building platforms that turn capacity into care, and care into better outcomes for patients who would otherwise go without.",
+      },
+      {
+        type: "paragraph",
+        text: "At Health Invest Africa, we invest in life.",
+      },
+    ],
   },
 ];
 
@@ -491,14 +811,14 @@ export const CONTACT_PATIENT_ROUTES = [
   {
     id: "cancer" as const,
     title: "Cancer care",
-    body: "For cancer-care enquiries, contact OncoClinics Africa.",
+    body: "For cancer care enquiries, contact OncoClinics.",
     href: "https://oncoclinicsafrica.com/",
-    cta: "OncoClinics Africa",
+    cta: "OncoClinics",
   },
   {
     id: "renal" as const,
     title: "Dialysis & renal care",
-    body: "For dialysis and renal-care enquiries, contact Rencare Africa.",
+    body: "For dialysis and renal care enquiries, contact Rencare Africa.",
     href: "https://www.rencareafrica.com/",
     cta: "Rencare Africa",
   },
@@ -511,23 +831,63 @@ export const CONTACT_PATIENT_ROUTES = [
   },
 ];
 
-export const GALLERY_IMAGES = [
-  { src: "/images/gallery/oncoclinic-1.webp", alt: "OncoClinics radiotherapy treatment room", brand: "oncoclinics" as const },
-  { src: "/images/gallery/oncoclinic-2.webp", alt: "OncoClinics clinical team", brand: "oncoclinics" as const },
-  { src: "/images/gallery/oncoclinic-3.webp", alt: "Radiotherapy suite", brand: "oncoclinics" as const },
-  { src: "/images/gallery/oncoclinic-4.webp", alt: "Patient consultation", brand: "oncoclinics" as const },
-  { src: "/images/gallery/oncoclinic-5.webp", alt: "Medical imaging", brand: "oncoclinics" as const },
-  { src: "/images/gallery/oncoclinic-6.webp", alt: "Clinic exterior", brand: "oncoclinics" as const },
-  { src: "/images/gallery/rencare-1.webp", alt: "Rencare dialysis treatment room", brand: "rencare" as const },
-  { src: "/images/gallery/rencare-2.webp", alt: "Dialysis chairs", brand: "rencare" as const },
-  { src: "/images/gallery/rencare-3.webp", alt: "Nephrology nurse", brand: "rencare" as const },
-  { src: "/images/gallery/rencare-4.webp", alt: "Rencare facility", brand: "rencare" as const },
-  { src: "/images/gallery/rencare-5.webp", alt: "Patient care", brand: "rencare" as const },
-  { src: "/images/gallery/rencare-7.webp", alt: "Medical equipment", brand: "rencare" as const },
-  { src: "/images/gallery/rencare-8.webp", alt: "Clinic corridor", brand: "rencare" as const },
-  { src: "/images/gallery/POCCH-1.webp", alt: "Dr. Peter Odili Cancer and Cardiovascular Hospital", brand: "pocch" as const },
-  { src: "/images/gallery/POCCH-2.webp", alt: "POCCH specialist reviewing a patient record", brand: "pocch" as const },
-  { src: "/images/gallery/POCCH-3.webp", alt: "POCCH consultation between clinician and patient", brand: "pocch" as const },
+export const GALLERY_EVENTS = [
+  {
+    id: "oncoclinics-unth-enugu",
+    brand: "oncoclinics" as const,
+    title: "UNTH Enugu Radiotherapy Commissioning",
+    year: "2023",
+    location: "Enugu",
+    summary: "Launch of radiotherapy services at University of Nigeria Teaching Hospital.",
+    images: [
+      { src: "/images/gallery/oncoclinic-1.webp", alt: "OncoClinics radiotherapy treatment room" },
+      { src: "/images/gallery/oncoclinic-2.webp", alt: "OncoClinics clinical team" },
+      { src: "/images/gallery/oncoclinic-3.webp", alt: "Radiotherapy suite" },
+      { src: "/images/gallery/oncoclinic-4.webp", alt: "Patient consultation" },
+      { src: "/images/gallery/oncoclinic-5.webp", alt: "Medical imaging" },
+      { src: "/images/gallery/oncoclinic-6.webp", alt: "Clinic exterior" },
+    ],
+  },
+  {
+    id: "rencare-network-launch",
+    brand: "rencare" as const,
+    title: "Dialysis Network Expansion",
+    year: "2023",
+    location: "Multi-site",
+    summary: "Opening and scaling renal care centres across Nigeria.",
+    images: [
+      { src: "/images/gallery/rencare-1.webp", alt: "Rencare dialysis treatment room" },
+      { src: "/images/gallery/rencare-2.webp", alt: "Dialysis chairs" },
+      { src: "/images/gallery/rencare-3.webp", alt: "Nephrology nurse" },
+      { src: "/images/gallery/rencare-4.webp", alt: "Rencare facility" },
+      { src: "/images/gallery/rencare-5.webp", alt: "Patient care" },
+      { src: "/images/gallery/rencare-7.webp", alt: "Medical equipment" },
+    ],
+  },
+  {
+    id: "rencare-lagos-opening",
+    brand: "rencare" as const,
+    title: "Lagos Centre Opening",
+    year: "2024",
+    location: "Lagos",
+    summary: "Community event marking expanded dialysis access in Lagos.",
+    images: [
+      { src: "/images/gallery/rencare-8.webp", alt: "Clinic corridor" },
+    ],
+  },
+  {
+    id: "pocch-facility-tour",
+    brand: "pocch" as const,
+    title: "POCCH Facility Tour",
+    year: "2024",
+    location: "Port Harcourt",
+    summary: "Specialist hospital services under one roof.",
+    images: [
+      { src: "/images/gallery/POCCH-1.webp", alt: "Dr. Peter Odili Cancer and Cardiovascular Hospital" },
+      { src: "/images/gallery/POCCH-2.webp", alt: "POCCH specialist reviewing a patient record" },
+      { src: "/images/gallery/POCCH-3.webp", alt: "POCCH consultation between clinician and patient" },
+    ],
+  },
 ];
 
 export const FOOTER_STATEMENT =

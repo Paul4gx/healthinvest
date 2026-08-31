@@ -110,7 +110,7 @@ export function VideoModalProvider({ children }: { children: React.ReactNode }) 
                     <div className="relative overflow-hidden rounded-[20px] bg-black shadow-[0_32px_80px_rgba(0,0,0,0.45)] ring-1 ring-white/15 md:rounded-[28px]">
                       <div className="aspect-video w-full">
                         <iframe
-                          title="Health Invest video"
+                          title="Health Invest Africa video"
                           src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
                           allow="autoplay; encrypted-media; picture-in-picture"
                           allowFullScreen

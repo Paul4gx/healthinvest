@@ -37,6 +37,12 @@ export function MissionSection() {
             </h2>
           </Reveal>
 
+          <Reveal delay={0.05}>
+            <p className="mt-4 max-w-[627px] font-display text-[clamp(1.25rem,3vw,2rem)] font-normal leading-snug tracking-[-0.02em] text-white/90 md:mt-6">
+              {OUR_MISSION_HOME.subtitle}
+            </p>
+          </Reveal>
+
           <Reveal delay={0.08}>
             <div className="mt-6 flex max-w-[627px] flex-col gap-4 text-[15px] leading-relaxed text-white md:mt-10 md:gap-5 md:text-[20px] md:leading-[1.45]">
               {OUR_MISSION_HOME.body.split("\n\n").map((p, i) => (

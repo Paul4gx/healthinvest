@@ -7,7 +7,7 @@ import { Container } from "@/components/layout/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import { MOTION } from "@/lib/constants";
-import { ABOUT_PAGE, WHO_WE_ARE } from "@/content/site";
+import { ABOUT_PAGE } from "@/content/site";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { cn } from "@/lib/utils";
 
@@ -35,6 +35,14 @@ export function AboutStoryPage() {
       <AboutHero />
       <IntroSection />
       <PhotoBand
+        image="/images/about/redefining-africa.jpg"
+        alt="A clinician speaking with a patient"
+        title={ABOUT_PAGE.africa.title}
+        body={ABOUT_PAGE.africa.body}
+      />
+      <TextColumns items={ABOUT_PAGE.africaColumns} />
+      <ValueColumns />
+      <PhotoBand
         image="/images/about/human_stories.webp"
         alt="Clinicians reviewing care together"
         title={ABOUT_PAGE.stories.title}
@@ -42,15 +50,7 @@ export function AboutStoryPage() {
         stacked
       />
       <TextColumns items={ABOUT_PAGE.storyColumns} />
-      <PhotoBand
-        image="/images/about/redefining-africa.jpg"
-        alt="A clinician speaking with a patient"
-        title={ABOUT_PAGE.africa.title}
-        body={ABOUT_PAGE.africa.body}
-      />
-      <TextColumns items={ABOUT_PAGE.africaColumns} />
       <BrandBanner />
-      <ValueColumns />
     </>
   );
 }
@@ -67,8 +67,8 @@ function AboutHero() {
         transition={{ duration: 1.1, ease: MOTION.ease }}
       >
         <Image
-          src="/images/about/hero-brand.webp"
-          alt="Health Invest Africa brand in the community"
+          src="/images/about/redefining-africa.jpg"
+          alt="Healthcare professionals serving communities across Africa"
           fill
           priority
           className="object-cover object-[center_calc(50%-50px)]"
@@ -122,10 +122,10 @@ function IntroSection() {
         <Reveal className="order-1 lg:order-2">
           <SectionLabel>{ABOUT_PAGE.introEyebrow}</SectionLabel>
           <h2 className="mt-5 whitespace-pre-line font-display text-[clamp(1.85rem,5vw,3.75rem)] font-normal leading-[1.08] tracking-[-0.02em] text-hi-primary md:mt-6">
-            {WHO_WE_ARE.title}
+            {ABOUT_PAGE.introTitle}
           </h2>
           <div className="mt-5 flex flex-col gap-4 text-[15px] leading-relaxed text-hi-black md:mt-6 md:gap-5 md:text-[20px] md:leading-[1.45]">
-            {WHO_WE_ARE.body.split("\n\n").map((p, i) => (
+            {ABOUT_PAGE.introBody.split("\n\n").map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>

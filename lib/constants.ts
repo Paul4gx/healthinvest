@@ -20,7 +20,7 @@ export const SITE = {
 export const PLATFORM_LINKS = [
   {
     href: "/our-operations/oncoclinics-africa",
-    label: "OncoClinics Africa",
+    label: "OncoClinics",
     external: "https://oncoclinicsafrica.com/",
   },
   {

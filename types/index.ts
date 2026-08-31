@@ -4,6 +4,18 @@ export type NavLink = {
   children?: readonly { href: string; label: string }[];
 };
 
+export type BlogReference = {
+  text: string;
+  href?: string;
+};
+
+export type BlogPostSection =
+  | { type: "paragraph"; text: string }
+  | { type: "heading"; text: string }
+  | { type: "list"; items: string[] }
+  | { type: "references"; items: BlogReference[] }
+  | { type: "tags"; items: string[] };
+
 export type BlogPost = {
   slug: string;
   category: string;
@@ -11,6 +23,8 @@ export type BlogPost = {
   excerpt: string;
   image: string;
   date: string;
+  body?: string[];
+  sections?: BlogPostSection[];
 };
 
 export type TeamMember = {
@@ -59,3 +73,20 @@ export type EnquiryType =
   | "careers"
   | "corporate"
   | "other";
+
+export type GalleryBrand = "oncoclinics" | "rencare" | "pocch";
+
+export type GalleryEventImage = {
+  src: string;
+  alt: string;
+};
+
+export type GalleryEvent = {
+  id: string;
+  brand: GalleryBrand;
+  title: string;
+  year: string;
+  summary?: string;
+  location?: string;
+  images: GalleryEventImage[];
+};

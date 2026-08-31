@@ -9,7 +9,7 @@ import { POCCH } from "@/content/site";
 export const metadata: Metadata = {
   title: "POCCH | Dr. Peter Odili Cancer & Cardiovascular Hospital",
   description:
-    "Dr. Peter Odili Specialist Cancer & Cardiovascular Hospital in Port Harcourt delivers oncology, cardiovascular, renal, surgical and diagnostic care.",
+    "Health Invest Africa operates Dr. Peter Odili Specialist Cancer & Cardiovascular Hospital in Port Harcourt, delivering oncology, cardiovascular, renal, surgical and diagnostic care.",
 };
 
 export default function PocchPage() {

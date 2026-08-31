@@ -40,8 +40,8 @@ export default function ContactPage() {
     <>
       <PageHero
         title="Contact Us"
-        image="/images/contact/hero-brand.webp"
-        alt="Health Invest Africa brand in the community"
+        image="/images/contact/hero.jpg"
+        alt="Health Invest Africa partnership and enquiry team"
       />
 
       <PageBody>
@@ -71,9 +71,9 @@ export default function ContactPage() {
                 <div className="relative z-10 flex h-full flex-col border border-white/25 p-6 md:p-8 lg:p-10">
                 <h3 className="text-2xl text-white">Looking for care?</h3>
                 <p className="mt-3 text-white/80">
-                  For cancer-care enquiries, contact OncoClinics Africa. For dialysis and
-                  renal-care enquiries, contact Rencare Africa. For specialist hospital
-                  care — cancer, heart, kidney, surgery and diagnostics — contact POCCH.
+                  For cancer care enquiries, contact OncoClinics. For dialysis and
+                  renal care enquiries, contact Rencare Africa. For specialist hospital
+                  care, including cancer, heart, kidney, surgery and diagnostics, contact POCCH.
                 </p>
                 <Stagger className="mt-6 grid flex-1 gap-4">
                   {CONTACT_PATIENT_ROUTES.map((route) => {
