@@ -12,6 +12,7 @@ import { GALLERY_EVENTS } from "@/content/site";
 import { MOTION } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { GalleryLightbox } from "@/components/sections/gallery-lightbox";
 import type { GalleryBrand, GalleryEvent, GalleryEventImage } from "@/types";
 
 const INITIAL_VISIBLE = 6;
@@ -22,9 +23,7 @@ const GALLERY_TABS = [
   ["oncoclinics", "OncoClinics"],
 ] as const satisfies readonly (readonly [GalleryBrand, string])[];
 
-const HERO_IMAGE =
-  GALLERY_EVENTS.find((event) => event.brand === "rencare")?.images[0]?.src ??
-  "/images/gallery/rencare-1.webp";
+const HERO_IMAGE = "/images/gallery/hero-brand-2.webp";
 
 function eventsForBrand(brand: GalleryBrand) {
   return GALLERY_EVENTS.filter(
@@ -35,13 +34,20 @@ function eventsForBrand(brand: GalleryBrand) {
 function EventPhoto({
   image,
   priority = false,
+  onOpen,
 }: {
   image: GalleryEventImage;
   priority?: boolean;
+  onOpen: () => void;
 }) {
   return (
     <figure className="group mb-3 break-inside-avoid sm:mb-4">
-      <div className="overflow-hidden rounded-[16px] bg-hi-surface sm:rounded-[20px]">
+      <button
+        type="button"
+        onClick={onOpen}
+        className="block w-full cursor-zoom-in overflow-hidden rounded-[16px] bg-hi-surface text-left sm:rounded-[20px]"
+        aria-label={`Open ${image.alt}`}
+      >
         <Image
           src={image.src}
           alt={image.alt}
@@ -53,7 +59,7 @@ function EventPhoto({
           sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
           style={{ width: "100%", height: "auto" }}
         />
-      </div>
+      </button>
     </figure>
   );
 }
@@ -61,9 +67,11 @@ function EventPhoto({
 function EventPhotoGrid({
   images,
   priorityFirst = false,
+  onImageClick,
 }: {
   images: GalleryEventImage[];
   priorityFirst?: boolean;
+  onImageClick: (index: number) => void;
 }) {
   const [visible, setVisible] = useState(
     Math.min(INITIAL_VISIBLE, images.length)
@@ -86,7 +94,11 @@ function EventPhotoGrid({
               ease: MOTION.ease,
             }}
           >
-            <EventPhoto image={image} priority={priorityFirst && index === 0} />
+            <EventPhoto
+              image={image}
+              priority={priorityFirst && index === 0}
+              onOpen={() => onImageClick(index)}
+            />
           </motion.div>
         ))}
       </div>
@@ -115,10 +127,12 @@ function GalleryEventSection({
   event,
   index,
   priorityFirst = false,
+  onImageClick,
 }: {
   event: GalleryEvent;
   index: number;
   priorityFirst?: boolean;
+  onImageClick: (index: number) => void;
 }) {
   const reduce = usePrefersReducedMotion();
   const jumpLabel = event.location
@@ -169,16 +183,26 @@ function GalleryEventSection({
             <span className="sr-only">{jumpLabel}</span>
           </div>
 
-          <EventPhotoGrid images={event.images} priorityFirst={priorityFirst} />
+          <EventPhotoGrid
+            images={event.images}
+            priorityFirst={priorityFirst}
+            onImageClick={onImageClick}
+          />
         </div>
       </Container>
     </motion.article>
   );
 }
 
+type LightboxState = {
+  event: GalleryEvent;
+  index: number;
+};
+
 export default function GalleryPageClient() {
   const [brand, setBrand] = useState<GalleryBrand>("rencare");
   const [activeEventId, setActiveEventId] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null);
   const reduce = usePrefersReducedMotion();
 
   const events = useMemo(() => eventsForBrand(brand), [brand]);
@@ -196,7 +220,7 @@ export default function GalleryPageClient() {
       <PageHero
         title="Gallery"
         image={HERO_IMAGE}
-        alt="Rencare community event"
+        alt="Gallery across Health Invest Africa platforms"
       />
 
       <PageBody>
@@ -295,6 +319,9 @@ export default function GalleryPageClient() {
                   event={event}
                   index={index}
                   priorityFirst={index === 0}
+                  onImageClick={(imageIndex) =>
+                    setLightbox({ event, index: imageIndex })
+                  }
                 />
               ))
             ) : (
@@ -309,6 +336,17 @@ export default function GalleryPageClient() {
           </motion.div>
         </AnimatePresence>
       </PageBody>
+
+      <GalleryLightbox
+        event={lightbox?.event ?? null}
+        index={lightbox?.index ?? 0}
+        onClose={() => setLightbox(null)}
+        onIndexChange={(index) =>
+          setLightbox((current) =>
+            current ? { ...current, index } : current
+          )
+        }
+      />
     </>
   );
 }

@@ -59,7 +59,7 @@ function AboutHero() {
   const reduce = usePrefersReducedMotion();
 
   return (
-    <section className="relative h-[min(72svh,640px)] min-h-[400px] w-full overflow-hidden bg-hi-navy-deep pt-[var(--header-height)] md:h-[min(78svh,820px)] md:min-h-[480px]">
+    <section className="relative h-[min(72svh,640px)] min-h-[400px] w-full overflow-hidden bg-hi-navy-deep pt-[var(--header-height)] md:h-[min(calc(78svh+50px),870px)] md:min-h-[530px]">
       <motion.div
         className="absolute inset-0"
         initial={reduce ? false : { scale: 1.08 }}
@@ -71,7 +71,7 @@ function AboutHero() {
           alt="Healthcare professionals serving communities across Africa"
           fill
           priority
-          className="object-cover object-[center_calc(50%-50px)]"
+          className="object-cover object-top"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/40" />

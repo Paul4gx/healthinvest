@@ -40,7 +40,7 @@ export default function ContactPage() {
     <>
       <PageHero
         title="Contact Us"
-        image="/images/contact/hero.jpg"
+        image="/images/contact/hero-contact.webp"
         alt="Health Invest Africa partnership and enquiry team"
       />
 

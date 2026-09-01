@@ -17,7 +17,7 @@ export default function LeadershipPage() {
     <>
       <PageHero
         title="Our Team"
-        image="/images/about/operational-excellence-vitalbeam.jpg"
+        image="/images/team/hero-team.webp"
         alt="Health Invest Africa clinical leadership team"
       />
       <PageBody>

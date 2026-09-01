@@ -727,10 +727,10 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "bringing-renal-care-closer-to-home",
     category: "Renal Care",
-    title: "Bringing Renal Care Closer to Home",
+    title: "Bringing Sustainable Renal Care Closer to Home",
     excerpt:
       "Chronic kidney disease is one of Nigeria\u2019s fastest-growing non communicable disease challenges. Through Rencare, Health Invest Africa is expanding reliable dialysis access through institutional partnerships.",
-    image: "/images/gallery/rencare-1.webp",
+    image: "/images/blog/renal-care-closer.webp",
     date: "2025-06-20",
     sections: [
       {
@@ -950,6 +950,48 @@ export const GALLERY_EVENTS = [
       ["POCCH", "2026", "POCCH Cancer MARCH - World Cancer Day"],
       15,
       "POCCH World Cancer Day march"
+    ),
+  },
+  {
+    id: "oncoclinics-project-strawn-2026",
+    brand: "oncoclinics" as const,
+    title: "Project STRAWN",
+    year: "2026",
+    location: "Enugu",
+    summary:
+      "Project STRAWN launch and workforce development activities strengthening radiation therapy capacity in Nigeria.",
+    images: numberedImages(
+      ["Oncoclinics", "2026", "PROJECT STRAWN"],
+      21,
+      "OncoClinics Project STRAWN"
+    ),
+  },
+  {
+    id: "oncoclinics-ubth-community-outreach-2026",
+    brand: "oncoclinics" as const,
+    title: "UBTH Community Medical Outreach",
+    year: "2026",
+    location: "Benin, Edo",
+    summary:
+      "OncoClinics community medical outreach in partnership with the University of Benin Teaching Hospital.",
+    images: numberedImages(
+      ["Oncoclinics", "2026", "Oncoclinics X UBTH Community Medical Outreach"],
+      20,
+      "OncoClinics UBTH community medical outreach"
+    ),
+  },
+  {
+    id: "oncoclinics-unth-foundation-cope-2026",
+    brand: "oncoclinics" as const,
+    title: "UNTH Foundation Community Outreach",
+    year: "2026",
+    location: "Enugu",
+    summary:
+      "OncoClinics partnership outreach with UNTH Foundation and COPE, bringing cancer awareness and community health services to Enugu.",
+    images: numberedImages(
+      ["Oncoclinics", "2026", "Oncoclinics X UNTH Foundation X  COPE"],
+      17,
+      "OncoClinics UNTH Foundation and COPE outreach"
     ),
   },
 ];
