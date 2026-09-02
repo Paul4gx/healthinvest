@@ -27,7 +27,7 @@ export const OUR_FOCUS = {
       number: "01",
       title: "Oncology",
       description:
-        "Comprehensive cancer care spanning diagnosis, radiation oncology, clinical treatment and multidisciplinary pathways.",
+        "Comprehensive cancer care spanning diagnosis, medical and radiation oncology, clinical treatment and multidisciplinary pathways.",
     },
     {
       number: "02",
@@ -413,13 +413,13 @@ export const LEADERSHIP: TeamMember[] = [
   {
     name: "Chinwe Egbuta",
     role: "Head of Human Resources and Administration",
-    image: "/images/team/chinwe-egbuta.png",
+    image: "/images/team/chinwe-egbuta.png.webp",
     bio: "Chinwe Egbuta has experience leading human resources and administration across multi-site organisations. She has supported the strengthening of HIA’s policies, procedures and employee-engagement systems.",
   },
   {
     name: "Dr Uchenna Okoro",
     role: "Clinical Coordinator, OncoClinics",
-    image: "/images/team/uchenna-okoro.png",
+    image: "/images/team/uchenna-okoro.webp",
     bio: "Dr Uchenna Okoro is an oncologist with experience establishing and managing oncology operations. He previously supported oncology services at Evercare Hospital and served as lead oncologist at Federal Medical Centre, Ebute Metta.",
   },
   // {
@@ -437,7 +437,7 @@ export const LEADERSHIP: TeamMember[] = [
   {
     name: "Toni Rahme",
     role: "Chief Executive Officer, POCCH",
-    image: "/images/team/toni-rahme-portrait.png",
+    image: "/images/team/toni-rahme-portrait.webp",
     bio: "Toni Rahme is an experienced healthcare manager with a background in developing and operating multi-site healthcare organisations. He previously served as Chief Operating Officer of Farah Group in Côte d’Ivoire.",
   },
   // {
@@ -449,13 +449,13 @@ export const LEADERSHIP: TeamMember[] = [
   {
     name: "Samson Abiola",
     role: "Operations Manager, Rencare Africa",
-    image: "/images/team/samson-abiola.png",
+    image: "/images/team/samson-abiola.webp",
     bio: "Samson Abiola has more than 14 years of experience developing and implementing critical and chronic healthcare solutions. He previously served as General Manager at ADCEM Healthcare Limited and as a management accountant at Fidson Healthcare Plc.",
   },
   {
     name: "Morountodun Sowemimo",
     role: "Business Transformation Manager",
-    image: "/images/team/morountodun-sowemimo.png",
+    image: "/images/team/morountodun-sowemimo.webp",
     bio: "Morountodun Sowemimo is a business transformation professional with experience supporting enterprise-wide change programmes across healthcare and other sectors. At HIA, she supports business improvement, programme coordination and strategic execution.",
   },
 ];

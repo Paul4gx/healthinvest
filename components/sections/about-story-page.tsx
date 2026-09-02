@@ -41,7 +41,6 @@ export function AboutStoryPage() {
         body={ABOUT_PAGE.africa.body}
       />
       <TextColumns items={ABOUT_PAGE.africaColumns} />
-      <ValueColumns />
       <PhotoBand
         image="/images/about/human_stories.webp"
         alt="Clinicians reviewing care together"
@@ -51,6 +50,7 @@ export function AboutStoryPage() {
       />
       <TextColumns items={ABOUT_PAGE.storyColumns} />
       <BrandBanner />
+      <ValueColumns />
     </>
   );
 }
@@ -67,7 +67,7 @@ function AboutHero() {
         transition={{ duration: 1.1, ease: MOTION.ease }}
       >
         <Image
-          src="/images/about/redefining-africa.jpg"
+          src="/images/about/hero-about.webp"
           alt="Healthcare professionals serving communities across Africa"
           fill
           priority
