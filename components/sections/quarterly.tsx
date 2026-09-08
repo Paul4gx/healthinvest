@@ -14,7 +14,7 @@ export function Quarterly() {
           <Reveal>
             <div className="flex flex-col gap-4">
               <h2 className="font-display text-[clamp(2.5rem,5.5vw,4.375rem)] font-normal leading-[1.07] tracking-[-0.02em] text-hi-black">
-                The Quarterly
+                Insights
               </h2>
               <p className="font-display text-[clamp(1.5rem,3vw,2rem)] font-light text-[#535353]">
                 By Health Invest Africa

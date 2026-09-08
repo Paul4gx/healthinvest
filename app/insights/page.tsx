@@ -16,7 +16,7 @@ export default function InsightsPage() {
     <section className="bg-white pb-12 pt-24 md:pb-16 md:pt-28">
       <Container>
         <Reveal>
-          <p className="text-hi-accent">The Quarterly</p>
+          <p className="text-hi-accent">Insights</p>
           <h1 className="mt-3 text-[clamp(2.5rem,5vw,4rem)] font-normal tracking-[-0.03em] text-hi-ink">
             News and Insights for the Future of African Healthcare
           </h1>

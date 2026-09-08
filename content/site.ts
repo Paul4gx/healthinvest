@@ -10,18 +10,19 @@ import type {
 export const HOME_HERO = {
   title: "We bring Specialty Care\nto the Underserved",
   subtitle:
-    "Across Africa, many patients still travel far or go without the specialist care they need. Health Invest Africa builds sustainable care networks that bring cancer, renal and other specialist services closer to underserved communities.",
+    "Across Africa, many patients travel far, or go without the specialist care they need. Health Invest Africa builds care networks that bring cancer, kidney and other specialist services closer to underserved communities.",
 };
 
 export const WHO_WE_ARE = {
   eyebrow: "WHO WE ARE",
   title: "Investing in Life,\nOne Patient at a Time.",
-  body: "At Health Invest Africa, we believe that beyond treatment, healthcare is an investment in life itself. In a region where access to quality healthcare remains a challenge, we are reshaping the narrative by investing in medical infrastructure, cutting-edge technology, and, most importantly, the people who make healing possible.\n\nOur focus is on non communicable diseases, silent threats like kidney disease and cancer that often go undiagnosed until it\u2019s too late. Through our platforms, we are creating a healthcare ecosystem where patients receive not just treatment, but hope, dignity, and a fighting chance at life.\n\nBut we are more than a healthcare provider. We are a collective of specialised institutions tackling different aspects of medical care, each with autonomy but bound by a shared mission: to redefine what is possible in African healthcare.",
+  body: "At Health Invest Africa, we treat healthcare as an investment in life. Access to quality care remains a major challenge across the region, so we invest in medical infrastructure, technology and the people who deliver treatment.\n\nWe focus on non-communicable diseases, particularly kidney disease and cancer, conditions that often go undiagnosed until it is too late. Our platforms give patients treatment, dignity and a real chance at life.\n\nWe are more than a healthcare provider. We are a group of specialised institutions, each focused on a different area of medical care, working toward one goal: better healthcare across Africa.",
 };
 
 export const OUR_FOCUS = {
-  eyebrow: "OUR FOCUS",
-  intro: "Our networks deliver accessible critical care for the most urgent non communicable diseases (NCDs) impacting Nigeria and Sub-Saharan Africa.",
+  eyebrow: "OUR SPECIALTIES",
+  intro:
+    "Our networks deliver accessible, critical care for the non-communicable diseases (NCDs) that affect Nigeria and Sub-Saharan Africa most.",
   areas: [
     {
       number: "01",
@@ -51,7 +52,7 @@ export const OUR_FOCUS = {
 export const OUR_MISSION_HOME = {
   title: "Our\nMission",
   subtitle: "We bring specialty care to the underserved.",
-  body: "Across Africa, many patients still travel far or go without the specialist care they need. Health Invest Africa builds and operates healthcare platforms that bring oncology, nephrology, cardiology and advanced imaging closer to underserved communities.\n\nThrough sustainable partnerships, investment in infrastructure and clinical teams, and disciplined operations, we are expanding reliable specialty care across Nigeria and the wider region.",
+  body: "Across Africa, many patients travel far, or go without the specialist care they need. Health Invest Africa builds and operates healthcare platforms that bring oncology, nephrology, cardiology and advanced imaging closer to underserved communities.\n\nThrough partnerships, investment in infrastructure and clinical teams, and disciplined operations, we are expanding reliable specialty care across Nigeria and the wider region.",
 };
 
 export const STATS: StatItem[] = [
@@ -176,10 +177,10 @@ export const ABOUT_PAGE = {
   introEyebrow: "WHO ARE WE",
   introTitle: "Building and operating specialist healthcare capacity",
   introBody:
-    "Health Invest Africa is a healthcare investment and operations platform. We identify partnership opportunities, deploy capital and infrastructure, and manage the clinical and administrative operations that turn specialist services into reliable, accessible care.\n\nOur operating model combines partnership structuring, equipment and technology deployment, workforce development, and disciplined financial and quality management. We remain accountable for performance long after assets are installed, ensuring services are clinically responsible, financially sustainable and built to endure.\n\nThrough focused healthcare platforms across oncology, nephrology, cardiology and advanced imaging, we are creating scalable networks that expand specialist capacity across Nigeria and the wider region.",
+    "Health Invest Africa is a healthcare investment and operations platform. We identify and structure partnership opportunities, deploy capital and infrastructure, and operate clinics and hospitals that turn specialist services into reliable, accessible care.\n\nOur operating model combines partnership structuring, equipment and technology deployment, workforce development, and disciplined financial and quality management. We remain accountable for performance long after assets are installed, ensuring that services stay clinically sound, financially sustainable and built to last.\n\nThrough healthcare platforms in oncology, nephrology, cardiology and advanced imaging, we are building scalable networks that expand specialist capacity across Nigeria and the wider region.",
   stories: {
     title: "The Human Stories\nThat Define Us",
-    body: "While our strategy focuses on large-scale transformation, the heart of our story lies in the lives we impact every day.",
+    body: "Our strategy focuses on large-scale transformation, but the heart of our story is the lives we impact every day.",
   },
   storyColumns: [
     {
@@ -188,48 +189,48 @@ export const ABOUT_PAGE = {
     },
     {
       title: "Clinicians Who Lead With Passion",
-      body: "From the physicists in Ebonyi to the therapists in Enugu, our medical professionals are not just providing care. They are rewriting what it means to practice medicine in Nigeria.",
+      body: "From physicists in Ebonyi to therapists in Enugu, our medical professionals are changing what it means to practise medicine in Nigeria.",
     },
     {
       title: "Centers That Bring Healing Closer",
-      body: "In Enugu, where our journey began, we see the power of a well-built healthcare system. In Sokoto, we witness the impact of efficiency and strong infrastructure. Each center tells a different chapter in our story.",
+      body: "In Enugu, where our journey began, we see what a well-built healthcare system can do. In Sokoto, we see the impact of efficiency and strong infrastructure. Each centre tells a different chapter of our story.",
     },
   ],
   africa: {
     title: "Redefining Healthcare Investment in Africa",
-    body: "The healthcare system in Nigeria has long been plagued by gaps in infrastructure, affordability, expertise, and patient trust. Health Invest Africa is bridging those gaps, not just by building medical centers but by fostering an entirely new approach to healthcare investment.",
+    body: "Nigeria's healthcare system has long faced gaps in infrastructure, affordability, expertise and patient trust. Health Invest Africa is closing those gaps, not only by building medical centres, but by applying a new approach to healthcare investment.",
   },
   africaColumns: [
     {
       title: "Building Infrastructure through Partnerships",
-      body: "Collaboration is at the centre of what we do. We specialise in deploying healthcare capacity through partnerships with public and private sectors, and we leverage our robust supplier network to ensure uninterrupted quality care across our facilities.",
+      body: "Collaboration is central to what we do. We deploy healthcare capacity through public private partnerships (PPPs), supported by a strong supplier network that keeps quality care uninterrupted across our facilities.",
     },
     {
       title: "Technology-Enabled Operations",
-      body: "We focus on deploying modern treatment technology and tools to ensure the best care possible, and we utilise AI to bridge staffing and expertise gaps.",
+      body: "We deploy modern treatment technology and tools, and use it to close staffing and expertise gaps.",
     },
     {
       title: "Sustained Operational Excellence",
-      body: "We build robust, consistent operations that enable high-quality care across every location in our network.",
+      body: "We build consistent operations so that every location in our network delivers the same high standard of care.",
     },
   ],
   brandLine: "We invest in life.",
   values: [
     {
       title: "Technology & Equipment",
-      body: "Cutting-edge diagnostic tools, advanced treatment methods, and life-saving medical innovations.",
+      body: "Diagnostic tools, treatment methods and medical innovations that save lives.",
     },
     {
       title: "Finance",
-      body: "The funding that fuels accessibility, affordability, and expansion of our specialized clinics nationwide.",
+      body: "The funding that drives accessibility, affordability and expansion of our specialised clinics nationwide.",
     },
     {
       title: "Expertise & Knowledge",
-      body: "A team of highly skilled doctors, researchers, and medical professionals committed to advancing healthcare solutions.",
+      body: "Skilled doctors, researchers and medical professionals committed to advancing healthcare.",
     },
     {
       title: "Care & Time",
-      body: "The human touch in every consultation, every surgery, and every reassuring word that brings hope to patients and their families.",
+      body: "The human touch in every consultation, every procedure and every reassuring word.",
     },
   ],
 };
@@ -395,7 +396,7 @@ export const IMPACT = {
 };
 
 export const LEADERSHIP_INTRO =
-  "HIA directly oversees the clinical operations of more than 200 clinicians across its growing specialist care network. These teams are supported by an agile corporate function and led by a management team with deep and broad expertise across healthcare investment, clinical operations, quality, finance and multi-site service delivery.";
+  "HIA directly oversees the clinical operations of more than 200 clinicians across its growing specialist care network. These teams are supported by an agile corporate function and led by a management team with deep expertise across healthcare investment, clinical operations, quality, finance and multi-site service delivery.";
 
 export const LEADERSHIP: TeamMember[] = [
   {
