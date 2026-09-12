@@ -61,12 +61,35 @@ export function ContactForm({
   const onSubmit = async (values: ContactFormValues) => {
     setStatus("idle");
     try {
-      const res = await fetch("/api/contact", {
+      const endpoint =
+        process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ??
+        "https://formspree.io/f/xoeqbzbb";
+
+      const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          organisation: values.organisation,
+          email: values.email,
+          telephone: values.telephone || "",
+          enquiryType: values.enquiryType,
+          message: values.message,
+          _replyto: values.email,
+          _subject: `HIA enquiry: ${values.enquiryType}`,
+        }),
       });
-      if (!res.ok) throw new Error("Failed");
+
+      const data = (await res.json().catch(() => null)) as {
+        ok?: boolean;
+        error?: string;
+      } | null;
+
+      if (!res.ok || data?.error) throw new Error(data?.error || "Failed");
+
       setStatus("success");
       reset({
         enquiryType: enquiryDefault,

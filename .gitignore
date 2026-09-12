@@ -17,6 +17,8 @@
 /.next/
 /out/
 /healthinvest-client-preview.zip
+/healthinvest-static.zip
+*.staticbak
 
 # production
 /build
